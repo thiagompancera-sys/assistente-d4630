@@ -779,10 +779,11 @@ app.get('/', (req, res) => {
   .btn-mic.recording { background: #ef4444 !important; animation: pulse-mic 1.2s infinite; }
   .btn-mic.recording svg { fill: #fff !important; }
   @keyframes pulse-mic { 0%,100% { box-shadow: 0 0 0 0 rgba(239,68,68,0.4); } 50% { box-shadow: 0 0 0 10px rgba(239,68,68,0); } }
-  .btn-listen { background: none !important; border: none; width: 28px; height: 28px; padding: 0; cursor: pointer; opacity: 0.5; transition: opacity 0.2s; min-width: 28px; }
+  .btn-listen { background: none !important; border: none; width: 28px; height: 28px; padding: 0; cursor: pointer; opacity: 0.5; transition: all 0.2s; min-width: 28px; }
   .btn-listen:hover { opacity: 1; }
-  .btn-listen.playing { opacity: 1; }
-  .btn-listen svg { width: 16px; height: 16px; fill: var(--azul); }
+  .btn-listen.playing { opacity: 1; background: rgba(0,93,170,0.1) !important; border-radius: 50%; }
+  .btn-listen svg { width: 16px; height: 16px; fill: var(--azul); transition: fill 0.2s; }
+  .btn-listen.playing svg { fill: #ef4444; }
 
   /* Footer */
   .footer { text-align: center; padding: 6px; font-size: 10px; color: #bbb; background: #fff; }
@@ -962,7 +963,7 @@ function addMsg(tipo, texto) {
   const hora = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
   // Botao de ouvir nas respostas do bot
   const listenBtn = tipo === 'bot' && 'speechSynthesis' in window
-    ? '<button class="btn-listen" onclick="ouvirResposta(this)" title="Ouvir resposta" aria-label="Ouvir resposta em voz"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button> ' : '';
+    ? '<button class="btn-listen" onclick="ouvirResposta(this)" title="Ouvir resposta (clique novamente para parar)" aria-label="Ouvir resposta em voz"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button> ' : '';
   div.innerHTML = html + '<div class="time">' + listenBtn + hora + '</div>';
   messages.appendChild(div);
   chatArea.scrollTop = chatArea.scrollHeight;
@@ -1196,39 +1197,111 @@ function stopMic() {
 }
 
 // ===== VOZ: OUVIR RESPOSTA (Text-to-Speech) =====
-let currentUtterance = null;
+let bestVoice = null;
+
+function limparTextoParaVoz(texto) {
+  return texto
+    // Remover emojis (ranges unicode completos)
+    .replace(/[\u{1F600}-\u{1F64F}]/gu, '')
+    .replace(/[\u{1F300}-\u{1F5FF}]/gu, '')
+    .replace(/[\u{1F680}-\u{1F6FF}]/gu, '')
+    .replace(/[\u{1F1E0}-\u{1F1FF}]/gu, '')
+    .replace(/[\u{2600}-\u{27BF}]/gu, '')
+    .replace(/[\u{FE00}-\u{FE0F}]/gu, '')
+    .replace(/[\u{1F900}-\u{1F9FF}]/gu, '')
+    .replace(/[\u{1FA00}-\u{1FA6F}]/gu, '')
+    .replace(/[\u{1FA70}-\u{1FAFF}]/gu, '')
+    .replace(/[\u{2702}-\u{27B0}]/gu, '')
+    .replace(/[\u{200D}]/gu, '')
+    // Remover URLs
+    .replace(/https?:\\/\\/[^\\s]+/g, '')
+    // Remover codigos hex de cor (#005DAA)
+    .replace(/#[0-9A-Fa-f]{3,8}/g, '')
+    // Remover horarios soltos no final (10:30)
+    .replace(/\\d{2}:\\d{2}\\s*$/g, '')
+    // Converter marcadores em pausas naturais
+    .replace(/[•\\-\\*]/g, '. ')
+    // Substituir abreviacoes por extenso
+    .replace(/\\bD4630\\b/g, 'Distrito 4630')
+    .replace(/\\bRC\\b/g, 'Rotary Club')
+    .replace(/\\bGA\\b/g, 'Governador Assistente')
+    .replace(/\\bGAs\\b/g, 'Governadores Assistentes')
+    .replace(/\\bDQA\\b/g, 'Desenvolvimento do Quadro Associativo')
+    .replace(/\\bEREY\\b/g, 'Every Rotarian Every Year')
+    .replace(/\\bUS\\$/g, 'dólares ')
+    .replace(/\\bR\\$/g, 'reais ')
+    // Limpar espacos extras
+    .replace(/\\s{2,}/g, ' ')
+    .trim();
+}
+
+function selecionarMelhorVoz() {
+  const voices = speechSynthesis.getVoices();
+  if (!voices.length) return null;
+
+  // Prioridade: vozes Google/Microsoft pt-BR sao mais naturais
+  const prioridade = [
+    v => v.lang === 'pt-BR' && v.name.includes('Google'),
+    v => v.lang === 'pt-BR' && v.name.includes('Microsoft') && v.name.includes('Natural'),
+    v => v.lang === 'pt-BR' && v.name.includes('Microsoft'),
+    v => v.lang === 'pt-BR',
+    v => v.lang.startsWith('pt'),
+  ];
+
+  for (const filtro of prioridade) {
+    const found = voices.find(filtro);
+    if (found) return found;
+  }
+  return null;
+}
 
 function ouvirResposta(btn) {
   if (!('speechSynthesis' in window)) return;
 
-  // Se ja esta tocando, parar
-  if (speechSynthesis.speaking) {
+  // Se ja esta tocando, PARAR (toggle)
+  if (btn.classList.contains('playing')) {
     speechSynthesis.cancel();
-    document.querySelectorAll('.btn-listen.playing').forEach(b => b.classList.remove('playing'));
-    if (btn.classList.contains('playing')) { btn.classList.remove('playing'); return; }
+    btn.classList.remove('playing');
+    btn.title = 'Ouvir resposta';
+    return;
   }
 
-  // Pegar texto da mensagem (remover HTML e URLs)
+  // Parar qualquer outro audio tocando
+  if (speechSynthesis.speaking) {
+    speechSynthesis.cancel();
+    document.querySelectorAll('.btn-listen.playing').forEach(b => {
+      b.classList.remove('playing');
+      b.title = 'Ouvir resposta';
+    });
+  }
+
+  // Pegar e limpar texto
   const msgDiv = btn.closest('.msg');
   let texto = msgDiv.innerText || msgDiv.textContent;
-  // Limpar URLs e horarios do final
-  texto = texto.replace(/https?:\\/\\/[^\\s]+/g, '').replace(/\\d{2}:\\d{2}$/, '').trim();
+  texto = limparTextoParaVoz(texto);
 
-  if (!texto) return;
+  if (!texto || texto.length < 3) return;
+
+  // Selecionar melhor voz
+  if (!bestVoice) bestVoice = selecionarMelhorVoz();
 
   const utter = new SpeechSynthesisUtterance(texto);
   utter.lang = 'pt-BR';
-  utter.rate = 1.0;
-  utter.pitch = 1.0;
-
-  // Tentar usar voz pt-BR
-  const voices = speechSynthesis.getVoices();
-  const ptVoice = voices.find(v => v.lang.startsWith('pt'));
-  if (ptVoice) utter.voice = ptVoice;
+  utter.rate = 0.95;  // Ligeiramente mais lento = mais natural
+  utter.pitch = 1.05; // Ligeiramente mais agudo = mais amigavel
+  if (bestVoice) utter.voice = bestVoice;
 
   btn.classList.add('playing');
-  utter.onend = () => { btn.classList.remove('playing'); };
-  utter.onerror = () => { btn.classList.remove('playing'); };
+  btn.title = 'Parar audio';
+
+  utter.onend = () => {
+    btn.classList.remove('playing');
+    btn.title = 'Ouvir resposta';
+  };
+  utter.onerror = () => {
+    btn.classList.remove('playing');
+    btn.title = 'Ouvir resposta';
+  };
 
   speechSynthesis.speak(utter);
 }
@@ -1236,7 +1309,9 @@ function ouvirResposta(btn) {
 // Carregar vozes (necessario para alguns navegadores)
 if ('speechSynthesis' in window) {
   speechSynthesis.getVoices();
-  speechSynthesis.onvoiceschanged = () => { speechSynthesis.getVoices(); };
+  speechSynthesis.onvoiceschanged = () => {
+    bestVoice = selecionarMelhorVoz();
+  };
 }
 </script>
 </body>
