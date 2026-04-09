@@ -214,9 +214,14 @@ const FAQ_CACHE = [
     palavras: ['frequencia', 'presenca', 'reposicao'],
     resposta: `📋 *Frequência e Reposição*\n\n• O secretário do clube lança presenças pelo UnyClub ou My Rotary\n• Rotarianos podem *visitar qualquer clube do mundo* para repor frequência\n• Isso é incentivado como "intercâmbio entre clubes"\n\n📲 UnyClub: https://www.unyclub.com.br\n🌐 My Rotary: https://my.rotary.org/pt`
   },
+  // === CLUBES DO DISTRITO (lista geral) ===
+  {
+    palavras: ['clubes do distrito', 'clubs do distrito', 'todos os clubes', 'lista de clubes', 'quantos clubes', 'clubes d4630', 'clubes 4630', 'quais os clubes', 'quais clubes', 'quais sao os clubes'],
+    resposta: `🏛️ *Clubes do Distrito 4630*\n\nSão *112 clubes* no norte/noroeste do Paraná!\n\nAlgumas cidades com clubes:\n• *Campo Mourão* — 5 clubes Rotary + Rotaract + Interact\n• *Maringá* — 5 clubes Rotary\n• *Umuarama, Cianorte, Goioerê, Loanda, Paranacity*\n• *Araruna, Boa Esperança, Barbosa Ferraz, Borrazópolis*\n• *Lunardelli, Santo Antônio da Platina* e mais!\n\n💡 Me diga sua *cidade* e eu listo os clubes dela!\n\n🔗 Lista completa: https://rotary4630.org.br/clubes\n🌐 Busca global: https://my.rotary.org/pt/search/club-finder\n📲 App: https://www.unyclub.com.br`
+  },
   // === CLUB GENERICO (fallback para "clube", "rotary perto", etc) ===
   {
-    palavras: ['clube perto', 'rotary perto', 'mais perto', 'qual clube', 'qual rotary', 'encontrar clube'],
+    palavras: ['clube perto', 'rotary perto', 'mais perto', 'qual clube', 'qual rotary', 'encontrar clube', 'clube mais proximo'],
     resposta: `🔍 *Encontrar um Clube Rotary*\n\nO D4630 possui *112 clubes* no norte/noroeste do Paraná!\n\nPara encontrar o clube mais próximo de você:\n🔗 Buscar por cidade: https://rotary4630.org.br/clubes\n🌐 Pesquisa global: https://my.rotary.org/pt/search/club-finder\n📲 App UnyClub: https://www.unyclub.com.br\n\nOu me diga sua cidade que eu informo os clubes disponíveis!`
   },
   // === INTERACT ===
@@ -239,9 +244,24 @@ const FAQ_CACHE = [
 // === CIDADES DO DISTRITO (para busca por cidade) ===
 const CIDADES_D4630 = ['campo mourao', 'maringa', 'umuarama', 'cianorte', 'loanda', 'goioere', 'paranacity', 'araruna', 'boa esperanca', 'barbosa ferraz', 'borrazopolis', 'lunardelli', 'santo antonio da platina', 'brasilandia do sul'];
 
+// === CORRECAO DE TYPOS COMUNS ===
+function corrigirTypos(msg) {
+  return msg
+    .replace(/\bclubs\b/g, 'clubes')
+    .replace(/\brotario\b/g, 'rotary')
+    .replace(/\brotarios\b/g, 'rotary')
+    .replace(/\brotariano\b/g, 'rotary')
+    .replace(/\bevento\b/g, 'eventos')
+    .replace(/\binscrissao\b/g, 'inscricao')
+    .replace(/\binscricoes\b/g, 'inscricao')
+    .replace(/\bcadastrar\b/g, 'cadastro')
+    .replace(/\bfrequencia\b/g, 'frequencia')
+    .replace(/\bassembleia\b/g, 'assembleia');
+}
+
 // === BUSCA INTELIGENTE NO CACHE ===
 function buscarNoCache(mensagem) {
-  const msg = mensagem.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+  const msg = corrigirTypos(mensagem.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim());
 
   // Primeiro: verificar se menciona uma cidade → prioridade maxima
   for (const cidade of CIDADES_D4630) {
@@ -630,6 +650,16 @@ app.get('/', (req, res) => {
   .input-area button:hover { background: var(--azul-escuro); transform: scale(1.05); }
   .input-area button:disabled { background: #ccc; cursor: not-allowed; transform: none; }
   .input-area button svg { fill: #fff; width: 18px; height: 18px; }
+  .btn-mic { background: #e8edf4 !important; position: relative; }
+  .btn-mic svg { fill: var(--azul) !important; }
+  .btn-mic:hover { background: #d4dce8 !important; }
+  .btn-mic.recording { background: #ef4444 !important; animation: pulse-mic 1.2s infinite; }
+  .btn-mic.recording svg { fill: #fff !important; }
+  @keyframes pulse-mic { 0%,100% { box-shadow: 0 0 0 0 rgba(239,68,68,0.4); } 50% { box-shadow: 0 0 0 10px rgba(239,68,68,0); } }
+  .btn-listen { background: none !important; border: none; width: 28px; height: 28px; padding: 0; cursor: pointer; opacity: 0.5; transition: opacity 0.2s; min-width: 28px; }
+  .btn-listen:hover { opacity: 1; }
+  .btn-listen.playing { opacity: 1; }
+  .btn-listen svg { width: 16px; height: 16px; fill: var(--azul); }
 
   /* Footer */
   .footer { text-align: center; padding: 6px; font-size: 10px; color: #bbb; background: #fff; }
@@ -716,10 +746,10 @@ app.get('/', (req, res) => {
       <span class="title">Verificar Arte</span>
       <span class="desc">Envie a imagem e a IA analisa</span>
     </div>
-    <div class="cat-card" role="button" tabindex="0" onclick="enviarRapido('Buscar informa&ccedil;&otilde;es de clubes')">
-      <span class="icon">🔍</span>
-      <span class="title">Buscar Clubes</span>
-      <span class="desc">Reuni&otilde;es, contatos, presidentes</span>
+    <div class="cat-card" role="button" tabindex="0" onclick="enviarRapido('Quais os clubes do distrito 4630?')">
+      <span class="icon">🏛️</span>
+      <span class="title">Clubes D4630</span>
+      <span class="desc">112 clubes, buscar por cidade</span>
     </div>
     <div class="cat-card" role="button" tabindex="0" onclick="enviarRapido('Contatos &uacute;teis do distrito')">
       <span class="icon">📞</span>
@@ -754,7 +784,10 @@ app.get('/', (req, res) => {
 </div>
 
 <div class="input-area">
-  <input type="text" id="input" placeholder="Pergunte sobre o Distrito 4630..." enterkeyhint="send" autocomplete="off">
+  <button class="btn-mic" id="micBtn" onclick="toggleMic()" aria-label="Falar mensagem por voz" title="Fale sua pergunta">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1-9c0-.55.45-1 1-1s1 .45 1 1v6c0 .55-.45 1-1 1s-1-.45-1-1V5zm6 6c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg>
+  </button>
+  <input type="text" id="input" placeholder="Pergunte ou fale por voz..." enterkeyhint="send" autocomplete="off">
   <button id="sendBtn" onclick="enviar()" aria-label="Enviar mensagem">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
   </button>
@@ -802,10 +835,12 @@ function addMsg(tipo, texto) {
   div.className = 'msg ' + tipo;
   let html = texto.replace(/\\*([^*]+)\\*/g, '<b>\$1</b>');
   html = html.replace(/\\n/g, '<br>');
-  // Converter URLs em links clicaveis
   html = html.replace(/(https?:\\/\\/[^\\s<]+)/g, '<a href="\$1" target="_blank" style="color:var(--azul);text-decoration:underline;word-break:break-all">\$1</a>');
   const hora = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-  div.innerHTML = html + '<div class="time">' + hora + '</div>';
+  // Botao de ouvir nas respostas do bot
+  const listenBtn = tipo === 'bot' && 'speechSynthesis' in window
+    ? '<button class="btn-listen" onclick="ouvirResposta(this)" title="Ouvir resposta" aria-label="Ouvir resposta em voz"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button> ' : '';
+  div.innerHTML = html + '<div class="time">' + listenBtn + hora + '</div>';
   messages.appendChild(div);
   chatArea.scrollTop = chatArea.scrollHeight;
   return div;
@@ -974,6 +1009,111 @@ async function analisarArte() {
   }
   btnAnalisar.disabled = false;
   btnAnalisar.textContent = 'Analisar Novamente';
+}
+
+// ===== VOZ: MICROFONE (Speech-to-Text) =====
+const micBtn = document.getElementById('micBtn');
+let recognition = null;
+let isRecording = false;
+
+if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  recognition = new SpeechRecognition();
+  recognition.lang = 'pt-BR';
+  recognition.continuous = false;
+  recognition.interimResults = true;
+
+  recognition.onresult = (e) => {
+    let texto = '';
+    for (let i = e.resultIndex; i < e.results.length; i++) {
+      texto += e.results[i][0].transcript;
+    }
+    input.value = texto;
+    if (e.results[e.results.length - 1].isFinal) {
+      stopMic();
+      // Enviar automaticamente apos reconhecimento
+      setTimeout(() => enviar(), 300);
+    }
+  };
+
+  recognition.onerror = (e) => {
+    console.log('Mic error:', e.error);
+    stopMic();
+    if (e.error === 'not-allowed') {
+      input.placeholder = 'Permita o microfone nas configuracoes do navegador';
+    }
+  };
+
+  recognition.onend = () => { stopMic(); };
+} else {
+  // Navegador nao suporta — esconder botao
+  micBtn.style.display = 'none';
+}
+
+function toggleMic() {
+  if (!recognition) return;
+  if (isRecording) {
+    recognition.stop();
+    stopMic();
+  } else {
+    try {
+      recognition.start();
+      isRecording = true;
+      micBtn.classList.add('recording');
+      input.placeholder = 'Ouvindo... fale sua pergunta';
+      input.value = '';
+    } catch (e) { console.log('Mic start error:', e); }
+  }
+}
+
+function stopMic() {
+  isRecording = false;
+  micBtn.classList.remove('recording');
+  input.placeholder = 'Pergunte ou fale por voz...';
+}
+
+// ===== VOZ: OUVIR RESPOSTA (Text-to-Speech) =====
+let currentUtterance = null;
+
+function ouvirResposta(btn) {
+  if (!('speechSynthesis' in window)) return;
+
+  // Se ja esta tocando, parar
+  if (speechSynthesis.speaking) {
+    speechSynthesis.cancel();
+    document.querySelectorAll('.btn-listen.playing').forEach(b => b.classList.remove('playing'));
+    if (btn.classList.contains('playing')) { btn.classList.remove('playing'); return; }
+  }
+
+  // Pegar texto da mensagem (remover HTML e URLs)
+  const msgDiv = btn.closest('.msg');
+  let texto = msgDiv.innerText || msgDiv.textContent;
+  // Limpar URLs e horarios do final
+  texto = texto.replace(/https?:\\/\\/[^\\s]+/g, '').replace(/\\d{2}:\\d{2}$/, '').trim();
+
+  if (!texto) return;
+
+  const utter = new SpeechSynthesisUtterance(texto);
+  utter.lang = 'pt-BR';
+  utter.rate = 1.0;
+  utter.pitch = 1.0;
+
+  // Tentar usar voz pt-BR
+  const voices = speechSynthesis.getVoices();
+  const ptVoice = voices.find(v => v.lang.startsWith('pt'));
+  if (ptVoice) utter.voice = ptVoice;
+
+  btn.classList.add('playing');
+  utter.onend = () => { btn.classList.remove('playing'); };
+  utter.onerror = () => { btn.classList.remove('playing'); };
+
+  speechSynthesis.speak(utter);
+}
+
+// Carregar vozes (necessario para alguns navegadores)
+if ('speechSynthesis' in window) {
+  speechSynthesis.getVoices();
+  speechSynthesis.onvoiceschanged = () => { speechSynthesis.getVoices(); };
 }
 </script>
 </body>
