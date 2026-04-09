@@ -61,7 +61,7 @@ const FAQ_CACHE = [
     resposta: `Olá, companheiro(a)! 👋\n\nSou o *Assistente Digital do Distrito 4630*.\n\nPosso te ajudar com:\n📅 *Calendário* — próximos eventos e prazos\n📋 *Protocolos* — regras, marca, procedimentos\n🌐 *My Rotary* — como usar o portal\n🏆 *Metas* — Rotary Club Central\n❓ *Dúvidas gerais* — sobre o Rotary e o distrito\n\nComo posso te ajudar hoje?\n\n🔗 Site do distrito: https://rotary4630.org.br`
   },
   {
-    palavras: ['proximo evento', 'proximos eventos', 'calendario', 'quando', 'data', 'pels', 'assembleia', 'conferencia', 'transmissao', 'posse'],
+    palavras: ['proximo evento', 'proximos eventos', 'eventos', 'calendario', 'quando', 'data', 'pels', 'assembleia', 'conferencia', 'transmissao', 'posse'],
     resposta: `📅 *Próximos eventos do D4630:*\n\n• *11/04/2026* — Seminário PELS 2026-27 (OBRIGATÓRIO)\n• *25/04/2026* — Assembleia Distrital Interact (OBRIGATÓRIO)\n• *26/04/2026* — ADIRC - Assembleia Distrital Rotaract (OBRIGATÓRIO)\n• *22/05/2026* — Conferência Distrital Sol Nascente (OBRIGATÓRIO)\n• *27/06/2026* — Transmissão de Cargo / Posse Distrital (OBRIGATÓRIO)\n• *01/07/2026* — Início do Ano Rotário 2026-2027\n• *27/08/2026* — Instituto Rotary do Brasil\n\n🔗 Agenda e inscrições: https://rotary4630.org.br/agenda-distrital\n📲 Calendário no Rotary: https://my.rotary.org/pt/news-media/calendar`
   },
   {
@@ -397,6 +397,10 @@ function buscarNoCache(mensagem) {
     { teste: /(rotaract|adirc).*assembleia/, palavraChave: 'adirc' },
     { teste: /assembleia.*interact/, palavraChave: 'assembleia interact' },
     { teste: /interact.*assembleia/, palavraChave: 'assembleia interact' },
+    { teste: /quais.*(evento|eventos)/, palavraChave: 'eventos' },
+    { teste: /lista.*(evento|eventos)/, palavraChave: 'eventos' },
+    { teste: /tem.*(evento|eventos)/, palavraChave: 'eventos' },
+    { teste: /agenda.*distrito/, palavraChave: 'eventos' },
   ];
   for (const { teste, palavraChave } of intencoes) {
     if (teste.test(msg)) {
@@ -1201,20 +1205,16 @@ let bestVoice = null;
 
 function limparTextoParaVoz(texto) {
   return texto
-    // Remover emojis (ranges unicode completos)
-    .replace(/[\u{1F600}-\u{1F64F}]/gu, '')
-    .replace(/[\u{1F300}-\u{1F5FF}]/gu, '')
-    .replace(/[\u{1F680}-\u{1F6FF}]/gu, '')
-    .replace(/[\u{1F1E0}-\u{1F1FF}]/gu, '')
-    .replace(/[\u{2600}-\u{27BF}]/gu, '')
-    .replace(/[\u{FE00}-\u{FE0F}]/gu, '')
-    .replace(/[\u{1F900}-\u{1F9FF}]/gu, '')
-    .replace(/[\u{1FA00}-\u{1FA6F}]/gu, '')
-    .replace(/[\u{1FA70}-\u{1FAFF}]/gu, '')
-    .replace(/[\u{2702}-\u{27B0}]/gu, '')
-    .replace(/[\u{200D}]/gu, '')
-    // Remover URLs
-    .replace(/https?:\\/\\/[^\\s]+/g, '')
+    // Remover emojis (Unicode property - funciona em todos os browsers modernos)
+    .replace(/\\p{Extended_Pictographic}/gu, '')
+    // Remover variation selectors, ZWJ, keycap combining (1️⃣2️⃣3️⃣)
+    .replace(/[\\uFE0F\\u200D\\u20E3]/g, '')
+    // Remover URLs completas (http/https)
+    .replace(/https?:\\/\\/[^\\s<)]+/g, '')
+    // Remover URLs sem protocolo (dominio.com.br/path)
+    .replace(/[a-zA-Z0-9.-]+\\.(org|com|net|gov|br|io)(\\.[a-z]{2,3})?(\\\/[^\\s<)]*)?/gi, '')
+    // Remover barras duplas soltas (//)
+    .replace(/\\/\\//g, '')
     // Remover codigos hex de cor (#005DAA)
     .replace(/#[0-9A-Fa-f]{3,8}/g, '')
     // Remover horarios soltos no final (10:30)
@@ -1228,9 +1228,10 @@ function limparTextoParaVoz(texto) {
     .replace(/\\bGAs\\b/g, 'Governadores Assistentes')
     .replace(/\\bDQA\\b/g, 'Desenvolvimento do Quadro Associativo')
     .replace(/\\bEREY\\b/g, 'Every Rotarian Every Year')
-    .replace(/\\bUS\\$/g, 'dólares ')
+    .replace(/\\bUS\\$/g, 'dolares ')
     .replace(/\\bR\\$/g, 'reais ')
-    // Limpar espacos extras
+    // Limpar pontuacao excessiva e espacos
+    .replace(/\\.\\s*\\./g, '.')
     .replace(/\\s{2,}/g, ' ')
     .trim();
 }
@@ -1239,11 +1240,18 @@ function selecionarMelhorVoz() {
   const voices = speechSynthesis.getVoices();
   if (!voices.length) return null;
 
-  // Prioridade: vozes Google/Microsoft pt-BR sao mais naturais
+  // Prioridade: vozes mais naturais do pt-BR
+  // Microsoft Natural e Google sao as melhores disponíveis
   const prioridade = [
+    // Vozes Neural/Natural da Microsoft (mais naturais disponiveis)
+    v => v.lang === 'pt-BR' && v.name.includes('Natural') && v.name.includes('Francisca'),
+    v => v.lang === 'pt-BR' && v.name.includes('Natural') && v.name.includes('Thalita'),
+    v => v.lang === 'pt-BR' && v.name.includes('Natural'),
+    // Google pt-BR (boa qualidade)
     v => v.lang === 'pt-BR' && v.name.includes('Google'),
-    v => v.lang === 'pt-BR' && v.name.includes('Microsoft') && v.name.includes('Natural'),
+    // Qualquer Microsoft pt-BR
     v => v.lang === 'pt-BR' && v.name.includes('Microsoft'),
+    // Qualquer pt-BR
     v => v.lang === 'pt-BR',
     v => v.lang.startsWith('pt'),
   ];
@@ -1287,8 +1295,9 @@ function ouvirResposta(btn) {
 
   const utter = new SpeechSynthesisUtterance(texto);
   utter.lang = 'pt-BR';
-  utter.rate = 0.95;  // Ligeiramente mais lento = mais natural
-  utter.pitch = 1.05; // Ligeiramente mais agudo = mais amigavel
+  utter.rate = 0.92;  // Mais lento = tom de conversa acolhedora
+  utter.pitch = 1.08; // Ligeiramente mais agudo = mais caloroso e amigavel
+  utter.volume = 0.9; // Volume suave, nao agressivo
   if (bestVoice) utter.voice = bestVoice;
 
   btn.classList.add('playing');
