@@ -379,10 +379,21 @@ function buscarNoCache(mensagem) {
   const mencionaCidade = CIDADES_D4630.some(c => msg.includes(c.normalize('NFD').replace(/[\u0300-\u036f]/g, '')));
   const querEvento = palavrasDeEvento.test(msg);
 
+  // FIX-1: ADIRC tem resposta especifica no cache (local = Marialva-PR).
+  // Checar ANTES do guarda "onde", pois "onde vai ser a adirc?" ativaria o guarda
+  // e retornaria null, perdendo a resposta correta.
+  if (/\badirc\b/.test(msg) || /assembleia rotaract/.test(msg)) {
+    for (const faq of FAQ_CACHE) {
+      for (const p of faq.palavras) {
+        if (p === 'adirc') return faq;
+      }
+    }
+  }
+
   // Se pergunta "onde vai ser" um evento especifico → deixar a IA responder
   // (a IA tem o contexto completo e responde melhor que o cache generico)
   const perguntaOnde = /\b(onde|local|endereco|localizacao)\b/.test(msg);
-  const eventoEspecifico = /\b(transmissao|posse|conferencia|sols? nascente|pels|adirc|interact|instituto)\b/.test(msg);
+  const eventoEspecifico = /\b(transmissao|posse|conferencia|sols? nascente|pels|interact|instituto)\b/.test(msg);
   const perguntaData = /\b(dia \d|\/\d{2})\b/.test(msg);
   if (perguntaOnde && (eventoEspecifico || perguntaData)) return null; // IA responde
 
@@ -395,6 +406,22 @@ function buscarNoCache(mensagem) {
     { teste: /(rotaract|adirc).*assembleia/, palavraChave: 'adirc' },
     { teste: /assembleia.*interact/, palavraChave: 'assembleia interact' },
     { teste: /interact.*assembleia/, palavraChave: 'assembleia interact' },
+    // FIX-3: "quando eh a adirc?" — redireciona para entrada ADIRC
+    { teste: /quando.*(adirc|assembleia rotaract)/, palavraChave: 'adirc' },
+    { teste: /(adirc|assembleia rotaract).*quando/, palavraChave: 'adirc' },
+    // FIX-4: "quando eh a conferencia?" — redireciona para entrada especifica, nao lista
+    // 'conferencia' existe tanto na LISTA-EVENTOS quanto na entrada especifica.
+    // Usar 'conferencia distrital' que so existe na entrada especifica.
+    { teste: /quando.*conferencia/, palavraChave: 'conferencia distrital' },
+    { teste: /conferencia.*quando/, palavraChave: 'conferencia distrital' },
+    // 'pels' existe na LISTA-EVENTOS e na entrada PELS. Usar 'seminario lideres' (unico).
+    { teste: /quando.*pels/, palavraChave: 'seminario lideres' },
+    { teste: /quando.*transmissao/, palavraChave: 'transmissao' },
+    { teste: /quando.*posse/, palavraChave: 'posse distrital' },
+    // FIX-2: "calendario de eventos", "agenda de eventos", "quando vai ter eventos"
+    { teste: /calendario.*(evento|eventos)/, palavraChave: 'eventos' },
+    { teste: /agenda.*(evento|eventos)/, palavraChave: 'eventos' },
+    { teste: /quando.*(vai ter|tem|tera|havera).*(evento|eventos)/, palavraChave: 'eventos' },
     { teste: /quais.*(evento|eventos)/, palavraChave: 'eventos' },
     { teste: /lista.*(evento|eventos)/, palavraChave: 'eventos' },
     { teste: /tem.*(evento|eventos)/, palavraChave: 'eventos' },
