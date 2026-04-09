@@ -18,7 +18,7 @@ const fs = require('fs');
 const path = require('path');
 
 const app = express();
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
 
 const PORT = process.env.PORT || 3000;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY || '';
@@ -248,6 +248,114 @@ app.post('/api/chat', async (req, res) => {
   res.json({ resposta, metricas: { total: metricas.total, cache: metricas.cache } });
 });
 
+// ============================================================
+// VERIFICACAO DE ARTE / MARCA (upload de imagem)
+// ============================================================
+
+const BRAND_CHECK_PROMPT = `Voce eh um especialista em identidade visual do Rotary International.
+Analise esta imagem enviada por um clube do Distrito 4630 e verifique se segue as diretrizes da marca Rotary.
+
+DIRETRIZES OFICIAIS DO ROTARY:
+- Logo oficial: Roda dentada dourada com "Rotary" ao lado (Masterbrand Signature)
+- Cores oficiais: Azul Royal (Pantone 286, #005DAA), Dourado/Amarelo (Pantone 129, #F7A81B)
+- O logo NAO pode ser esticado, distorcido, rotacionado ou ter efeitos adicionados
+- Area de protecao: deve haver espaco limpo ao redor do logo (minimo = altura da letra "R")
+- Nome do clube pode aparecer junto, mas SEPARADO do logo (nunca dentro do logo)
+- NAO usar versoes antigas do logo (ex: logo com engrenagem sem "Rotary")
+- NAO adicionar sombras, brilhos, contornos ou 3D ao logo
+- NAO alterar proporcoes ou cores do logo
+- Fundo: preferencialmente branco ou azul escuro para contraste
+- Tipografia: fontes limpas e legiveis
+
+ANALISE E RESPONDA EM PORTUGUES com este formato:
+
+✅ **APROVADO** ou ⚠️ **AJUSTES NECESSARIOS** ou ❌ **REPROVADO**
+
+Depois liste:
+1. O que esta CORRETO na arte
+2. O que precisa ser CORRIGIDO (se houver)
+3. SUGESTOES de melhoria
+
+Seja especifico e pratico. Maximo 250 palavras.`;
+
+app.post('/api/verificar-arte', async (req, res) => {
+  const ip = req.ip || req.connection.remoteAddress;
+  if (!checarRate(ip)) {
+    return res.status(429).json({ error: 'Limite de verificacoes atingido. Tente em 1 hora.' });
+  }
+
+  const { imagem } = req.body; // base64 data URL
+  if (!imagem) {
+    return res.status(400).json({ error: 'Nenhuma imagem enviada' });
+  }
+
+  metricas.total++;
+
+  // Extrair base64 puro (remover "data:image/xxx;base64,")
+  const base64Match = imagem.match(/^data:image\/(.*?);base64,(.*)$/);
+  if (!base64Match) {
+    return res.status(400).json({ error: 'Formato de imagem invalido' });
+  }
+  const mimeType = 'image/' + base64Match[1];
+  const base64Data = base64Match[2];
+
+  try {
+    let resultado = null;
+
+    // OpenRouter com modelo de visao
+    if (openrouter) {
+      const modelosVisao = [
+        'google/gemma-4-31b-it:free',
+        'meta-llama/llama-4-maverick:free',
+      ];
+      for (const modelo of modelosVisao) {
+        try {
+          const r = await openrouter.chat.completions.create({
+            model: modelo,
+            max_tokens: 800,
+            messages: [{
+              role: 'user',
+              content: [
+                { type: 'text', text: BRAND_CHECK_PROMPT },
+                { type: 'image_url', image_url: { url: imagem } }
+              ]
+            }]
+          });
+          const txt = r.choices?.[0]?.message?.content;
+          if (txt) {
+            resultado = txt;
+            console.log('[ARTE] Verificado com', modelo);
+            break;
+          }
+        } catch (e) { console.log('[ARTE]', modelo, 'falhou:', e.message?.substring(0, 80)); }
+      }
+    }
+
+    // Gemini fallback (suporta visao nativo)
+    if (!resultado && GEMINI_API_KEY) {
+      try {
+        const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
+        const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+        const r = await model.generateContent([
+          BRAND_CHECK_PROMPT,
+          { inlineData: { mimeType, data: base64Data } }
+        ]);
+        resultado = r.response.text();
+        console.log('[ARTE] Verificado com Gemini');
+      } catch (e) { console.log('[ARTE] Gemini falhou:', e.message?.substring(0, 80)); }
+    }
+
+    if (resultado) {
+      res.json({ resultado });
+    } else {
+      res.json({ resultado: '⚠️ Nao consegui analisar a imagem neste momento. Envie a arte para a Comissao de Imagem Publica do distrito para verificacao manual.\n\nContato: rotary4630.org.br > Contato' });
+    }
+  } catch (e) {
+    console.error('[ARTE] Erro:', e.message);
+    res.status(500).json({ error: 'Erro ao processar imagem' });
+  }
+});
+
 app.get('/api/status', (req, res) => {
   res.json({ status: 'online', ...metricas, provedor: geminiModel ? 'Gemini (gratis)' : claude ? 'Claude' : 'nenhum' });
 });
@@ -350,6 +458,28 @@ app.get('/', (req, res) => {
   .footer { text-align: center; padding: 6px; font-size: 10px; color: #bbb; background: #fff; }
   .footer a { color: var(--azul); text-decoration: none; }
 
+  /* Upload modal */
+  .upload-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 100; justify-content: center; align-items: center; padding: 20px; }
+  .upload-overlay.active { display: flex; }
+  .upload-box { background: #fff; border-radius: 20px; padding: 28px 24px; max-width: 400px; width: 100%; text-align: center; box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
+  .upload-box h3 { color: var(--azul); font-size: 18px; margin-bottom: 6px; }
+  .upload-box p { color: var(--texto-soft); font-size: 13px; margin-bottom: 20px; line-height: 1.4; }
+  .upload-drop { border: 2px dashed #ccc; border-radius: 14px; padding: 30px 20px; cursor: pointer; transition: all 0.2s; margin-bottom: 16px; }
+  .upload-drop:hover, .upload-drop.dragover { border-color: var(--azul); background: #f0f6ff; }
+  .upload-drop .drop-icon { font-size: 36px; margin-bottom: 8px; }
+  .upload-drop .drop-text { font-size: 13px; color: var(--texto-soft); }
+  .upload-drop .drop-text b { color: var(--azul); }
+  .upload-preview { max-width: 100%; max-height: 200px; border-radius: 10px; margin: 10px 0; display: none; }
+  .upload-actions { display: flex; gap: 10px; justify-content: center; }
+  .upload-actions button { padding: 10px 24px; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+  .btn-analisar { background: var(--azul); color: #fff; display: none; }
+  .btn-analisar:hover { background: var(--azul-escuro); }
+  .btn-analisar:disabled { background: #ccc; cursor: not-allowed; }
+  .btn-cancelar { background: #f0f0f0; color: #555; }
+  .btn-cancelar:hover { background: #e0e0e0; }
+  .upload-result { text-align: left; margin-top: 16px; padding: 14px; background: #f8f9fc; border-radius: 12px; font-size: 13px; line-height: 1.5; white-space: pre-wrap; display: none; }
+  .upload-result b, .upload-result strong { color: var(--azul); }
+
   /* Hide welcome when chatting */
   .chatting .welcome, .chatting .categories, .chatting .sub-section { display: none; }
 
@@ -385,14 +515,14 @@ app.get('/', (req, res) => {
   <div class="welcome" id="welcome">
     <div class="rotary-icon">⚙️</div>
     <h2>Como posso ajudar?</h2>
-    <p>Escolha um tema abaixo ou digite sua pergunta sobre o Distrito 4630</p>
+    <p>Escolha um tema abaixo ou digite sua d&uacute;vida sobre o Distrito 4630</p>
   </div>
 
   <div class="categories" id="categories">
-    <div class="cat-card" onclick="enviarRapido('Proximos eventos do distrito')">
+    <div class="cat-card" onclick="enviarRapido('Pr&oacute;ximos eventos do distrito')">
       <span class="icon">📅</span>
-      <span class="title">Calendario</span>
-      <span class="desc">Eventos, PELS, ADIRC, Conferencia</span>
+      <span class="title">Calend&aacute;rio</span>
+      <span class="desc">Eventos, PELS, ADIRC, Confer&ecirc;ncia</span>
     </div>
     <div class="cat-card" onclick="enviarRapido('Como usar o My Rotary?')">
       <span class="icon">🌐</span>
@@ -402,19 +532,19 @@ app.get('/', (req, res) => {
     <div class="cat-card" onclick="enviarRapido('Quais as metas 2026-2027?')">
       <span class="icon">🏆</span>
       <span class="title">Metas 26-27</span>
-      <span class="desc">Rotary Club Central, premiacao</span>
+      <span class="desc">Rotary Club Central, premia&ccedil;&atilde;o</span>
     </div>
-    <div class="cat-card" onclick="enviarRapido('Quero verificar a arte do meu clube')">
+    <div class="cat-card" onclick="abrirUploadArte()">
       <span class="icon">🎨</span>
-      <span class="title">Marca e Artes</span>
-      <span class="desc">Logo, cores, verificar materiais</span>
+      <span class="title">Verificar Arte</span>
+      <span class="desc">Envie a imagem e a IA analisa</span>
     </div>
-    <div class="cat-card" onclick="enviarRapido('Buscar informacoes de clubes')">
+    <div class="cat-card" onclick="enviarRapido('Buscar informa&ccedil;&otilde;es de clubes')">
       <span class="icon">🔍</span>
       <span class="title">Buscar Clubes</span>
-      <span class="desc">Reunioes, contatos, presidentes</span>
+      <span class="desc">Reuni&otilde;es, contatos, presidentes</span>
     </div>
-    <div class="cat-card" onclick="enviarRapido('Contatos uteis do distrito')">
+    <div class="cat-card" onclick="enviarRapido('Contatos &uacute;teis do distrito')">
       <span class="icon">📞</span>
       <span class="title">Contatos</span>
       <span class="desc">Governador, Secretaria, GAs</span>
@@ -424,22 +554,22 @@ app.get('/', (req, res) => {
       <span class="title">Ser Rotariano</span>
       <span class="desc">Rotary, Rotaract, Interact</span>
     </div>
-    <div class="cat-card" onclick="enviarRapido('O que eh a Fundacao Rotaria?')">
+    <div class="cat-card" onclick="enviarRapido('O que &eacute; a Funda&ccedil;&atilde;o Rot&aacute;ria?')">
       <span class="icon">💰</span>
-      <span class="title">Fundacao</span>
-      <span class="desc">Contribuicoes, subsidios, EREY</span>
+      <span class="title">Funda&ccedil;&atilde;o</span>
+      <span class="desc">Contribui&ccedil;&otilde;es, subs&iacute;dios, EREY</span>
     </div>
   </div>
 
   <div class="sub-section" id="subSection">
     <div class="label">Perguntas populares</div>
     <div class="sub-pills">
-      <div class="sub-pill" onclick="enviarRapido('O que eh a Prova Quadrupla?')">Prova Quadrupla</div>
-      <div class="sub-pill" onclick="enviarRapido('Areas de enfoque do Rotary')">7 Areas de Enfoque</div>
-      <div class="sub-pill" onclick="enviarRapido('O que eh o UnyClub?')">UnyClub</div>
-      <div class="sub-pill" onclick="enviarRapido('Quando eh a ADIRC?')">ADIRC</div>
-      <div class="sub-pill" onclick="enviarRapido('Lideranca do distrito')">Lideranca</div>
-      <div class="sub-pill" onclick="enviarRapido('O que eh Empresa Cidada?')">Empresa Cidada</div>
+      <div class="sub-pill" onclick="enviarRapido('O que &eacute; a Prova Qu&aacute;drupla?')">Prova Qu&aacute;drupla</div>
+      <div class="sub-pill" onclick="enviarRapido('&Aacute;reas de enfoque do Rotary')">7 &Aacute;reas de Enfoque</div>
+      <div class="sub-pill" onclick="enviarRapido('O que &eacute; o UnyClub?')">UnyClub</div>
+      <div class="sub-pill" onclick="enviarRapido('Quando &eacute; a ADIRC?')">ADIRC</div>
+      <div class="sub-pill" onclick="enviarRapido('Lideran&ccedil;a do distrito')">Lideran&ccedil;a</div>
+      <div class="sub-pill" onclick="enviarRapido('O que &eacute; Empresa Cidad&atilde;?')">Empresa Cidad&atilde;</div>
     </div>
   </div>
 
@@ -447,10 +577,29 @@ app.get('/', (req, res) => {
 </div>
 
 <div class="input-area">
-  <input type="text" id="input" placeholder="Pergunte sobre o Distrito 4630..." autocomplete="off">
+  <input type="text" id="input" placeholder="Pergunte sobre o Distrito 4630..." enterkeyhint="send" autocomplete="off">
   <button id="sendBtn" onclick="enviar()">
     <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
   </button>
+</div>
+
+<input type="file" id="fileInput" accept="image/*" style="display:none">
+
+<div class="upload-overlay" id="uploadOverlay">
+  <div class="upload-box">
+    <h3>🎨 Verificar Arte</h3>
+    <p>Envie a arte do seu clube e a IA verifica se segue as diretrizes da marca Rotary.</p>
+    <div class="upload-drop" id="uploadDrop" onclick="document.getElementById('fileInput').click()">
+      <div class="drop-icon">📤</div>
+      <div class="drop-text">Clique aqui ou <b>arraste a imagem</b></div>
+    </div>
+    <img class="upload-preview" id="uploadPreview">
+    <div class="upload-actions">
+      <button class="btn-cancelar" onclick="fecharUpload()">Cancelar</button>
+      <button class="btn-analisar" id="btnAnalisar" onclick="analisarArte()">Analisar Arte</button>
+    </div>
+    <div class="upload-result" id="uploadResult"></div>
+  </div>
 </div>
 
 <div class="footer">
@@ -560,6 +709,84 @@ async function checkStatus() {
 }
 checkStatus();
 setInterval(checkStatus, 30000);
+
+// ===== UPLOAD DE ARTE =====
+let arteBase64 = null;
+const fileInput = document.getElementById('fileInput');
+const uploadDrop = document.getElementById('uploadDrop');
+const uploadPreview = document.getElementById('uploadPreview');
+const btnAnalisar = document.getElementById('btnAnalisar');
+const uploadResult = document.getElementById('uploadResult');
+
+function abrirUploadArte() {
+  document.getElementById('uploadOverlay').classList.add('active');
+  arteBase64 = null;
+  uploadPreview.style.display = 'none';
+  btnAnalisar.style.display = 'none';
+  uploadResult.style.display = 'none';
+  uploadDrop.style.display = 'block';
+}
+
+function fecharUpload() {
+  document.getElementById('uploadOverlay').classList.remove('active');
+  arteBase64 = null;
+}
+
+function processarImagem(file) {
+  if (!file || !file.type.startsWith('image/')) return;
+  if (file.size > 8 * 1024 * 1024) {
+    alert('Imagem muito grande. Maximo 8MB.');
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    arteBase64 = e.target.result;
+    uploadPreview.src = arteBase64;
+    uploadPreview.style.display = 'block';
+    uploadDrop.style.display = 'none';
+    btnAnalisar.style.display = 'inline-block';
+    uploadResult.style.display = 'none';
+  };
+  reader.readAsDataURL(file);
+}
+
+fileInput.addEventListener('change', (e) => {
+  if (e.target.files[0]) processarImagem(e.target.files[0]);
+});
+
+// Drag and drop
+uploadDrop.addEventListener('dragover', (e) => { e.preventDefault(); uploadDrop.classList.add('dragover'); });
+uploadDrop.addEventListener('dragleave', () => { uploadDrop.classList.remove('dragover'); });
+uploadDrop.addEventListener('drop', (e) => {
+  e.preventDefault();
+  uploadDrop.classList.remove('dragover');
+  if (e.dataTransfer.files[0]) processarImagem(e.dataTransfer.files[0]);
+});
+
+async function analisarArte() {
+  if (!arteBase64) return;
+  btnAnalisar.disabled = true;
+  btnAnalisar.textContent = 'Analisando...';
+  uploadResult.style.display = 'block';
+  uploadResult.innerHTML = '<span class="typing"><span></span><span></span><span></span></span> Analisando a arte com IA...';
+
+  try {
+    const res = await fetch('/api/verificar-arte', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ imagem: arteBase64 })
+    });
+    const data = await res.json();
+    let html = (data.resultado || data.error || 'Erro desconhecido');
+    html = html.replace(/\\*([^*]+)\\*/g, '<b>\$1</b>');
+    html = html.replace(/\\n/g, '<br>');
+    uploadResult.innerHTML = html;
+  } catch (e) {
+    uploadResult.innerHTML = 'Erro de conexao. Tente novamente.';
+  }
+  btnAnalisar.disabled = false;
+  btnAnalisar.textContent = 'Analisar Novamente';
+}
 </script>
 </body>
 </html>`);
