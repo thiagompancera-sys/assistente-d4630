@@ -261,128 +261,240 @@ app.get('/', (req, res) => {
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Assistente Digital D4630 — Distrito 4630 do Rotary</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Assistente Digital D4630 — Rotary</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
 <style>
+  :root {
+    --azul: #005DAA;
+    --azul-escuro: #003d73;
+    --dourado: #F7A81B;
+    --dourado-claro: #ffc94d;
+    --bg: #f5f6fa;
+    --card: #ffffff;
+    --texto: #1a1a2e;
+    --texto-soft: #555770;
+    --bot-bg: #ffffff;
+    --user-bg: #005DAA;
+    --sombra: 0 2px 12px rgba(0,0,0,0.08);
+  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0b141a; color: #e9edef; height: 100vh; display: flex; flex-direction: column; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--texto); height: 100dvh; display: flex; flex-direction: column; overflow: hidden; }
 
   /* Header */
-  .header { background: #1f2c34; padding: 12px 20px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #2a3942; }
-  .header .avatar { width: 42px; height: 42px; background: #005daa; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
-  .header .info h2 { font-size: 16px; font-weight: 500; }
-  .header .info p { font-size: 12px; color: #8696a0; }
-  .header .status { width: 8px; height: 8px; background: #00a884; border-radius: 50%; margin-left: auto; }
+  .header { background: linear-gradient(135deg, var(--azul) 0%, var(--azul-escuro) 100%); padding: 14px 20px; display: flex; align-items: center; gap: 12px; box-shadow: 0 2px 8px rgba(0,93,170,0.3); position: relative; z-index: 10; }
+  .header .logo-wrap { width: 44px; height: 44px; background: rgba(255,255,255,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+  .header .info { flex: 1; }
+  .header .info h1 { font-size: 17px; font-weight: 600; color: #fff; letter-spacing: -0.3px; }
+  .header .info p { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 1px; }
+  .header .status-badge { display: flex; align-items: center; gap: 5px; background: rgba(255,255,255,0.15); padding: 4px 10px; border-radius: 20px; font-size: 11px; color: #fff; }
+  .header .status-dot { width: 7px; height: 7px; background: #4ade80; border-radius: 50%; }
 
   /* Chat area */
-  .chat { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 8px; background: #0b141a url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.03"><text y="50" font-size="50">⚙️</text></svg>') repeat; }
+  .chat-area { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 10px; scroll-behavior: smooth; }
 
-  .msg { max-width: 75%; padding: 8px 12px; border-radius: 8px; font-size: 14.5px; line-height: 1.45; word-wrap: break-word; white-space: pre-wrap; position: relative; }
-  .msg.bot { background: #1f2c34; align-self: flex-start; border-top-left-radius: 0; }
-  .msg.user { background: #005c4b; align-self: flex-end; border-top-right-radius: 0; }
-  .msg .time { font-size: 11px; color: #8696a0; text-align: right; margin-top: 4px; }
-  .msg b, .msg strong { color: #e9edef; }
+  /* Welcome screen */
+  .welcome { text-align: center; padding: 24px 16px 8px; }
+  .welcome .rotary-icon { width: 72px; height: 72px; background: linear-gradient(135deg, var(--azul), var(--azul-escuro)); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 36px; margin: 0 auto 16px; box-shadow: 0 4px 16px rgba(0,93,170,0.3); }
+  .welcome h2 { font-size: 20px; color: var(--texto); margin-bottom: 6px; }
+  .welcome p { font-size: 14px; color: var(--texto-soft); line-height: 1.5; max-width: 320px; margin: 0 auto; }
 
-  .typing { align-self: flex-start; background: #1f2c34; padding: 12px 16px; border-radius: 8px; border-top-left-radius: 0; }
-  .typing span { display: inline-block; width: 8px; height: 8px; background: #8696a0; border-radius: 50%; margin: 0 2px; animation: bounce 1.4s infinite; }
-  .typing span:nth-child(2) { animation-delay: 0.2s; }
-  .typing span:nth-child(3) { animation-delay: 0.4s; }
-  @keyframes bounce { 0%,60%,100% { transform: translateY(0); } 30% { transform: translateY(-6px); } }
+  /* Category grid */
+  .categories { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 8px 16px 12px; }
+  .cat-card { background: var(--card); border-radius: 14px; padding: 14px; cursor: pointer; transition: all 0.2s ease; box-shadow: var(--sombra); border: 1.5px solid transparent; display: flex; flex-direction: column; gap: 6px; }
+  .cat-card:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.12); border-color: var(--azul); }
+  .cat-card:active { transform: scale(0.97); }
+  .cat-card .icon { font-size: 24px; }
+  .cat-card .title { font-size: 13px; font-weight: 600; color: var(--texto); line-height: 1.3; }
+  .cat-card .desc { font-size: 11px; color: var(--texto-soft); line-height: 1.3; }
 
-  /* Input area */
-  .input-area { background: #1f2c34; padding: 10px 16px; display: flex; gap: 10px; align-items: center; border-top: 1px solid #2a3942; }
-  .input-area input { flex: 1; background: #2a3942; border: none; border-radius: 8px; padding: 10px 14px; color: #e9edef; font-size: 15px; outline: none; }
-  .input-area input::placeholder { color: #8696a0; }
-  .input-area button { background: #00a884; border: none; border-radius: 50%; width: 42px; height: 42px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; flex-shrink: 0; }
-  .input-area button:hover { background: #06cf9c; }
-  .input-area button:disabled { background: #2a3942; cursor: not-allowed; }
-  .input-area button svg { fill: #1f2c34; width: 20px; height: 20px; }
+  /* Subcategory pills */
+  .sub-section { padding: 4px 16px 8px; }
+  .sub-section .label { font-size: 11px; font-weight: 600; color: var(--texto-soft); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .sub-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+  .sub-pill { background: var(--card); border: 1px solid #e2e4ea; border-radius: 20px; padding: 6px 14px; font-size: 12px; color: var(--azul); cursor: pointer; transition: all 0.2s; font-weight: 500; }
+  .sub-pill:hover { background: var(--azul); color: #fff; border-color: var(--azul); }
 
-  /* Quick buttons */
-  .quick { padding: 8px 16px; display: flex; gap: 8px; overflow-x: auto; background: #111b21; }
-  .quick button { background: #1f2c34; color: #00a884; border: 1px solid #2a3942; border-radius: 16px; padding: 6px 14px; font-size: 13px; cursor: pointer; white-space: nowrap; transition: all 0.2s; }
-  .quick button:hover { background: #2a3942; }
+  /* Messages */
+  .msg { max-width: 82%; padding: 10px 14px; border-radius: 16px; font-size: 14px; line-height: 1.5; word-wrap: break-word; white-space: pre-wrap; animation: fadeIn 0.25s ease; }
+  .msg.bot { background: var(--bot-bg); align-self: flex-start; border-bottom-left-radius: 4px; box-shadow: var(--sombra); color: var(--texto); }
+  .msg.user { background: var(--user-bg); align-self: flex-end; border-bottom-right-radius: 4px; color: #fff; box-shadow: 0 2px 8px rgba(0,93,170,0.25); }
+  .msg b, .msg strong { font-weight: 600; }
+  .msg.bot b, .msg.bot strong { color: var(--azul); }
+  .msg .time { font-size: 10px; color: #999; text-align: right; margin-top: 4px; }
+  .msg.user .time { color: rgba(255,255,255,0.6); }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* Banner */
-  .banner { text-align: center; padding: 20px; }
-  .banner .logo { font-size: 48px; margin-bottom: 8px; }
-  .banner h3 { color: #f7a81b; font-size: 14px; }
-  .banner p { color: #8696a0; font-size: 12px; margin-top: 4px; }
+  /* Typing */
+  .typing { align-self: flex-start; background: var(--card); padding: 12px 18px; border-radius: 16px; border-bottom-left-radius: 4px; box-shadow: var(--sombra); }
+  .typing span { display: inline-block; width: 8px; height: 8px; background: #bbb; border-radius: 50%; margin: 0 2px; animation: bounce 1.3s infinite; }
+  .typing span:nth-child(2) { animation-delay: 0.15s; }
+  .typing span:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes bounce { 0%,60%,100% { transform: translateY(0); } 30% { transform: translateY(-8px); } }
 
-  @media (max-width: 600px) {
-    .msg { max-width: 88%; }
+  /* Back button */
+  .back-btn { align-self: flex-start; background: none; border: 1.5px solid #e2e4ea; border-radius: 20px; padding: 6px 16px; font-size: 12px; color: var(--azul); cursor: pointer; margin-bottom: 4px; font-weight: 500; transition: all 0.2s; }
+  .back-btn:hover { background: var(--azul); color: #fff; border-color: var(--azul); }
+
+  /* Input */
+  .input-area { background: #fff; padding: 12px 16px; display: flex; gap: 10px; align-items: center; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); border-top: 1px solid #eee; }
+  .input-area input { flex: 1; background: var(--bg); border: 1.5px solid #e2e4ea; border-radius: 24px; padding: 11px 18px; color: var(--texto); font-size: 14px; outline: none; transition: border-color 0.2s; }
+  .input-area input:focus { border-color: var(--azul); }
+  .input-area input::placeholder { color: #aaa; }
+  .input-area button { background: var(--azul); border: none; border-radius: 50%; width: 44px; height: 44px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; flex-shrink: 0; }
+  .input-area button:hover { background: var(--azul-escuro); transform: scale(1.05); }
+  .input-area button:disabled { background: #ccc; cursor: not-allowed; transform: none; }
+  .input-area button svg { fill: #fff; width: 18px; height: 18px; }
+
+  /* Footer */
+  .footer { text-align: center; padding: 6px; font-size: 10px; color: #bbb; background: #fff; }
+  .footer a { color: var(--azul); text-decoration: none; }
+
+  /* Hide welcome when chatting */
+  .chatting .welcome, .chatting .categories, .chatting .sub-section { display: none; }
+
+  @media (max-width: 400px) {
+    .categories { grid-template-columns: 1fr 1fr; gap: 8px; padding: 8px 12px; }
+    .cat-card { padding: 12px 10px; }
+    .msg { max-width: 90%; }
+  }
+  @media (min-width: 600px) {
+    .categories { max-width: 500px; margin: 0 auto; }
+    .welcome { max-width: 500px; margin: 0 auto; }
+    .sub-section { max-width: 500px; margin: 0 auto; }
+    .chat-area { max-width: 600px; width: 100%; margin: 0 auto; }
   }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="avatar">⚙️</div>
+  <div class="logo-wrap">⚙️</div>
   <div class="info">
-    <h2>Assistente D4630</h2>
+    <h1>Assistente D4630</h1>
     <p>Distrito 4630 — Rotary International</p>
   </div>
-  <div class="status" id="statusDot"></div>
-</div>
-
-<div class="chat" id="chat">
-  <div class="banner">
-    <div class="logo">⚙️</div>
-    <h3>Assistente Digital do Distrito 4630</h3>
-    <p>Pergunte sobre eventos, protocolos, My Rotary, metas e mais</p>
+  <div class="status-badge">
+    <div class="status-dot" id="statusDot"></div>
+    Online
   </div>
 </div>
 
-<div class="quick">
-  <button onclick="enviarRapido('Olá')">👋 Olá</button>
-  <button onclick="enviarRapido('Próximos eventos')">📅 Eventos</button>
-  <button onclick="enviarRapido('Como usar o My Rotary?')">🌐 My Rotary</button>
-  <button onclick="enviarRapido('Quais as metas 2026-2027?')">🏆 Metas</button>
-  <button onclick="enviarRapido('Como me tornar rotariano?')">🤝 Ser Rotariano</button>
-  <button onclick="enviarRapido('Áreas de enfoque')">🎯 Enfoque</button>
+<div class="chat-area" id="chatArea">
+
+  <div class="welcome" id="welcome">
+    <div class="rotary-icon">⚙️</div>
+    <h2>Como posso ajudar?</h2>
+    <p>Escolha um tema abaixo ou digite sua pergunta sobre o Distrito 4630</p>
+  </div>
+
+  <div class="categories" id="categories">
+    <div class="cat-card" onclick="enviarRapido('Proximos eventos do distrito')">
+      <span class="icon">📅</span>
+      <span class="title">Calendario</span>
+      <span class="desc">Eventos, PELS, ADIRC, Conferencia</span>
+    </div>
+    <div class="cat-card" onclick="enviarRapido('Como usar o My Rotary?')">
+      <span class="icon">🌐</span>
+      <span class="title">My Rotary</span>
+      <span class="desc">Portal, conta, cursos online</span>
+    </div>
+    <div class="cat-card" onclick="enviarRapido('Quais as metas 2026-2027?')">
+      <span class="icon">🏆</span>
+      <span class="title">Metas 26-27</span>
+      <span class="desc">Rotary Club Central, premiacao</span>
+    </div>
+    <div class="cat-card" onclick="enviarRapido('Quero verificar a arte do meu clube')">
+      <span class="icon">🎨</span>
+      <span class="title">Marca e Artes</span>
+      <span class="desc">Logo, cores, verificar materiais</span>
+    </div>
+    <div class="cat-card" onclick="enviarRapido('Buscar informacoes de clubes')">
+      <span class="icon">🔍</span>
+      <span class="title">Buscar Clubes</span>
+      <span class="desc">Reunioes, contatos, presidentes</span>
+    </div>
+    <div class="cat-card" onclick="enviarRapido('Contatos uteis do distrito')">
+      <span class="icon">📞</span>
+      <span class="title">Contatos</span>
+      <span class="desc">Governador, Secretaria, GAs</span>
+    </div>
+    <div class="cat-card" onclick="enviarRapido('Como me tornar rotariano?')">
+      <span class="icon">🤝</span>
+      <span class="title">Ser Rotariano</span>
+      <span class="desc">Rotary, Rotaract, Interact</span>
+    </div>
+    <div class="cat-card" onclick="enviarRapido('O que eh a Fundacao Rotaria?')">
+      <span class="icon">💰</span>
+      <span class="title">Fundacao</span>
+      <span class="desc">Contribuicoes, subsidios, EREY</span>
+    </div>
+  </div>
+
+  <div class="sub-section" id="subSection">
+    <div class="label">Perguntas populares</div>
+    <div class="sub-pills">
+      <div class="sub-pill" onclick="enviarRapido('O que eh a Prova Quadrupla?')">Prova Quadrupla</div>
+      <div class="sub-pill" onclick="enviarRapido('Areas de enfoque do Rotary')">7 Areas de Enfoque</div>
+      <div class="sub-pill" onclick="enviarRapido('O que eh o UnyClub?')">UnyClub</div>
+      <div class="sub-pill" onclick="enviarRapido('Quando eh a ADIRC?')">ADIRC</div>
+      <div class="sub-pill" onclick="enviarRapido('Lideranca do distrito')">Lideranca</div>
+      <div class="sub-pill" onclick="enviarRapido('O que eh Empresa Cidada?')">Empresa Cidada</div>
+    </div>
+  </div>
+
+  <div id="messages"></div>
 </div>
 
 <div class="input-area">
-  <input type="text" id="input" placeholder="Digite sua dúvida..." autocomplete="off">
+  <input type="text" id="input" placeholder="Pergunte sobre o Distrito 4630..." autocomplete="off">
   <button id="sendBtn" onclick="enviar()">
-    <svg viewBox="0 0 24 24"><path d="M1.101 21.757L23.8 12.028 1.101 2.3l.011 7.912 13.623 1.816-13.623 1.817-.011 7.912z"></path></svg>
+    <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
   </button>
 </div>
 
+<div class="footer">
+  Assistente Digital do <a href="https://rotary4630.org.br" target="_blank">Distrito 4630</a> — Rotary International
+</div>
+
 <script>
-const chat = document.getElementById('chat');
+const chatArea = document.getElementById('chatArea');
+const messages = document.getElementById('messages');
 const input = document.getElementById('input');
 const sendBtn = document.getElementById('sendBtn');
-let nome = '';
+let chatStarted = false;
 
-// Prompt nome
-setTimeout(() => {
-  addMsg('bot', 'Olá! Antes de começarmos, qual é o seu nome? (ou digite qualquer coisa para continuar como "Companheiro(a)")');
-  const handler = () => {
-    nome = input.value.trim() || 'Companheiro(a)';
-    input.removeEventListener('keydown', handler);
-    enviarRapido('Olá');
-  };
-  const originalEnviar = window.enviar;
-  window.enviar = () => {
-    nome = input.value.trim() || 'Companheiro(a)';
-    input.value = '';
-    window.enviar = originalEnviar;
-    enviarRapido('Olá');
-  };
-}, 500);
+function startChat() {
+  if (chatStarted) return;
+  chatStarted = true;
+  chatArea.classList.add('chatting');
+}
 
 function addMsg(tipo, texto) {
+  startChat();
   const div = document.createElement('div');
   div.className = 'msg ' + tipo;
-  // Formatar *negrito*
-  let html = texto.replace(/\\*([^*]+)\\*/g, '<b>$1</b>');
+  let html = texto.replace(/\\*([^*]+)\\*/g, '<b>\$1</b>');
   html = html.replace(/\\n/g, '<br>');
   const hora = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
   div.innerHTML = html + '<div class="time">' + hora + '</div>';
-  chat.appendChild(div);
-  chat.scrollTop = chat.scrollHeight;
+  messages.appendChild(div);
+  chatArea.scrollTop = chatArea.scrollHeight;
   return div;
+}
+
+function addBackBtn() {
+  const btn = document.createElement('button');
+  btn.className = 'back-btn';
+  btn.textContent = '← Voltar ao menu';
+  btn.onclick = () => {
+    chatStarted = false;
+    chatArea.classList.remove('chatting');
+    messages.innerHTML = '';
+    chatArea.scrollTop = 0;
+  };
+  messages.appendChild(btn);
+  chatArea.scrollTop = chatArea.scrollHeight;
 }
 
 function showTyping() {
@@ -390,8 +502,8 @@ function showTyping() {
   div.className = 'typing';
   div.id = 'typing';
   div.innerHTML = '<span></span><span></span><span></span>';
-  chat.appendChild(div);
-  chat.scrollTop = chat.scrollHeight;
+  messages.appendChild(div);
+  chatArea.scrollTop = chatArea.scrollHeight;
 }
 
 function hideTyping() {
@@ -411,7 +523,7 @@ async function enviar() {
     const res = await fetch('/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ mensagem: texto, nome })
+      body: JSON.stringify({ mensagem: texto, nome: 'Companheiro(a)' })
     });
     const data = await res.json();
     hideTyping();
@@ -422,8 +534,9 @@ async function enviar() {
     }
   } catch (e) {
     hideTyping();
-    addMsg('bot', 'Erro de conexão. Verifique se o servidor está rodando.');
+    addMsg('bot', 'Erro de conexao. Tente novamente em alguns segundos.');
   }
+  addBackBtn();
   sendBtn.disabled = false;
   input.focus();
 }
@@ -438,12 +551,15 @@ input.addEventListener('keydown', (e) => {
 });
 
 // Status check
-setInterval(async () => {
+async function checkStatus() {
   try {
     const r = await fetch('/api/status');
-    document.getElementById('statusDot').style.background = r.ok ? '#00a884' : '#ea4335';
-  } catch { document.getElementById('statusDot').style.background = '#ea4335'; }
-}, 30000);
+    const dot = document.getElementById('statusDot');
+    dot.style.background = r.ok ? '#4ade80' : '#ef4444';
+  } catch { document.getElementById('statusDot').style.background = '#ef4444'; }
+}
+checkStatus();
+setInterval(checkStatus, 30000);
 </script>
 </body>
 </html>`);
