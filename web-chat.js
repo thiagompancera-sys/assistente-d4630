@@ -86,7 +86,7 @@ const FAQ_CACHE = [
     resposta: `💳 Questões financeiras (anuidade, pagamentos, valores) precisam ser tratadas diretamente com a *Tesouraria do Distrito*.\n\n🔗 Fale conosco: https://rotary4630.org.br/fale-conosco\n(Selecione "Tesouraria" no formulário)`
   },
   {
-    palavras: ['como ser', 'tornar rotariano', 'entrar', 'participar', 'interact', 'rotaract'],
+    palavras: ['como ser', 'tornar rotariano', 'entrar', 'participar', 'quero ser', 'quero entrar', 'quero participar', 'como faco para entrar', 'me associar', 'virar socio'],
     resposta: `🤝 *Como se tornar Rotariano:*\n\n1. Encontre um clube pelo link abaixo\n2. Visite uma reunião (qualquer pessoa pode!)\n3. Conheça os membros e manifeste interesse\n4. O clube avalia e aprova\n5. Cerimônia de posse\n\n*Para jovens:*\n• *Interact* — 12 a 18 anos\n• *Rotaract* — a partir de 18 anos (SEM limite de idade!)\n\n🔗 Encontrar clubes: https://rotary4630.org.br/clubes\n🔗 Pesquisa global: https://my.rotary.org/pt/search/club-finder`
   },
   {
@@ -102,7 +102,7 @@ const FAQ_CACHE = [
     resposta: `🎨 *Verificação de Artes e Marca*\n\nAntes de publicar ou imprimir, verifique:\n✅ Logo oficial (roda dentada + "Rotary")\n✅ Cores: Azul *#005DAA* e Dourado *#F7A81B*\n✅ Área de proteção ao redor do logo\n❌ NÃO esticar, distorcer ou alterar cores\n\n🔗 Templates oficiais: https://brandcenter.rotary.org\n🔗 Guia de marca: https://my.rotary.org/pt/manage/club-district-administration/visual-identity\n📩 Dúvida? Envie a arte para a Comissão de Imagem Pública do distrito.`
   },
   {
-    palavras: ['contato governador', 'secretaria governadoria', 'governador assistente', 'ga distrito', 'contato distrito', 'contato'],
+    palavras: ['contato governador', 'secretaria governadoria', 'governador assistente', 'governadores assistentes', 'ga distrito', 'meu ga', 'contato distrito', 'contato'],
     resposta: `📞 *Contatos Úteis do Distrito*\n\n👔 *Governador 2025-26:* Celso Yoshiaki Miyamoto\n👔 *Governador Eleito 26-27:* Ricardo de Oliveira\n📋 *Secretaria:* pelo site abaixo\n👥 *GAs (Gov. Assistentes):* consulte no site\n\n🔗 Fale conosco: https://rotary4630.org.br/fale-conosco\n🔗 Equipe distrital: https://rotary4630.org.br/equipe-distrital`
   },
   {
@@ -114,7 +114,7 @@ const FAQ_CACHE = [
     resposta: `🏆 *Metas 2026-2027 — Rotary Club Central*\n\nAcesse pelo My Rotary > Rotary Club Central\n\n*4 áreas de metas:*\n👥 *Quadro Social* — novos sócios, retenção\n🤲 *Serviço* — projetos por área de enfoque\n💰 *Fundação Rotária* — contribuições\n📢 *Imagem Pública* — eventos, campanhas\n\n✨ Cada clube busca superar *seu próprio melhor*!\n\n🔗 Definir metas: https://my.rotary.org/pt/secure/13011\n(My Rotary > Rotary Club Central)`
   },
   {
-    palavras: ['fundacao', 'contribuicao', 'erey', 'polioplus', 'subsidio'],
+    palavras: ['fundacao', 'contribuicao', 'erey', 'polioplus', 'subsidio', 'fundo anual'],
     resposta: `💰 *Fundação Rotária*\n\nBraço filantrópico do Rotary International.\n\n*Tipos de contribuição:*\n📗 *Fundo Anual* — subsídios distritais e globais\n💉 *PolioPlus* — erradicação da pólio\n🏦 *Doação Permanente* — sustentabilidade\n\n🎯 Meta: *US$100/ano* por rotariano (EREY)\n\n🔗 Contribuir: https://my.rotary.org/pt/donate\n🔗 Sobre a Fundação: https://www.rotary.org/pt/about-rotary/rotary-foundation`
   },
   // === CLUBES POR CIDADE ===
@@ -196,7 +196,7 @@ const FAQ_CACHE = [
   },
   // === EMPRESA CIDADA ===
   {
-    palavras: ['empresa cidada', 'empresa cidadã', 'apoiar empresa', 'patrocinio'],
+    palavras: ['empresa cidada', 'empresa cidadã', 'apoiar empresa', 'patrocinio', 'patrocinador', 'parceiro', 'apoiar rotary', 'apoiar o rotary'],
     resposta: `🏢 *Programa Empresa Cidadã*\n\nEmpresas podem apoiar projetos do Rotary!\n\n*Benefícios:*\n• Selo "Empresa Cidadã Rotary"\n• Networking com líderes\n• Visibilidade em eventos\n\n*Como participar:*\nContate o clube Rotary mais próximo.\n\n🔗 Clubes: https://rotary4630.org.br/clubes\n📞 Contato: https://rotary4630.org.br/fale-conosco`
   },
   // === DQA ===
@@ -211,7 +211,7 @@ const FAQ_CACHE = [
   },
   // === FREQUENCIA ===
   {
-    palavras: ['frequencia', 'presenca', 'reposicao'],
+    palavras: ['frequencia', 'presenca', 'reposicao', 'visitar clube', 'visitar outro clube', 'intercambio', 'posso visitar', 'repor frequencia'],
     resposta: `📋 *Frequência e Reposição*\n\n• O secretário do clube lança presenças pelo UnyClub ou My Rotary\n• Rotarianos podem *visitar qualquer clube do mundo* para repor frequência\n• Isso é incentivado como "intercâmbio entre clubes"\n\n📲 UnyClub: https://www.unyclub.com.br\n🌐 My Rotary: https://my.rotary.org/pt`
   },
   // === CLUBES DO DISTRITO (lista geral) ===
@@ -300,6 +300,16 @@ const FAQ_CACHE = [
     palavras: ['obrigado', 'obrigada', 'valeu', 'vlw', 'brigado', 'muito obrigado', 'agradeco', 'thanks', 'tchau', 'ate mais', 'ate logo'],
     resposta: `😊 De nada, companheiro(a)! Fico feliz em ajudar.\n\nSe tiver mais dúvidas, é só perguntar!\n\n🔗 Site: https://rotary4630.org.br\n📲 UnyClub: https://www.unyclub.com.br`
   },
+  // === ROTARY KIDS ===
+  {
+    palavras: ['rotary kids', 'rotary kid', 'criancas rotary', 'programa infantil'],
+    resposta: `🧒 *Rotary Kids*\n\nPrograma do Rotary voltado para crianças, complementando:\n• *Interact* — 12 a 18 anos\n• *Rotaract* — a partir de 18 anos\n\nPara mais informações sobre o Rotary Kids no D4630:\n🔗 https://rotary4630.org.br/clubes\n📞 https://rotary4630.org.br/fale-conosco`
+  },
+  // === SITE OFICIAL ===
+  {
+    palavras: ['site oficial', 'site do distrito', 'rotary4630', 'site rotary', 'pagina do distrito', 'site do rotary'],
+    resposta: `🌐 *Site Oficial do Distrito 4630*\n\n🔗 https://rotary4630.org.br\n\nNo site você encontra:\n📅 Agenda e eventos\n🏛️ Lista de clubes\n👥 Equipe distrital\n📞 Formulário de contato\n\n📲 App de gestão: https://www.unyclub.com.br\n🌐 My Rotary: https://my.rotary.org/pt`
+  },
   // === NAO ENTENDI / CONVERSACIONAL ===
   {
     palavras: ['nao entendi', 'pode repetir', 'repete', 'como assim', 'explica melhor', 'nao compreendi', 'nao entendo'],
@@ -383,6 +393,10 @@ function buscarNoCache(mensagem) {
     { teste: /nao consigo.*(acessar|entrar|login)/, palavraChave: 'nao consigo acessar' },
     { teste: /recuperar.*(senha|acesso)/, palavraChave: 'recuperar senha' },
     { teste: /quando.*(comeca|inicia|termina).*(ano|rotario)/, palavraChave: 'ano rotario' },
+    { teste: /assembleia.*(rotaract|adirc)/, palavraChave: 'adirc' },
+    { teste: /(rotaract|adirc).*assembleia/, palavraChave: 'adirc' },
+    { teste: /assembleia.*interact/, palavraChave: 'assembleia interact' },
+    { teste: /interact.*assembleia/, palavraChave: 'assembleia interact' },
   ];
   for (const { teste, palavraChave } of intencoes) {
     if (teste.test(msg)) {
