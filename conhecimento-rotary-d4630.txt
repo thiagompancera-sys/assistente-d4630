@@ -1,0 +1,278 @@
+# BASE DE CONHECIMENTO — ASSISTENTE DIGITAL DISTRITO 4630
+# Este arquivo eh o "cerebro" do bot. Todo o conhecimento vai aqui.
+# Claude recebe este arquivo inteiro como contexto a cada mensagem.
+# Atualizar manualmente quando necessario.
+# Ultima atualizacao: 08/04/2026
+
+====================================
+SOBRE O DISTRITO 4630
+====================================
+
+O Distrito 4630 do Rotary International abrange municipios do norte e noroeste do estado do Parana, Brasil.
+Site oficial: https://www.rotary4630.org.br
+Possui 112 clubes (entre Rotary, Rotaract, Interact e Rotary Kids).
+
+Governador 2025-2026: Celso Yoshiaki Miyamoto (conjuge: Luciana Murara Miyamoto)
+Governador Eleito 2026-2027: Ricardo de Oliveira
+
+Dolar Rotario (abril 2026): R$ 5,25
+
+O ano rotario vai de 1 de julho a 30 de junho do ano seguinte.
+O ano rotario 2026-2027 comeca em 01/07/2026 e termina em 30/06/2027.
+
+Lema 2026-2027: "Crie Impacto Duradouro" (Create Lasting Impact)
+A ideia central eh que cada clube busque ser melhor do que ele mesmo ja foi.
+
+====================================
+CALENDARIO DE EVENTOS 2026
+====================================
+
+11/04/2026 — Seminario PELS 2026-27 (OBRIGATORIO para presidentes eleitos)
+25/04/2026 — Assembleia Distrital Interact (OBRIGATORIO)
+22/05/2026 — Conferencia Distrital Sol Nascente (OBRIGATORIO)
+27/06/2026 — Transmissao de Cargo / Posse Distrital (OBRIGATORIO)
+01/07/2026 — Inicio do Ano Rotario 2026-2027
+27/08/2026 — Instituto Rotary do Brasil
+
+Para inscricoes e detalhes: acessar rotary4630.org.br > Calendario
+Todos os 112 clubes do distrito ja confirmaram inscricao no PELS 2026.
+
+====================================
+7 AREAS DE ENFOQUE DO ROTARY
+====================================
+
+1. Consolidacao da Paz e Prevencao de Conflitos
+2. Prevencao e Tratamento de Doencas
+3. Agua, Saneamento e Higiene
+4. Saude Materno-Infantil
+5. Educacao Basica e Alfabetizacao
+6. Desenvolvimento Economico Comunitario
+7. Meio Ambiente (tema do mes de abril)
+
+Todo projeto Rotary deve estar alinhado a pelo menos uma dessas areas.
+
+====================================
+PROVA QUADRUPLA
+====================================
+
+A Prova Quadrupla eh um teste etico que rotarianos aplicam:
+1. Eh a VERDADE?
+2. Eh JUSTO para todos os interessados?
+3. Criara BOA VONTADE e MELHORES AMIZADES?
+4. Sera BENEFICO para todos os interessados?
+
+Criada pelo rotariano Herbert J. Taylor em 1932.
+
+====================================
+MISSAO, VISAO E VALORES
+====================================
+
+MISSAO: Prestar servicos, promover a integridade e fomentar a compreensao, a boa vontade e a paz entre os povos, por meio do companheirismo de lideres de negocios, profissionais e comunidades.
+
+VISAO: Juntos, vemos um mundo em que as pessoas se unem e entram em acao para promover mudancas duradouras em si mesmas, nas suas comunidades e ao redor do mundo.
+
+====================================
+MY ROTARY — COMO USAR
+====================================
+
+Site: my.rotary.org/pt
+Todo rotariano deve ter conta no My Rotary.
+
+Como criar conta:
+1. Acesse my.rotary.org
+2. Clique em "Registrar"
+3. Informe seu email e numero de socio (ou numero do clube)
+4. Crie senha e pergunta de seguranca
+5. Ative a conta pelo email de confirmacao
+
+Funcionalidades principais:
+- Rotary Club Central: definir e acompanhar metas do clube
+- Central de Aprendizagem: cursos online gratuitos
+- Pesquisa de Clubes: encontrar clubes por cidade
+- Gestao de Clube: secretaria, financeiro (acesso de dirigente)
+- Relatorios de Distrito: dados agregados
+
+====================================
+ROTARY CLUB CENTRAL — METAS
+====================================
+
+Onde: my.rotary.org > Rotary Club Central
+
+Abas de metas:
+- Quadro Social: novos socios, retencao
+- Servico: projetos por area de enfoque
+- Fundacao Rotaria: contribuicoes (Fundo Anual, PolioPlus)
+- Imagem Publica: eventos de midia, campanhas, postagens
+
+NOVIDADE 2026-2027: A meta de cada clube eh superar o que ele mesmo ja fez de melhor nos ultimos anos. Nao eh competicao com outros clubes. Premiacao na Conferencia 2027 para TODOS os clubes que superarem seu proprio historico.
+
+====================================
+USO DA MARCA ROTARY
+====================================
+
+Diretrizes oficiais: brandcenter.rotary.org
+
+Regras basicas:
+- Usar o logo na versao oficial (roda dentada dourada + nome "Rotary")
+- NAO alterar cores, proporcoes ou adicionar elementos
+- Manter area de protecao ao redor do logo
+- Nome do clube pode aparecer junto, mas separado do logo
+- Para camisas, banners, materiais: seguir as templates do Brand Center
+- Cores oficiais: Azul Royal (#005DAA), Dourado (#F7A81B)
+
+Em caso de duvida sobre aplicacao especifica, consultar a Comissao de Imagem Publica do distrito.
+
+====================================
+FUNDACAO ROTARIA
+====================================
+
+A Fundacao Rotaria eh o braco filantropico do Rotary International.
+
+Tipos de contribuicao:
+- Fundo Anual: financia subsidios distritais e globais
+- PolioPlus: erradicacao da poliomielite (meta: zero casos no mundo)
+- Fundo de Doacao Permanente: sustentabilidade de longo prazo
+- Fundo de Resposta a Desastres
+
+Meta por rotariano: US$100/ano (Every Rotarian Every Year - EREY)
+
+Para contribuir: my.rotary.org > Doacao
+
+====================================
+UNYCLUB — PLATAFORMA DE GESTAO
+====================================
+
+Site: www.unyclub.com.br
+Contato: contato@unyclub.com.br
+
+O UnyClub eh a plataforma brasileira de gestao para distritos e clubes Rotary.
+Tem app para celular (iOS e Android).
+
+Funcionalidades:
+- Gestao de eventos e inscricoes
+- Frequencia de associados (em tempo real)
+- Sistema financeiro com gateway de pagamento
+- Noticias do distrito e clubes
+- Calendario de atividades
+- Credenciais/crachas para eventos
+
+Para acessar: usar login e senha fornecidos pelo clube ou distrito.
+
+====================================
+EMPRESA CIDADA
+====================================
+
+Programa que permite empresas apoiarem projetos do Rotary.
+
+Beneficios para a empresa:
+- Reconhecimento social e selo "Empresa Cidada Rotary"
+- Networking com lideres empresariais e profissionais
+- Participacao em eventos do distrito
+- Visibilidade em materiais do Rotary
+
+Como se tornar: entrar em contato com o clube Rotary mais proximo.
+O distrito tambem pode intermediar: secretaria do distrito.
+
+====================================
+COMO SE TORNAR ROTARIANO
+====================================
+
+1. Encontre um clube perto de voce: rotary4630.org.br/clubes
+2. Visite uma reuniao (qualquer pessoa pode visitar)
+3. Conheca os membros e manifeste interesse
+4. O clube avalia e aprova a admissao
+5. Cerimonia de posse
+
+Requisitos: ser maior de idade, ter boa reputacao na comunidade e interesse em servir.
+
+Para jovens (12-18 anos): Interact
+Para jovens adultos (18-30 anos): Rotaract
+
+====================================
+CLUBES DO DISTRITO 4630 (parcial)
+====================================
+
+CAMPO MOURAO:
+- Rotary Club de Campo Mourao (76 associados)
+- Rotary Club de Campo Mourao - Fomento (21 associados)
+- Rotary Club de Campo Mourao - Gralha Azul (52 associados)
+- Rotary Club de Campo Mourao - Lago Azul (21 associados)
+- Rotary Club de Campo Mourao - Raio de Luz (47 associados)
+
+MARINGA (regiao):
+- Rotary Club de Maringa (varios clubes)
+- Rotary Club de Maringa-Leste
+- Rotary Club de Maringa-Horto
+- Rotary Club de Maringa-ACIM
+
+OUTRAS CIDADES:
+- Rotary Club de Araruna (15 associados)
+- Rotary Club de Barbosa Ferraz - Celeiro do Parana (27 associados)
+- Rotary Club de Boa Esperanca (35 associados)
+- Rotary Club de Borrazopolis (24 associados)
+- Rotary Club de Cianorte - Cinturao Verde
+- Rotary Club de Loanda
+- Rotary Club de Santo Antonio da Platina
+- Rotary Club de Lunardelli
+- Rotary Club de Umuarama
+- Rotary Club de Paranacity
+- Rotary Club de Goioere
+
+ROTARACT:
+- Rotaract Club de Brasilandia do Sul
+- Rotaract Club de Campo Mourao
+- Rotaract Club de Maringa (varios)
+
+INTERACT:
+- Interact Club de Campo Mourao
+- Diversos clubes em cidades do distrito
+
+Lista completa: rotary4630.org.br/clubes (112 clubes no total)
+
+====================================
+PERGUNTAS FREQUENTES
+====================================
+
+P: Quando eh a proxima reuniao do meu clube?
+R: Cada clube tem seu proprio dia e horario de reuniao. Consulte no site rotary4630.org.br/clubes ou no UnyClub.
+
+P: Como atualizo meus dados cadastrais?
+R: Acesse my.rotary.org > Meu Perfil, ou solicite ao secretario do seu clube. No UnyClub tambem eh possivel atualizar.
+
+P: O que eh DQA?
+R: DQA significa "Desenvolvimento do Quadro Associativo". Eh a area responsavel por atrair e reter socios nos clubes.
+
+P: O que sao subsidios distritais e globais?
+R: Sao recursos da Fundacao Rotaria para financiar projetos. Subsidios distritais sao aprovados pelo distrito. Subsidios globais sao maiores e envolvem parceria internacional.
+
+P: Como reporto a frequencia do meu clube?
+R: Pelo UnyClub ou pelo My Rotary. O secretario do clube eh o responsavel por lancar as presencas.
+
+P: O que eh PETS, SETS e PELS?
+R: PETS = Seminario de Treinamento para Presidentes Eleitos
+   SETS = Seminario de Treinamento para Secretarios Eleitos
+   PELS = Seminario de Treinamento para Lideres Eleitos (inclui todos os cargos)
+
+P: Como faco para inscrever meu clube em um evento distrital?
+R: Acesse rotary4630.org.br > Calendario > selecione o evento > "Inscrever-se". Tambem pode ser feito pelo UnyClub.
+
+P: Posso visitar outro clube?
+R: Sim! Qualquer rotariano pode visitar qualquer clube do mundo. Eh uma pratica incentivada chamada "intercambio entre clubes" ou "reposicao de frequencia".
+
+====================================
+CONTATOS DO DISTRITO
+====================================
+
+Site: rotary4630.org.br
+Formulario de contato: rotary4630.org.br (menu > Contato)
+
+Para duvidas especificas:
+- Imagem Publica: Comissao de Imagem Publica do distrito
+- Fundacao Rotaria: Comissao de Fundacao Rotaria
+- Financeiro/Anuidades: Tesouraria do distrito
+- Cadastro de socios: Secretaria do distrito
+- Tecnologia/UnyClub: Comissao de TI
+
+====================================
+FIM DA BASE DE CONHECIMENTO
+====================================
