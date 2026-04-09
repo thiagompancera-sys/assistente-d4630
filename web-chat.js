@@ -58,11 +58,11 @@ const FAQ_CACHE = [
   {
     palavras: ['ola', 'oi', 'bom dia', 'boa tarde', 'boa noite', 'hey', 'eae', 'eai', 'fala', 'salve'],
     tipo: 'saudacao',
-    resposta: `Olá, companheiro(a)! 👋\n\nSou o *Assistente Digital do Distrito 4630*.\n\nPosso te ajudar com:\n📅 *Calendário* — próximos eventos e prazos\n📋 *Protocolos* — regras, marca, procedimentos\n🌐 *My Rotary* — como usar o portal\n🏆 *Metas* — Rotary Club Central\n❓ *Dúvidas gerais* — sobre o Rotary e o distrito\n\nComo posso te ajudar hoje?\n\n🔗 Site do distrito: https://rotary4630.org.br`
+    resposta: `Ola, companheiro(a)! Sou o assistente digital do *Distrito 4630*.\n\nPode me perguntar sobre eventos, clubes, My Rotary, metas, marca, como se associar... o que precisar sobre o distrito, eh so mandar!`
   },
   {
     palavras: ['proximo evento', 'proximos eventos', 'eventos', 'calendario', 'quando', 'data', 'pels', 'assembleia', 'conferencia', 'transmissao', 'posse'],
-    resposta: `📅 *Próximos eventos do D4630:*\n\n• *11/04/2026* — Seminário PELS 2026-27 (OBRIGATÓRIO)\n• *25/04/2026* — Assembleia Distrital Interact (OBRIGATÓRIO)\n• *26/04/2026* — ADIRC - Assembleia Distrital Rotaract (OBRIGATÓRIO)\n• *22/05/2026* — Conferência Distrital Sol Nascente (OBRIGATÓRIO)\n• *27/06/2026* — Transmissão de Cargo / Posse Distrital (OBRIGATÓRIO)\n• *01/07/2026* — Início do Ano Rotário 2026-2027\n• *27/08/2026* — Instituto Rotary do Brasil\n\n🔗 Agenda e inscrições: https://rotary4630.org.br/agenda-distrital\n📲 Calendário no Rotary: https://my.rotary.org/pt/news-media/calendar`
+    resposta: `Os proximos eventos do distrito sao:\n\n*11/04* — PELS 2026-27 (obrigatorio para lideres eleitos)\n*25/04* — Assembleia Distrital Interact\n*26/04* — ADIRC em Marialva-PR (Rotaract)\n*22/05* — Conferencia Distrital Sol Nascente\n*27/06* — Transmissao de Cargo / Posse\n*01/07* — Inicio do Ano Rotario 2026-2027\n*27/08* — Instituto Rotary do Brasil\n\nInscricoes em rotary4630.org.br/agenda-distrital`
   },
   {
     palavras: ['prova quadrupla', 'teste etico', '4 perguntas'],
@@ -91,7 +91,7 @@ const FAQ_CACHE = [
   },
   {
     palavras: ['adirc', 'assembleia rotaract'],
-    resposta: `📋 *ADIRC — Assembleia Distrital do Rotaract*\n\n📌 *26/04/2026* — ADIRC\nOBRIGATÓRIO para todos os Rotaract\n\nO Rotaract agora é a partir de *18 anos*, sem limite de idade superior!\n\n🔗 Inscrições e local: https://rotary4630.org.br/agenda-distrital\n📲 Pelo app: https://www.unyclub.com.br`
+    resposta: `A *ADIRC* (Assembleia Distrital do Rotaract) vai ser dia *26/04/2026* em *Marialva-PR*.\n\nEh obrigatoria para todos os Rotaract. E lembrando: Rotaract agora eh a partir de *18 anos*, sem limite de idade superior!\n\nPra inscricao e horario: rotary4630.org.br/agenda-distrital`
   },
   {
     palavras: ['dia reuniao', 'reuniao clube', 'contato clube', 'presidente clube', 'buscar clube'],
@@ -157,7 +157,7 @@ const FAQ_CACHE = [
   // === PERGUNTAS SOBRE LOCAL/HORARIO DE EVENTOS ===
   {
     palavras: ['onde vai ser', 'onde sera', 'local do evento', 'onde acontece', 'endereco evento', 'local pels', 'local adirc', 'local conferencia', 'local assembleia'],
-    resposta: `📍 *Local dos Eventos*\n\nO local e horário específico de cada evento é divulgado na página do evento no site do distrito.\n\nConsulte diretamente:\n🔗 Agenda com locais: https://rotary4630.org.br/agenda-distrital\n📲 Detalhes no app: https://www.unyclub.com.br\n\nOu entre em contato:\n📞 https://rotary4630.org.br/fale-conosco`
+    resposta: `Depende de qual evento! O que tenho aqui:\n\n*ADIRC* (26/04) — *Marialva-PR*\n*PELS, Conferencia e Posse* — o local especifico voce confirma em rotary4630.org.br/agenda-distrital\n\nQual evento voce quer saber?`
   },
   // === HORARIOS E REUNIOES ===
   {
@@ -293,12 +293,12 @@ const FAQ_CACHE = [
   {
     palavras: ['menu', 'ajuda', 'help', 'o que voce faz', 'quem e voce', 'o que voce sabe', 'como funciona', 'opcoes', 'o que voce pode'],
     tipo: 'saudacao',
-    resposta: `🤖 *Assistente Digital D4630*\n\nPosso te ajudar com:\n📅 *Eventos* — "próximos eventos", "quando é o PELS?"\n🏛️ *Clubes* — "clubes de Campo Mourão", "clubes do distrito"\n🌐 *My Rotary* — "como criar conta", "esqueci a senha"\n🏆 *Metas* — "metas 2026-2027"\n🎨 *Marca* — "verificar arte"\n💰 *Fundação* — "como contribuir"\n🤝 *Participar* — "como ser rotariano"\n📞 *Contato* — "contato do distrito"\n\nDigite sua dúvida ou fale por voz! 🎤`
+    resposta: `Sou o assistente digital do *Distrito 4630*. Pode me perguntar sobre eventos, clubes, My Rotary, metas, marca Rotary, como se associar, Fundacao Rotaria, contatos do distrito...\n\nEh so perguntar naturalmente, como se estivesse conversando com um companheiro!`
   },
   // === AGRADECIMENTO / DESPEDIDA ===
   {
     palavras: ['obrigado', 'obrigada', 'valeu', 'vlw', 'brigado', 'muito obrigado', 'agradeco', 'thanks', 'tchau', 'ate mais', 'ate logo'],
-    resposta: `😊 De nada, companheiro(a)! Fico feliz em ajudar.\n\nSe tiver mais dúvidas, é só perguntar!\n\n🔗 Site: https://rotary4630.org.br\n📲 UnyClub: https://www.unyclub.com.br`
+    resposta: `De nada, companheiro(a)! Qualquer outra duvida eh so chamar.`
   },
   // === ROTARY KIDS ===
   {
@@ -313,7 +313,7 @@ const FAQ_CACHE = [
   // === NAO ENTENDI / CONVERSACIONAL ===
   {
     palavras: ['nao entendi', 'pode repetir', 'repete', 'como assim', 'explica melhor', 'nao compreendi', 'nao entendo'],
-    resposta: `Desculpe se não ficou claro! 😊\n\nTente reformular ou escolha um tema:\n📅 Eventos → "próximos eventos"\n🏛️ Clubes → "clubes de [sua cidade]"\n🌐 My Rotary → "como usar o My Rotary"\n📞 Contato → "contato do distrito"\n🤝 Participar → "como ser rotariano"\n\n🔗 Ou fale com a equipe: https://rotary4630.org.br/fale-conosco`
+    resposta: `Desculpe, vou tentar ser mais claro! Pode reformular sua pergunta? Eu consigo ajudar com eventos, clubes, My Rotary, contatos do distrito, como se associar e muito mais.`
   },
   // === CIDADES COM CLUBE MAS SEM FAQ ESPECIFICO ===
   {
@@ -431,24 +431,25 @@ function buscarNoCache(mensagem) {
 
 const SYSTEM_PROMPT = `Voce eh o Assistente Digital do Distrito 4630 do Rotary International.
 
-REGRAS:
-1. Responda APENAS com base no CONTEXTO abaixo.
-2. NUNCA invente datas, valores, nomes, locais ou regras.
-3. Seja cordial e objetivo. Maximo 200 palavras.
-4. Use negrito com * para destaques, quebras de linha, max 2-3 emojis.
-5. Trate todos por "companheiro(a)" ou pelo nome.
-6. Se for pergunta FINANCEIRA: "Questoes financeiras precisam ser tratadas com a tesouraria. Contato: https://rotary4630.org.br/fale-conosco"
-7. NUNCA responda sobre assuntos fora do Rotary/Distrito 4630.
-8. Se a informacao PARCIAL estiver no contexto (ex: data de evento existe mas local nao), responda o que sabe e diga claramente o que NAO tem. Exemplo: "A ADIRC sera dia 26/04/2026. O local ainda nao esta na minha base. Consulte: https://rotary4630.org.br/agenda-distrital"
-9. Se NAO encontrar NADA sobre o assunto, diga: "Nao encontrei essa informacao na minha base. Consulte o site: https://rotary4630.org.br/fale-conosco ou pergunte ao seu Governador Assistente."
-10. SEMPRE inclua links diretos relevantes ao assunto:
-   - Eventos/calendario: https://rotary4630.org.br/agenda-distrital
-   - Buscar clubes: https://rotary4630.org.br/clubes
-   - Contato distrito: https://rotary4630.org.br/fale-conosco
-   - Equipe/GAs: https://rotary4630.org.br/equipe-distrital
-   - My Rotary: https://my.rotary.org/pt
-   - Marca/templates: https://brandcenter.rotary.org
-   - UnyClub: https://www.unyclub.com.br
+PERSONALIDADE:
+- Responda como um companheiro rotariano experiente conversando naturalmente.
+- Tom acolhedor, direto e humano. Nada de menu, lista de opcoes ou "digite X para Y".
+- Frases curtas e naturais. Maximo 200 palavras.
+- Use *negrito* para destaques importantes, mas sem exagero.
+- Maximo 1-2 emojis por resposta (so quando fizer sentido natural).
+- Trate por "companheiro(a)" ou pelo nome quando souber.
+
+REGRAS CRITICAS:
+1. Responda APENAS com base no CONTEXTO abaixo. NUNCA invente.
+2. Se a informacao ESTIVER no contexto, RESPONDA DIRETAMENTE. Nao mande a pessoa consultar o site se voce ja tem a resposta.
+3. Se a informacao PARCIAL estiver no contexto, responda o que sabe e diga claramente so o que falta. Ex: "A ADIRC sera dia 26/04 em Marialva-PR. O horario exato voce confirma em rotary4630.org.br/agenda-distrital"
+4. Se NAO encontrar NADA, diga naturalmente: "Essa eu nao tenho na minha base ainda. Melhor checar direto em rotary4630.org.br ou perguntar pro seu GA."
+5. NUNCA responda sobre assuntos fora do Rotary/Distrito 4630.
+6. Questoes financeiras: encaminhe para tesouraria (rotary4630.org.br/fale-conosco).
+7. Inclua 1-2 links relevantes no final (nao uma lista enorme).
+8. PROIBIDO: separadores (===, ---), listas de menu, "digite menu", "escolha uma opcao", blocos de emojis decorativos.
+9. PROIBIDO: responder "consulte o site" quando a resposta esta no contexto. Isso eh redirecionar, nao ajudar.
+10. Seja util de verdade. Se alguem perguntar "onde vai ser a ADIRC?", responda "Em Marialva-PR, dia 26/04" — nao mande pro site.
 
 CONTEXTO:
 ${CONHECIMENTO}`;
@@ -532,7 +533,7 @@ async function responderIA(mensagem, nome) {
   }
 
   metricas.erros++;
-  return 'Desculpe, não consegui processar sua pergunta no momento.\n\nTente uma das opções do menu ou acesse diretamente:\n\n📅 Agenda: https://rotary4630.org.br/agenda-distrital\n🔍 Clubes: https://rotary4630.org.br/clubes\n📞 Contato: https://rotary4630.org.br/fale-conosco\n🌐 My Rotary: https://my.rotary.org/pt';
+  return 'Desculpe, estou com dificuldade para processar agora. Tenta de novo em alguns segundos, ou acessa direto rotary4630.org.br que la tem bastante coisa!';
 }
 
 async function responder(mensagem, nome) {
@@ -679,6 +680,21 @@ app.get('/api/status', (req, res) => {
   const provedor = openrouter ? 'OpenRouter (gratis)' : geminiModel ? 'Gemini (gratis)' : claude ? 'Claude' : 'nenhum';
   res.json({ status: 'online', ...metricas, provedor });
 });
+
+// ============================================================
+// KEEP-ALIVE — Impede Render free tier de dormir
+// ============================================================
+
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'alive', uptime: process.uptime(), timestamp: new Date().toISOString() });
+});
+
+// Self-ping a cada 4 minutos (Render dorme apos 15min sem request)
+function keepAlive() {
+  const url = process.env.RENDER_EXTERNAL_URL || `http://localhost:${PORT}`;
+  fetch(`${url}/health`).catch(() => {});
+}
+setInterval(keepAlive, 4 * 60 * 1000);
 
 // ============================================================
 // PAGINA HTML (chat bonito estilo WhatsApp)
