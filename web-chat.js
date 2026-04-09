@@ -365,21 +365,7 @@ function corrigirTypos(msg) {
 function buscarNoCache(mensagem) {
   const msg = corrigirTypos(mensagem.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim());
 
-  // Primeiro: verificar se menciona uma cidade → prioridade maxima
-  for (const cidade of CIDADES_D4630) {
-    const cidadeNorm = cidade.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-    if (msg.includes(cidadeNorm)) {
-      // Buscar FAQ especifica da cidade
-      for (const faq of FAQ_CACHE) {
-        for (const p of faq.palavras) {
-          const pNorm = p.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-          if (pNorm === cidadeNorm) return faq;
-        }
-      }
-    }
-  }
-
-  // Segundo: saudacoes curtas (match exato)
+  // Primeiro: saudacoes curtas (match exato)
   const saudacoes = ['oi', 'ola', 'hey', 'eae', 'eai'];
   if (saudacoes.includes(msg) || msg.startsWith('oi ') || msg.startsWith('ola ')) {
     for (const faq of FAQ_CACHE) {
@@ -387,7 +373,12 @@ function buscarNoCache(mensagem) {
     }
   }
 
-  // Terceiro: detectar intencao especifica (prioridade sobre match generico)
+  // Segundo: detectar intencao especifica (prioridade sobre cidade e match generico)
+  // Se a pessoa pergunta sobre EVENTO perto de uma cidade, a intencao eh evento, nao cidade
+  const palavrasDeEvento = /\b(evento|eventos|calendario|agenda|pels|adirc|conferencia|assembleia|transmissao|posse|inscricao|proximo|proxima)\b/;
+  const mencionaCidade = CIDADES_D4630.some(c => msg.includes(c.normalize('NFD').replace(/[\u0300-\u036f]/g, '')));
+  const querEvento = palavrasDeEvento.test(msg);
+
   const intencoes = [
     { teste: /esqueci.*(senha|login|acesso)/, palavraChave: 'esqueci senha' },
     { teste: /nao consigo.*(acessar|entrar|login)/, palavraChave: 'nao consigo acessar' },
@@ -401,6 +392,8 @@ function buscarNoCache(mensagem) {
     { teste: /lista.*(evento|eventos)/, palavraChave: 'eventos' },
     { teste: /tem.*(evento|eventos)/, palavraChave: 'eventos' },
     { teste: /agenda.*distrito/, palavraChave: 'eventos' },
+    { teste: /evento.*(proximo|perto|proxima)/, palavraChave: 'eventos' },
+    { teste: /(proximo|proxima|perto).*evento/, palavraChave: 'eventos' },
   ];
   for (const { teste, palavraChave } of intencoes) {
     if (teste.test(msg)) {
@@ -412,7 +405,25 @@ function buscarNoCache(mensagem) {
     }
   }
 
-  // Quarto: busca por score normal
+  // Quarto: cidade (so se NAO esta perguntando sobre evento)
+  if (mencionaCidade && !querEvento) {
+    for (const cidade of CIDADES_D4630) {
+      const cidadeNorm = cidade.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      if (msg.includes(cidadeNorm)) {
+        for (const faq of FAQ_CACHE) {
+          for (const p of faq.palavras) {
+            const pNorm = p.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            if (pNorm === cidadeNorm) return faq;
+          }
+        }
+      }
+    }
+  }
+
+  // Se menciona cidade + evento, deixar a IA responder (tem contexto completo)
+  if (mencionaCidade && querEvento) return null;
+
+  // Quinto: busca por score normal
   let melhor = null, melhorScore = 0;
   for (const faq of FAQ_CACHE) {
     let score = 0;
