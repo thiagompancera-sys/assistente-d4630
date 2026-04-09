@@ -238,25 +238,117 @@ const FAQ_CACHE = [
   {
     palavras: ['atualizar dados', 'atualizar meus dados', 'cadastro', 'dados cadastrais', 'alterar email', 'meu perfil', 'meus dados'],
     resposta: `📝 *Atualizar Dados Cadastrais*\n\n1. Acesse My Rotary > Meu Perfil\n2. Ou solicite ao secretário do seu clube\n3. No UnyClub também é possível atualizar\n\n🌐 My Rotary: https://my.rotary.org/pt\n📲 UnyClub: https://www.unyclub.com.br`
+  },
+  // === O QUE E O ROTARY (pergunta mais basica) ===
+  {
+    palavras: ['o que e o rotary', 'o que e rotary', 'o que faz o rotary', 'missao do rotary', 'visao do rotary', 'valores do rotary', 'sobre o rotary', 'o que significa rotary'],
+    resposta: `🌍 *O que é o Rotary?*\n\n*Missão:* Prestar serviços, promover integridade e fomentar compreensão, boa vontade e paz entre os povos.\n\n*Visão:* Juntos, vemos um mundo em que as pessoas se unem para promover mudanças duradouras.\n\nO Rotary tem *7 áreas de enfoque* e está presente em mais de 200 países!\n\nO *Distrito 4630* abrange o norte/noroeste do Paraná, com *112 clubes*.\n\n🔗 Saiba mais: https://www.rotary.org/pt\n🔗 Distrito 4630: https://rotary4630.org.br`
+  },
+  // === O QUE E O DISTRITO 4630 ===
+  {
+    palavras: ['o que e o distrito', 'distrito 4630', 'que cidades', 'quais cidades', 'abrangencia', 'norte do parana', 'noroeste do parana', 'onde fica o distrito'],
+    resposta: `📍 *Distrito 4630*\n\nAbrange municípios do *norte e noroeste do Paraná*, Brasil.\n\n• *112 clubes* (Rotary, Rotaract, Interact e Rotary Kids)\n• Governador 2025-26: Celso Yoshiaki Miyamoto\n• Governador Eleito 26-27: Ricardo de Oliveira\n\nCidades: Campo Mourão, Maringá, Umuarama, Cianorte, Goioerê, Loanda, Paranacity, Araruna e muitas mais!\n\n🔗 Site: https://rotary4630.org.br\n🔗 Clubes: https://rotary4630.org.br/clubes`
+  },
+  // === ANO ROTARIO ===
+  {
+    palavras: ['ano rotario', 'quando comeca o ano', 'quando termina o ano', 'inicio do ano rotario', 'julho rotary', 'comeca o ano'],
+    resposta: `📆 *Ano Rotário*\n\nO ano rotário vai de *1º de julho* a *30 de junho* do ano seguinte.\n\nAno 2026-2027: *01/07/2026* a *30/06/2027*\nLema: *"Crie Impacto Duradouro"*\nGovernador: Ricardo de Oliveira`
+  },
+  // === PETS / SETS ===
+  {
+    palavras: ['pets', 'sets', 'diferenca pets sets pels', 'treinamento secretario', 'o que e pets', 'o que e sets', 'seminario presidente', 'seminario secretario'],
+    resposta: `📚 *PETS, SETS e PELS*\n\n• *PETS* = Seminário para Presidentes Eleitos\n• *SETS* = Seminário para Secretários Eleitos\n• *PELS* = Seminário para Líderes Eleitos (inclui todos os cargos)\n\n📌 *PELS 2026-27:* 11/04/2026 (OBRIGATÓRIO)\nTodos os 112 clubes já confirmaram inscrição!\n\n🔗 Detalhes: https://rotary4630.org.br/agenda-distrital`
+  },
+  // === ASSEMBLEIA INTERACT ===
+  {
+    palavras: ['assembleia interact', 'assembleia distrital interact', 'evento interact'],
+    resposta: `🌱 *Assembleia Distrital Interact*\n\n📌 *25/04/2026* — OBRIGATÓRIO para Interact\n\nO Interact é para jovens de *12 a 18 anos*.\n\n🔗 Detalhes e inscrição: https://rotary4630.org.br/agenda-distrital\n📲 App: https://www.unyclub.com.br`
+  },
+  // === INSTITUTO ROTARY ===
+  {
+    palavras: ['instituto rotary', 'instituto rotary brasil', 'instituto agosto'],
+    resposta: `🎓 *Instituto Rotary do Brasil*\n\n📌 *27/08/2026*\n\nEvento nacional de capacitação e networking para rotarianos.\n\n🔗 Mais informações: https://rotary4630.org.br/agenda-distrital`
+  },
+  // === SENHA / PROBLEMAS DE ACESSO ===
+  {
+    palavras: ['esqueci senha', 'esqueci minha senha', 'recuperar senha', 'nao consigo acessar', 'senha my rotary', 'resetar senha', 'problema login', 'nao consigo entrar', 'esqueci a senha'],
+    resposta: `🔑 *Problemas de Acesso ao My Rotary?*\n\n1. Acesse my.rotary.org\n2. Clique em "Esqueceu a senha?"\n3. Informe seu email cadastrado\n4. Siga as instruções no email\n\nSe não funcionar, contate o secretário do seu clube.\n\n🔗 My Rotary: https://my.rotary.org/pt\n📞 Ajuda: https://rotary4630.org.br/fale-conosco`
+  },
+  // === CURSOS ONLINE ===
+  {
+    palavras: ['cursos', 'curso online', 'central de aprendizagem', 'aprender', 'treinamento online', 'capacitacao'],
+    resposta: `📚 *Cursos Online Gratuitos*\n\nO Rotary oferece cursos pela Central de Aprendizagem:\n\n• Liderança\n• Fundação Rotária\n• Quadro Social\n• Projetos de serviço\n\nTodos gratuitos e com certificado!\n\n🔗 Acessar: https://my.rotary.org/pt/learning-reference`
+  },
+  // === COMO CONTRIBUIR / DOAR ===
+  {
+    palavras: ['contribuo', 'como contribuir', 'doar', 'doacao', 'quero doar', 'como doar'],
+    resposta: `💰 *Como Contribuir*\n\nAcesse My Rotary > Doação e escolha:\n📗 *Fundo Anual* — subsídios\n💉 *PolioPlus* — erradicação da pólio\n🏦 *Doação Permanente* — sustentabilidade\n\n🎯 Meta: US$100/ano por rotariano (EREY)\n💵 Dólar Rotário (abril 2026): R$ 5,25\n\n🔗 Doar: https://my.rotary.org/pt/donate`
+  },
+  // === CONTATO POR TELEFONE/EMAIL/WHATSAPP ===
+  {
+    palavras: ['telefone', 'email', 'whatsapp', 'numero', 'fone', 'celular do distrito'],
+    resposta: `📞 *Canais de Contato do Distrito*\n\nPara falar com a equipe do distrito:\n🔗 Formulário: https://rotary4630.org.br/fale-conosco\n👥 Equipe: https://rotary4630.org.br/equipe-distrital\n\nCada clube tem seus próprios contatos:\n🔗 https://rotary4630.org.br/clubes\n📲 App: https://www.unyclub.com.br`
+  },
+  // === MENU / AJUDA / IDENTIDADE DO BOT ===
+  {
+    palavras: ['menu', 'ajuda', 'help', 'o que voce faz', 'quem e voce', 'o que voce sabe', 'como funciona', 'opcoes', 'o que voce pode'],
+    tipo: 'saudacao',
+    resposta: `🤖 *Assistente Digital D4630*\n\nPosso te ajudar com:\n📅 *Eventos* — "próximos eventos", "quando é o PELS?"\n🏛️ *Clubes* — "clubes de Campo Mourão", "clubes do distrito"\n🌐 *My Rotary* — "como criar conta", "esqueci a senha"\n🏆 *Metas* — "metas 2026-2027"\n🎨 *Marca* — "verificar arte"\n💰 *Fundação* — "como contribuir"\n🤝 *Participar* — "como ser rotariano"\n📞 *Contato* — "contato do distrito"\n\nDigite sua dúvida ou fale por voz! 🎤`
+  },
+  // === AGRADECIMENTO / DESPEDIDA ===
+  {
+    palavras: ['obrigado', 'obrigada', 'valeu', 'vlw', 'brigado', 'muito obrigado', 'agradeco', 'thanks', 'tchau', 'ate mais', 'ate logo'],
+    resposta: `😊 De nada, companheiro(a)! Fico feliz em ajudar.\n\nSe tiver mais dúvidas, é só perguntar!\n\n🔗 Site: https://rotary4630.org.br\n📲 UnyClub: https://www.unyclub.com.br`
+  },
+  // === NAO ENTENDI / CONVERSACIONAL ===
+  {
+    palavras: ['nao entendi', 'pode repetir', 'repete', 'como assim', 'explica melhor', 'nao compreendi', 'nao entendo'],
+    resposta: `Desculpe se não ficou claro! 😊\n\nTente reformular ou escolha um tema:\n📅 Eventos → "próximos eventos"\n🏛️ Clubes → "clubes de [sua cidade]"\n🌐 My Rotary → "como usar o My Rotary"\n📞 Contato → "contato do distrito"\n🤝 Participar → "como ser rotariano"\n\n🔗 Ou fale com a equipe: https://rotary4630.org.br/fale-conosco`
+  },
+  // === CIDADES COM CLUBE MAS SEM FAQ ESPECIFICO ===
+  {
+    palavras: ['barbosa ferraz'],
+    resposta: `🏛️ *Rotary em Barbosa Ferraz:*\n\n• Rotary Club de Barbosa Ferraz - Celeiro do Paraná (27 associados)\n\n🔗 Detalhes: https://rotary4630.org.br/clubes\n📲 App: https://www.unyclub.com.br`
+  },
+  {
+    palavras: ['borrazopolis'],
+    resposta: `🏛️ *Rotary em Borrazópolis:*\n\n• Rotary Club de Borrazópolis (24 associados)\n\n🔗 Detalhes: https://rotary4630.org.br/clubes\n📲 App: https://www.unyclub.com.br`
+  },
+  {
+    palavras: ['lunardelli'],
+    resposta: `🏛️ *Rotary em Lunardelli:*\n\n• Rotary Club de Lunardelli\n\n🔗 Detalhes: https://rotary4630.org.br/clubes\n📲 App: https://www.unyclub.com.br`
+  },
+  {
+    palavras: ['santo antonio da platina', 'santo antonio'],
+    resposta: `🏛️ *Rotary em Santo Antônio da Platina:*\n\n• Rotary Club de Santo Antônio da Platina\n\n🔗 Detalhes: https://rotary4630.org.br/clubes\n📲 App: https://www.unyclub.com.br`
+  },
+  {
+    palavras: ['brasilandia do sul', 'brasilandia'],
+    resposta: `🏛️ *Rotary/Rotaract em Brasilândia do Sul:*\n\n• Rotaract Club de Brasilândia do Sul\n\n🔗 Detalhes: https://rotary4630.org.br/clubes\n📲 App: https://www.unyclub.com.br`
   }
 ];
 
 // === CIDADES DO DISTRITO (para busca por cidade) ===
-const CIDADES_D4630 = ['campo mourao', 'maringa', 'umuarama', 'cianorte', 'loanda', 'goioere', 'paranacity', 'araruna', 'boa esperanca', 'barbosa ferraz', 'borrazopolis', 'lunardelli', 'santo antonio da platina', 'brasilandia do sul'];
+const CIDADES_D4630 = ['campo mourao', 'maringa', 'umuarama', 'cianorte', 'loanda', 'goioere', 'paranacity', 'araruna', 'boa esperanca', 'barbosa ferraz', 'borrazopolis', 'lunardelli', 'santo antonio da platina', 'santo antonio', 'brasilandia do sul', 'brasilandia'];
 
 // === CORRECAO DE TYPOS COMUNS ===
 function corrigirTypos(msg) {
   return msg
     .replace(/\bclubs\b/g, 'clubes')
+    .replace(/\bclubis\b/g, 'clubes')
     .replace(/\brotario\b/g, 'rotary')
     .replace(/\brotarios\b/g, 'rotary')
     .replace(/\brotariano\b/g, 'rotary')
+    .replace(/\brotari\b/g, 'rotary')
     .replace(/\bevento\b/g, 'eventos')
     .replace(/\binscrissao\b/g, 'inscricao')
+    .replace(/\binscrisao\b/g, 'inscricao')
     .replace(/\binscricoes\b/g, 'inscricao')
     .replace(/\bcadastrar\b/g, 'cadastro')
-    .replace(/\bfrequencia\b/g, 'frequencia')
-    .replace(/\bassembleia\b/g, 'assembleia');
+    .replace(/\bconferensia\b/g, 'conferencia')
+    .replace(/\bfaso\b/g, 'faco')
+    .replace(/\bprocsimo\b/g, 'proximo')
+    .replace(/\bproxmo\b/g, 'proximo');
 }
 
 // === BUSCA INTELIGENTE NO CACHE ===
@@ -285,7 +377,24 @@ function buscarNoCache(mensagem) {
     }
   }
 
-  // Terceiro: busca por score normal
+  // Terceiro: detectar intencao especifica (prioridade sobre match generico)
+  const intencoes = [
+    { teste: /esqueci.*(senha|login|acesso)/, palavraChave: 'esqueci senha' },
+    { teste: /nao consigo.*(acessar|entrar|login)/, palavraChave: 'nao consigo acessar' },
+    { teste: /recuperar.*(senha|acesso)/, palavraChave: 'recuperar senha' },
+    { teste: /quando.*(comeca|inicia|termina).*(ano|rotario)/, palavraChave: 'ano rotario' },
+  ];
+  for (const { teste, palavraChave } of intencoes) {
+    if (teste.test(msg)) {
+      for (const faq of FAQ_CACHE) {
+        for (const p of faq.palavras) {
+          if (p.normalize('NFD').replace(/[\u0300-\u036f]/g, '') === palavraChave) return faq;
+        }
+      }
+    }
+  }
+
+  // Quarto: busca por score normal
   let melhor = null, melhorScore = 0;
   for (const faq of FAQ_CACHE) {
     let score = 0;
