@@ -349,9 +349,10 @@ if (CLAUDE_API_KEY) {
 
 const MODELOS_FREE = [
   'google/gemma-4-31b-it:free',
+  'deepseek/deepseek-chat-v3-0324:free',
+  'meta-llama/llama-4-maverick:free',
+  'mistralai/mistral-small-3.2-24b-instruct:free',
   'nvidia/nemotron-3-super-120b-a12b:free',
-  'minimax/minimax-m2.5:free',
-  'liquid/lfm-2.5-1.2b-instruct:free',
 ];
 
 async function responderIA(mensagem, nome) {

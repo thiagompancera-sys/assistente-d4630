@@ -116,16 +116,162 @@ const FAQ_CACHE = [
   {
     palavras: ['fundacao', 'contribuicao', 'erey', 'polioplus', 'subsidio'],
     resposta: `💰 *Fundação Rotária*\n\nBraço filantrópico do Rotary International.\n\n*Tipos de contribuição:*\n📗 *Fundo Anual* — subsídios distritais e globais\n💉 *PolioPlus* — erradicação da pólio\n🏦 *Doação Permanente* — sustentabilidade\n\n🎯 Meta: *US$100/ano* por rotariano (EREY)\n\n🔗 Contribuir: https://my.rotary.org/pt/donate\n🔗 Sobre a Fundação: https://www.rotary.org/pt/about-rotary/rotary-foundation`
+  },
+  // === CLUBES POR CIDADE ===
+  {
+    palavras: ['campo mourao', 'campo mourão'],
+    resposta: `🏛️ *Clubes Rotary em Campo Mourão:*\n\n• Rotary Club de Campo Mourão (76 associados)\n• RC Campo Mourão - Fomento (21 associados)\n• RC Campo Mourão - Gralha Azul (52 associados)\n• RC Campo Mourão - Lago Azul (21 associados)\n• RC Campo Mourão - Raio de Luz (47 associados)\n\n*Rotaract:*\n• Rotaract Club de Campo Mourão\n\n*Interact:*\n• Interact Club de Campo Mourão\n\nPara dia de reunião, contato e endereço de cada clube:\n🔗 https://rotary4630.org.br/clubes\n📲 App UnyClub: https://www.unyclub.com.br`
+  },
+  {
+    palavras: ['maringa', 'maringá'],
+    resposta: `🏛️ *Clubes Rotary em Maringá:*\n\n• Rotary Club de Maringá\n• RC Maringá-Leste\n• RC Maringá-Horto\n• RC Maringá-ACIM\n• RC Maringá-Norte\n\nPara dia de reunião, contato e endereço:\n🔗 https://rotary4630.org.br/clubes\n📲 App UnyClub: https://www.unyclub.com.br`
+  },
+  {
+    palavras: ['umuarama'],
+    resposta: `🏛️ *Rotary em Umuarama:*\n\n• Rotary Club de Umuarama\n\nPara dia de reunião, contato e endereço:\n🔗 https://rotary4630.org.br/clubes\n📲 App UnyClub: https://www.unyclub.com.br`
+  },
+  {
+    palavras: ['cianorte'],
+    resposta: `🏛️ *Rotary em Cianorte:*\n\n• Rotary Club de Cianorte - Cinturão Verde\n\nPara dia de reunião, contato e endereço:\n🔗 https://rotary4630.org.br/clubes\n📲 App UnyClub: https://www.unyclub.com.br`
+  },
+  {
+    palavras: ['loanda'],
+    resposta: `🏛️ *Rotary em Loanda:*\n\n• Rotary Club de Loanda\n\nPara dia de reunião, contato e endereço:\n🔗 https://rotary4630.org.br/clubes\n📲 App UnyClub: https://www.unyclub.com.br`
+  },
+  {
+    palavras: ['goioere', 'goioerê'],
+    resposta: `🏛️ *Rotary em Goioerê:*\n\n• Rotary Club de Goioerê\n\nPara dia de reunião, contato e endereço:\n🔗 https://rotary4630.org.br/clubes\n📲 App UnyClub: https://www.unyclub.com.br`
+  },
+  {
+    palavras: ['paranacity'],
+    resposta: `🏛️ *Rotary em Paranacity:*\n\n• Rotary Club de Paranacity\n\nPara dia de reunião, contato e endereço:\n🔗 https://rotary4630.org.br/clubes\n📲 App UnyClub: https://www.unyclub.com.br`
+  },
+  {
+    palavras: ['araruna'],
+    resposta: `🏛️ *Rotary em Araruna:*\n\n• Rotary Club de Araruna (15 associados)\n\nPara dia de reunião, contato e endereço:\n🔗 https://rotary4630.org.br/clubes\n📲 App UnyClub: https://www.unyclub.com.br`
+  },
+  {
+    palavras: ['boa esperanca', 'boa esperança'],
+    resposta: `🏛️ *Rotary em Boa Esperança:*\n\n• Rotary Club de Boa Esperança (35 associados)\n\nPara dia de reunião, contato e endereço:\n🔗 https://rotary4630.org.br/clubes\n📲 App UnyClub: https://www.unyclub.com.br`
+  },
+  // === PERGUNTAS SOBRE LOCAL/HORARIO DE EVENTOS ===
+  {
+    palavras: ['onde vai ser', 'onde sera', 'local do evento', 'onde acontece', 'endereco evento', 'local pels', 'local adirc', 'local conferencia', 'local assembleia'],
+    resposta: `📍 *Local dos Eventos*\n\nO local e horário específico de cada evento é divulgado na página do evento no site do distrito.\n\nConsulte diretamente:\n🔗 Agenda com locais: https://rotary4630.org.br/agenda-distrital\n📲 Detalhes no app: https://www.unyclub.com.br\n\nOu entre em contato:\n📞 https://rotary4630.org.br/fale-conosco`
+  },
+  // === HORARIOS E REUNIOES ===
+  {
+    palavras: ['que horas', 'horario', 'hora da reuniao', 'que dia', 'dia da reuniao'],
+    resposta: `🕐 *Horários de Reunião*\n\nCada clube tem seu próprio dia e horário.\n\nPara consultar o horário do seu clube:\n🔗 https://rotary4630.org.br/clubes\n📲 App UnyClub: https://www.unyclub.com.br\n\nOu pergunte ao seu Governador Assistente:\n🔗 https://rotary4630.org.br/equipe-distrital`
+  },
+  // === INSCRICOES ===
+  {
+    palavras: ['inscricao', 'inscrever', 'como me inscrevo', 'como inscrever', 'inscricoes'],
+    resposta: `📝 *Inscrições em Eventos*\n\nPara se inscrever em eventos distritais:\n\n1. Acesse a agenda no site\n2. Selecione o evento\n3. Clique em "Inscrever-se"\n\n🔗 Agenda e inscrições: https://rotary4630.org.br/agenda-distrital\n📲 Também pelo app: https://www.unyclub.com.br`
+  },
+  // === PELS ===
+  {
+    palavras: ['pels', 'seminario lideres', 'treinamento presidente'],
+    resposta: `📚 *PELS 2026-27 — Seminário de Líderes Eleitos*\n\n📌 *11/04/2026* — OBRIGATÓRIO para presidentes eleitos\n\nTodos os 112 clubes do distrito já confirmaram inscrição!\n\nPELS = Seminário de Treinamento para Líderes Eleitos\n(inclui presidentes, secretários e demais cargos)\n\n🔗 Detalhes e local: https://rotary4630.org.br/agenda-distrital\n📲 App: https://www.unyclub.com.br`
+  },
+  // === CONFERENCIA ===
+  {
+    palavras: ['conferencia', 'sol nascente', 'conferencia distrital'],
+    resposta: `🌅 *Conferência Distrital Sol Nascente*\n\n📌 *22/05/2026* — OBRIGATÓRIO\n\nPrincipal evento do ano rotário!\n\n🔗 Detalhes e inscrição: https://rotary4630.org.br/agenda-distrital\n📲 App: https://www.unyclub.com.br`
+  },
+  // === TRANSMISSAO DE CARGO ===
+  {
+    palavras: ['transmissao', 'posse distrital', 'posse 2026'],
+    resposta: `🎖️ *Transmissão de Cargo / Posse Distrital*\n\n📌 *27/06/2026* — OBRIGATÓRIO\n\nPosse do Governador Ricardo de Oliveira (gestão 2026-2027)\nLema: *"Crie Impacto Duradouro"*\n\n🔗 Detalhes: https://rotary4630.org.br/agenda-distrital\n📲 App: https://www.unyclub.com.br`
+  },
+  // === DOLAR ROTARIO ===
+  {
+    palavras: ['dolar', 'dolar rotario', 'cotacao', 'cambio'],
+    resposta: `💵 *Dólar Rotário (abril 2026):* R$ 5,25\n\nEsse é o valor de referência para contribuições e transações em dólar no Rotary.\n\n🔗 Mais informações: https://rotary4630.org.br/fale-conosco`
+  },
+  // === LEMA ===
+  {
+    palavras: ['lema', 'tema', 'crie impacto', 'impacto duradouro'],
+    resposta: `🌟 *Lema 2026-2027:* "Crie Impacto Duradouro" (Create Lasting Impact)\n\nA ideia central: cada clube busca ser *melhor do que ele mesmo já foi*.\n\nNão é competição entre clubes — é superar seu próprio histórico!\n\n🔗 Saiba mais: https://rotary4630.org.br`
+  },
+  // === EMPRESA CIDADA ===
+  {
+    palavras: ['empresa cidada', 'empresa cidadã', 'apoiar empresa', 'patrocinio'],
+    resposta: `🏢 *Programa Empresa Cidadã*\n\nEmpresas podem apoiar projetos do Rotary!\n\n*Benefícios:*\n• Selo "Empresa Cidadã Rotary"\n• Networking com líderes\n• Visibilidade em eventos\n\n*Como participar:*\nContate o clube Rotary mais próximo.\n\n🔗 Clubes: https://rotary4630.org.br/clubes\n📞 Contato: https://rotary4630.org.br/fale-conosco`
+  },
+  // === DQA ===
+  {
+    palavras: ['dqa', 'quadro associativo', 'novos socios', 'retencao'],
+    resposta: `👥 *DQA — Desenvolvimento do Quadro Associativo*\n\nÁrea responsável por atrair e reter sócios nos clubes.\n\nDicas:\n• Convidar profissionais da comunidade\n• Oferecer experiência de visitação\n• Programas de mentoria para novos sócios\n\n🔗 Ferramentas: https://my.rotary.org/pt\n🔗 Clubes do D4630: https://rotary4630.org.br/clubes`
+  },
+  // === SUBSIDIOS ===
+  {
+    palavras: ['subsidio distrital', 'subsidio global', 'financiar projeto'],
+    resposta: `💰 *Subsídios Rotary*\n\n*Subsídio Distrital:* aprovado pelo próprio distrito, para projetos locais.\n*Subsídio Global:* maior valor, requer parceria internacional.\n\nAmbos financiados pela Fundação Rotária.\n\n🔗 Solicitar: https://my.rotary.org/pt/take-action/apply-grants\n📞 Comissão de Fundação: https://rotary4630.org.br/fale-conosco`
+  },
+  // === FREQUENCIA ===
+  {
+    palavras: ['frequencia', 'presenca', 'reposicao'],
+    resposta: `📋 *Frequência e Reposição*\n\n• O secretário do clube lança presenças pelo UnyClub ou My Rotary\n• Rotarianos podem *visitar qualquer clube do mundo* para repor frequência\n• Isso é incentivado como "intercâmbio entre clubes"\n\n📲 UnyClub: https://www.unyclub.com.br\n🌐 My Rotary: https://my.rotary.org/pt`
+  },
+  // === CLUB GENERICO (fallback para "clube", "rotary perto", etc) ===
+  {
+    palavras: ['clube perto', 'rotary perto', 'mais perto', 'qual clube', 'qual rotary', 'encontrar clube'],
+    resposta: `🔍 *Encontrar um Clube Rotary*\n\nO D4630 possui *112 clubes* no norte/noroeste do Paraná!\n\nPara encontrar o clube mais próximo de você:\n🔗 Buscar por cidade: https://rotary4630.org.br/clubes\n🌐 Pesquisa global: https://my.rotary.org/pt/search/club-finder\n📲 App UnyClub: https://www.unyclub.com.br\n\nOu me diga sua cidade que eu informo os clubes disponíveis!`
+  },
+  // === INTERACT ===
+  {
+    palavras: ['interact', 'jovens 12', 'adolescente'],
+    resposta: `🌱 *Interact — Jovens de 12 a 18 anos*\n\nO Interact é o programa do Rotary para adolescentes.\n\n• Desenvolve liderança e cidadania\n• Projetos de serviço comunitário\n• Patrocinado por um clube Rotary local\n\n🔗 Clubes Interact: https://rotary4630.org.br/clubes\n📞 Contato: https://rotary4630.org.br/fale-conosco`
+  },
+  // === ROTARACT ESPECIFICO ===
+  {
+    palavras: ['rotaract', 'jovem adulto', 'idade rotaract'],
+    resposta: `🚀 *Rotaract — A partir de 18 anos (SEM limite de idade!)*\n\nImportante: o Rotaract NÃO tem mais limite de idade superior. Antes era 18-30, agora é *a partir de 18 anos*.\n\nClubes Rotaract no D4630:\n• Rotaract Club de Brasilândia do Sul\n• Rotaract Club de Campo Mourão\n• Rotaract Club de Maringá (vários)\n\n🔗 Encontrar Rotaract: https://rotary4630.org.br/clubes\n📞 Contato: https://rotary4630.org.br/fale-conosco`
+  },
+  // === DADOS CADASTRAIS ===
+  {
+    palavras: ['atualizar dados', 'atualizar meus dados', 'cadastro', 'dados cadastrais', 'alterar email', 'meu perfil', 'meus dados'],
+    resposta: `📝 *Atualizar Dados Cadastrais*\n\n1. Acesse My Rotary > Meu Perfil\n2. Ou solicite ao secretário do seu clube\n3. No UnyClub também é possível atualizar\n\n🌐 My Rotary: https://my.rotary.org/pt\n📲 UnyClub: https://www.unyclub.com.br`
   }
 ];
 
+// === CIDADES DO DISTRITO (para busca por cidade) ===
+const CIDADES_D4630 = ['campo mourao', 'maringa', 'umuarama', 'cianorte', 'loanda', 'goioere', 'paranacity', 'araruna', 'boa esperanca', 'barbosa ferraz', 'borrazopolis', 'lunardelli', 'santo antonio da platina', 'brasilandia do sul'];
+
+// === BUSCA INTELIGENTE NO CACHE ===
 function buscarNoCache(mensagem) {
   const msg = mensagem.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+
+  // Primeiro: verificar se menciona uma cidade → prioridade maxima
+  for (const cidade of CIDADES_D4630) {
+    const cidadeNorm = cidade.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    if (msg.includes(cidadeNorm)) {
+      // Buscar FAQ especifica da cidade
+      for (const faq of FAQ_CACHE) {
+        for (const p of faq.palavras) {
+          const pNorm = p.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+          if (pNorm === cidadeNorm) return faq;
+        }
+      }
+    }
+  }
+
+  // Segundo: saudacoes curtas (match exato)
+  const saudacoes = ['oi', 'ola', 'hey', 'eae', 'eai'];
+  if (saudacoes.includes(msg) || msg.startsWith('oi ') || msg.startsWith('ola ')) {
+    for (const faq of FAQ_CACHE) {
+      if (faq.tipo === 'saudacao') return faq;
+    }
+  }
+
+  // Terceiro: busca por score normal
   let melhor = null, melhorScore = 0;
   for (const faq of FAQ_CACHE) {
     let score = 0;
     for (const p of faq.palavras) {
-      if (msg.includes(p.normalize('NFD').replace(/[\u0300-\u036f]/g, ''))) score += p.length;
+      const pNorm = p.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      if (msg.includes(pNorm)) score += pNorm.length;
     }
     if (score > melhorScore) { melhorScore = score; melhor = faq; }
   }
@@ -198,12 +344,15 @@ async function responderIA(mensagem, nome) {
   if (openrouter) {
     const modelos = [
       'google/gemma-4-31b-it:free',
-      'minimax/minimax-m2.5:free',
+      'deepseek/deepseek-chat-v3-0324:free',
+      'meta-llama/llama-4-maverick:free',
+      'mistralai/mistral-small-3.2-24b-instruct:free',
       'nvidia/nemotron-3-super-120b-a12b:free',
-      'liquid/lfm-2.5-1.2b-instruct:free',
     ];
     for (const modelo of modelos) {
       try {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 15000); // 15s timeout
         const r = await openrouter.chat.completions.create({
           model: modelo,
           max_tokens: 800,
@@ -211,14 +360,15 @@ async function responderIA(mensagem, nome) {
             { role: 'system', content: SYSTEM_PROMPT },
             { role: 'user', content: userMsg }
           ]
-        });
+        }, { signal: controller.signal });
+        clearTimeout(timeout);
         const texto = r.choices?.[0]?.message?.content;
-        if (texto) {
+        if (texto && texto.trim().length > 10) {
           metricas.gemini++;
           console.log(`✅ [OPENROUTER/${modelo.split('/')[1]}]`);
           return texto;
         }
-      } catch (e) { console.log(`[${modelo.split('/')[1]}] falhou, tentando proximo...`); }
+      } catch (e) { console.log(`[${modelo.split('/')[1]}] falhou: ${e.message?.substring(0, 60)}`); }
     }
   }
 
