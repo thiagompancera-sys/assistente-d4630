@@ -29,6 +29,7 @@ CALENDARIO DE EVENTOS 2026
 
 11/04/2026 — Seminario PELS 2026-27 (OBRIGATORIO para presidentes eleitos)
 25/04/2026 — Assembleia Distrital Interact (OBRIGATORIO)
+26/04/2026 — ADIRC - Assembleia Distrital do Rotaract (OBRIGATORIO para Rotaract)
 22/05/2026 — Conferencia Distrital Sol Nascente (OBRIGATORIO)
 27/06/2026 — Transmissao de Cargo / Posse Distrital (OBRIGATORIO)
 01/07/2026 — Inicio do Ano Rotario 2026-2027
@@ -122,6 +123,16 @@ Regras basicas:
 
 Em caso de duvida sobre aplicacao especifica, consultar a Comissao de Imagem Publica do distrito.
 
+VERIFICACAO DE ARTES E MATERIAIS:
+Se um clube quer verificar se suas artes (banners, posts, camisetas, convites) estao dentro do padrao da marca Rotary, deve:
+1. Consultar o Brand Center: brandcenter.rotary.org (templates oficiais)
+2. Verificar se o logo esta na versao correta (roda dentada + "Rotary")
+3. Verificar se as cores estao corretas (Azul #005DAA, Dourado #F7A81B)
+4. NAO adicionar efeitos, sombras ou distorcoes ao logo
+5. NAO usar logos antigos ou versoes nao-oficiais
+6. Em caso de duvida: enviar a arte para a Comissao de Imagem Publica do distrito para validacao ANTES de imprimir/publicar
+Erros comuns: logo esticado, cores erradas, fonte nao-padrao, logo muito pequeno, area de protecao invadida.
+
 ====================================
 FUNDACAO ROTARIA
 ====================================
@@ -186,14 +197,17 @@ COMO SE TORNAR ROTARIANO
 Requisitos: ser maior de idade, ter boa reputacao na comunidade e interesse em servir.
 
 Para jovens (12-18 anos): Interact
-Para jovens adultos (18-30 anos): Rotaract
+Para jovens adultos (a partir de 18 anos): Rotaract
+IMPORTANTE: O Rotaract NAO tem mais limite de idade superior. Antes era 18-30, agora eh a partir de 18 anos sem idade maxima.
 
 ====================================
 CLUBES DO DISTRITO 4630 (parcial)
 ====================================
 
+Para informacoes completas de qualquer clube (dia de reuniao, contato do presidente, endereco): consulte rotary4630.org.br/clubes ou o app UnyClub.
+
 CAMPO MOURAO:
-- Rotary Club de Campo Mourao (76 associados)
+- Rotary Club de Campo Mourao (76 associados) — Para dia de reuniao e contato: rotary4630.org.br/clubes ou UnyClub
 - Rotary Club de Campo Mourao - Fomento (21 associados)
 - Rotary Club de Campo Mourao - Gralha Azul (52 associados)
 - Rotary Club de Campo Mourao - Lago Azul (21 associados)
@@ -204,6 +218,7 @@ MARINGA (regiao):
 - Rotary Club de Maringa-Leste
 - Rotary Club de Maringa-Horto
 - Rotary Club de Maringa-ACIM
+- Rotary Club de Maringa-Norte
 
 OUTRAS CIDADES:
 - Rotary Club de Araruna (15 associados)
@@ -218,14 +233,21 @@ OUTRAS CIDADES:
 - Rotary Club de Paranacity
 - Rotary Club de Goioere
 
-ROTARACT:
+ROTARACT (a partir de 18 anos, SEM limite de idade superior):
 - Rotaract Club de Brasilandia do Sul
 - Rotaract Club de Campo Mourao
 - Rotaract Club de Maringa (varios)
 
-INTERACT:
+INTERACT (12 a 18 anos):
 - Interact Club de Campo Mourao
 - Diversos clubes em cidades do distrito
+
+COMO ENCONTRAR INFORMACOES DE UM CLUBE ESPECIFICO:
+Para saber o dia de reuniao, contato do presidente, endereco ou telefone de qualquer clube:
+1. Acesse rotary4630.org.br/clubes
+2. Busque pelo nome da cidade ou do clube
+3. Ou use o app UnyClub (www.unyclub.com.br)
+4. Ou pergunte ao Governador Assistente (GA) da sua regiao
 
 Lista completa: rotary4630.org.br/clubes (112 clubes no total)
 
@@ -266,12 +288,19 @@ CONTATOS DO DISTRITO
 Site: rotary4630.org.br
 Formulario de contato: rotary4630.org.br (menu > Contato)
 
+Contatos principais:
+- Governador 2025-2026: Celso Yoshiaki Miyamoto
+- Governador Eleito 2026-2027: Ricardo de Oliveira
+- Secretaria da Governadoria: rotary4630.org.br > Contato > Secretaria
+- GAs (Governadores Assistentes): cada regiao tem seu GA. Consulte rotary4630.org.br > Equipe > Governadores Assistentes
+
 Para duvidas especificas:
 - Imagem Publica: Comissao de Imagem Publica do distrito
 - Fundacao Rotaria: Comissao de Fundacao Rotaria
 - Financeiro/Anuidades: Tesouraria do distrito
 - Cadastro de socios: Secretaria do distrito
 - Tecnologia/UnyClub: Comissao de TI
+- Governadores Assistentes (GAs): rotary4630.org.br > Equipe
 
 ====================================
 FIM DA BASE DE CONHECIMENTO

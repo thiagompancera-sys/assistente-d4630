@@ -62,7 +62,7 @@ const FAQ_CACHE = [
   },
   {
     palavras: ['proximo evento', 'proximos eventos', 'calendario', 'quando', 'data', 'pels', 'assembleia', 'conferencia', 'transmissao', 'posse'],
-    resposta: `📅 *Próximos eventos do D4630:*\n\n• *11/04/2026* — Seminário PELS 2026-27 (OBRIGATÓRIO)\n• *25/04/2026* — Assembleia Distrital Interact (OBRIGATÓRIO)\n• *22/05/2026* — Conferência Distrital Sol Nascente (OBRIGATÓRIO)\n• *27/06/2026* — Transmissão de Cargo / Posse Distrital (OBRIGATÓRIO)\n• *01/07/2026* — Início do Ano Rotário 2026-2027\n• *27/08/2026* — Instituto Rotary do Brasil\n\nPara inscrições: rotary4630.org.br > Calendário`
+    resposta: `📅 *Próximos eventos do D4630:*\n\n• *11/04/2026* — Seminário PELS 2026-27 (OBRIGATÓRIO)\n• *25/04/2026* — Assembleia Distrital Interact (OBRIGATÓRIO)\n• *26/04/2026* — ADIRC - Assembleia Distrital Rotaract (OBRIGATÓRIO)\n• *22/05/2026* — Conferência Distrital Sol Nascente (OBRIGATÓRIO)\n• *27/06/2026* — Transmissão de Cargo / Posse Distrital (OBRIGATÓRIO)\n• *01/07/2026* — Início do Ano Rotário 2026-2027\n• *27/08/2026* — Instituto Rotary do Brasil\n\nPara inscrições: rotary4630.org.br > Calendário`
   },
   {
     palavras: ['prova quadrupla', 'teste etico', '4 perguntas'],
@@ -87,7 +87,23 @@ const FAQ_CACHE = [
   },
   {
     palavras: ['como ser', 'tornar rotariano', 'entrar', 'participar', 'interact', 'rotaract'],
-    resposta: `🤝 *Como se tornar Rotariano:*\n\n1. Encontre um clube: rotary4630.org.br/clubes\n2. Visite uma reunião (qualquer pessoa pode!)\n3. Conheça os membros e manifeste interesse\n4. O clube avalia e aprova\n5. Cerimônia de posse\n\n*Para jovens:*\n• *Interact* — 12 a 18 anos\n• *Rotaract* — 18 a 30 anos`
+    resposta: `🤝 *Como se tornar Rotariano:*\n\n1. Encontre um clube: rotary4630.org.br/clubes\n2. Visite uma reunião (qualquer pessoa pode!)\n3. Conheça os membros e manifeste interesse\n4. O clube avalia e aprova\n5. Cerimônia de posse\n\n*Para jovens:*\n• *Interact* — 12 a 18 anos\n• *Rotaract* — a partir de 18 anos (SEM limite de idade!)`
+  },
+  {
+    palavras: ['adirc', 'assembleia rotaract'],
+    resposta: `📋 *ADIRC — Assembleia Distrital do Rotaract*\n\n📌 *26/04/2026* — ADIRC\nOBRIGATÓRIO para todos os Rotaract\n\nO Rotaract agora é a partir de *18 anos*, sem limite de idade superior!\n\n🔗 Inscrições: rotary4630.org.br > Calendário`
+  },
+  {
+    palavras: ['dia reuniao', 'reuniao clube', 'contato clube', 'presidente clube', 'buscar clube'],
+    resposta: `🔍 *Buscar Informações de Clubes*\n\nPara encontrar dia de reunião, contato do presidente e endereço:\n\n1. *Site:* rotary4630.org.br/clubes\n2. *UnyClub:* www.unyclub.com.br (app iOS/Android)\n3. *My Rotary:* my.rotary.org > Pesquisa de Clubes\n\nO D4630 possui *112 clubes* no norte/noroeste do Paraná.`
+  },
+  {
+    palavras: ['arte', 'banner', 'camiseta', 'logo clube', 'verificar marca', 'imagem publica'],
+    resposta: `🎨 *Verificação de Artes e Marca*\n\nAntes de publicar ou imprimir, verifique:\n✅ Logo oficial (roda dentada + "Rotary")\n✅ Cores: Azul *#005DAA* e Dourado *#F7A81B*\n✅ Área de proteção ao redor do logo\n❌ NÃO esticar, distorcer ou alterar cores\n\n🔗 Templates: *brandcenter.rotary.org*\n📩 Dúvida? Envie a arte para a Comissão de Imagem Pública.`
+  },
+  {
+    palavras: ['contato governador', 'secretaria governadoria', 'governador assistente', 'ga distrito'],
+    resposta: `📞 *Contatos Úteis do Distrito*\n\n👔 *Governador 2025-26:* Celso Yoshiaki Miyamoto\n👔 *Governador Eleito 26-27:* Ricardo de Oliveira\n📋 *Secretaria:* rotary4630.org.br > Contato\n👥 *GAs (Gov. Assistentes):* rotary4630.org.br > Equipe`
   }
 ];
 

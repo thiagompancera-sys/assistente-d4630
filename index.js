@@ -122,6 +122,9 @@ const RESPOSTAS_MENU = {
 📌 *25/04/2026* — Assembleia Distrital Interact
     _OBRIGATORIO_
 
+📌 *26/04/2026* — ADIRC - Assembleia Distrital Rotaract
+    _OBRIGATORIO para Rotaract_
+
 📌 *22/05/2026* — Conferencia Distrital Sol Nascente
     _OBRIGATORIO_
 
@@ -253,7 +256,7 @@ A Fundacao eh o braco filantropico do Rotary.
 
 *Para jovens:*
 🔵 *Interact* — 12 a 18 anos
-🟢 *Rotaract* — 18 a 30 anos
+🟢 *Rotaract* — a partir de 18 anos (SEM limite de idade!)
 
 *Requisitos:*
 ✅ Maior de idade
@@ -498,6 +501,94 @@ Responsavel por atrair e reter socios.
 
 📌 Proximo: *PELS em 11/04/2026*
    (OBRIGATORIO — 112 clubes confirmados)
+
+━━━━━━━━━━━━━━━━━━━━━
+📲 Digite *menu* para voltar`;
+  }
+
+  // Busca por clube especifico
+  if (/dia.*reuni|reuni.*clube|contato.*clube|presidente.*clube|clube.*campo|clube.*maring|clube.*cianorte|clube.*umuarama|clube.*loanda|clube.*goioer/i.test(msg)) {
+    metricas.cache++;
+    return `🔍 *Buscar Informacoes de Clubes*
+━━━━━━━━━━━━━━━━━━━━━
+
+Para encontrar dia de reuniao, contato do presidente e endereco de qualquer clube:
+
+1️⃣ *Site:* rotary4630.org.br/clubes
+   Busque pelo nome da cidade
+
+2️⃣ *UnyClub:* www.unyclub.com.br
+   App com todos os clubes (iOS/Android)
+
+3️⃣ *My Rotary:* my.rotary.org
+   Pesquisa de Clubes > por cidade
+
+O D4630 possui *112 clubes* em cidades do norte/noroeste do Parana.
+
+📞 Duvida? Pergunte ao GA da sua regiao.
+
+━━━━━━━━━━━━━━━━━━━━━
+📲 Digite *menu* para voltar`;
+  }
+
+  // Verificacao de artes / marca
+  if (/arte|banner|camiseta|convite|logo.*clube|verificar.*marca|padrao.*visual|imagem.*publica/i.test(msg)) {
+    metricas.cache++;
+    return `🎨 *Verificacao de Artes e Marca*
+━━━━━━━━━━━━━━━━━━━━━
+
+Antes de publicar ou imprimir, verifique:
+
+✅ Logo na versao oficial (roda dentada + "Rotary")
+✅ Cores corretas: Azul *#005DAA* e Dourado *#F7A81B*
+✅ Area de protecao ao redor do logo respeitada
+✅ Nome do clube separado do logo
+
+❌ NAO esticar, distorcer ou adicionar efeitos
+❌ NAO usar logos antigos ou nao-oficiais
+❌ NAO alterar as cores
+
+🔗 Templates oficiais: *brandcenter.rotary.org*
+
+📩 Em duvida? Envie a arte para a *Comissao de Imagem Publica* do distrito antes de imprimir!
+
+━━━━━━━━━━━━━━━━━━━━━
+📲 Digite *menu* para voltar`;
+  }
+
+  // ADIRC
+  if (/adirc|assembleia.*rotaract/i.test(msg)) {
+    metricas.cache++;
+    return `📋 *ADIRC — Assembleia Distrital do Rotaract*
+━━━━━━━━━━━━━━━━━━━━━
+
+📌 *26/04/2026* — ADIRC
+   OBRIGATORIO para todos os Rotaract
+
+O Rotaract agora eh a partir de *18 anos*,
+sem limite de idade superior!
+
+🔗 Inscricoes: rotary4630.org.br > Calendario
+
+━━━━━━━━━━━━━━━━━━━━━
+📲 Digite *menu* para voltar`;
+  }
+
+  // Contatos uteis (governador, secretaria, GAs)
+  if (/contato.*governa|secretaria.*governa|ga .*distrito|governador.*assistente/i.test(msg)) {
+    metricas.cache++;
+    return `📞 *Contatos Uteis do Distrito*
+━━━━━━━━━━━━━━━━━━━━━
+
+👔 *Governador 2025-26:* Celso Yoshiaki Miyamoto
+👔 *Governador Eleito 26-27:* Ricardo de Oliveira
+
+📋 *Secretaria da Governadoria:*
+   rotary4630.org.br > Contato > Secretaria
+
+👥 *Governadores Assistentes (GAs):*
+   Cada regiao tem seu GA.
+   Consulte: rotary4630.org.br > Equipe
 
 ━━━━━━━━━━━━━━━━━━━━━
 📲 Digite *menu* para voltar`;
