@@ -56,7 +56,7 @@ function checarRate(ip) {
 
 const FAQ_CACHE = [
   {
-    palavras: ['ola', 'oi', 'bom dia', 'boa tarde', 'boa noite', 'hey', 'eae', 'eai', 'fala', 'salve'],
+    palavras: ['ola', 'oi', 'bom dia', 'boa tarde', 'boa noite', 'hey', 'eae', 'eai'],
     tipo: 'saudacao',
     resposta: `Ola, companheiro(a)! Sou o assistente digital do *Distrito 4630*.\n\nPode me perguntar sobre eventos, clubes, My Rotary, metas, marca, como se associar... o que precisar sobre o distrito, eh so mandar!`
   },
@@ -351,23 +351,43 @@ function corrigirTypos(msg) {
     .replace(/\brotariano\b/g, 'rotary')
     .replace(/\brotari\b/g, 'rotary')
     .replace(/\bevento\b/g, 'eventos')
+    .replace(/\bevetos\b/g, 'eventos')
+    .replace(/\beveto\b/g, 'eventos')
     .replace(/\binscrissao\b/g, 'inscricao')
     .replace(/\binscrisao\b/g, 'inscricao')
     .replace(/\binscricoes\b/g, 'inscricao')
     .replace(/\bcadastrar\b/g, 'cadastro')
     .replace(/\bconferensia\b/g, 'conferencia')
     .replace(/\bfaso\b/g, 'faco')
+    .replace(/\bfasso\b/g, 'faco')
     .replace(/\bprocsimo\b/g, 'proximo')
-    .replace(/\bproxmo\b/g, 'proximo');
+    .replace(/\bproxmo\b/g, 'proximo')
+    .replace(/\bprximo\b/g, 'proximo')
+    // correcoes de cidades (typos com letras extras/trocadas)
+    .replace(/\bmarinaga\b/g, 'maringa')
+    .replace(/\bmaringua\b/g, 'maringa')
+    // correcoes de verbos/palavras comuns
+    .replace(/\bentra\b/g, 'entrar')
+    .replace(/\bentr\b/g, 'entrar')
+    // "club central" sem "rotary" → adiciona contexto
+    .replace(/\bclub central\b/g, 'rotary club central');
 }
 
 // === BUSCA INTELIGENTE NO CACHE ===
 function buscarNoCache(mensagem) {
   const msg = corrigirTypos(mensagem.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim());
 
-  // Primeiro: saudacoes curtas (match exato)
-  const saudacoes = ['oi', 'ola', 'hey', 'eae', 'eai'];
-  if (saudacoes.includes(msg) || msg.startsWith('oi ') || msg.startsWith('ola ')) {
+  // Primeiro: saudacoes curtas (match exato ou prefixo reconhecido)
+  // Remove pontuacao final para comparacao (ex: "alguem ai?" → "alguem ai")
+  const msgSemPontuacao = msg.replace(/[?!.,;]+$/, '').trim();
+  // NOTA: 'fala' so eh saudacao se for a mensagem inteira ou seguida de nome (max 15 chars)
+  // Evita falso positivo: "me fala uma receita" → saudacao
+  const saudacoes = ['oi', 'ola', 'hey', 'eae', 'eai', 'opa', 'alguem ai', 'alguem', 'ola tudo bem', 'oi tudo bem'];
+  const isSaudacaoCurta = saudacoes.includes(msg) || saudacoes.includes(msgSemPontuacao);
+  const isSaudacaoPrefixo = msg.startsWith('oi ') || msg.startsWith('ola ') || msg.startsWith('opa ');
+  const isFalaSimples = msg === 'fala' || /^fala [a-z]{0,15}$/.test(msg);
+  const isSalve = msg === 'salve' || msg === 'bom dia' || msg === 'boa tarde' || msg === 'boa noite';
+  if (isSaudacaoCurta || isSaudacaoPrefixo || isFalaSimples || isSalve) {
     for (const faq of FAQ_CACHE) {
       if (faq.tipo === 'saudacao') return faq;
     }
@@ -401,24 +421,56 @@ function buscarNoCache(mensagem) {
     { teste: /esqueci.*(senha|login|acesso)/, palavraChave: 'esqueci senha' },
     { teste: /nao consigo.*(acessar|entrar|login)/, palavraChave: 'nao consigo acessar' },
     { teste: /recuperar.*(senha|acesso)/, palavraChave: 'recuperar senha' },
-    { teste: /quando.*(comeca|inicia|termina).*(ano|rotario)/, palavraChave: 'ano rotario' },
+    // ANO ROTARIO — "quando vence", "quando comeca", "quando termina"
+    { teste: /quando.*(vence|comeca|inicia|termina|acaba|encerra).*(ano|rotary)/, palavraChave: 'ano rotario' },
+    { teste: /quando.*(ano|rotary).*(comeca|inicia|termina|vence|acaba)/, palavraChave: 'ano rotario' },
+    { teste: /vence.*ano rotary/, palavraChave: 'ano rotario' },
     { teste: /assembleia.*(rotaract|adirc)/, palavraChave: 'adirc' },
     { teste: /(rotaract|adirc).*assembleia/, palavraChave: 'adirc' },
     { teste: /assembleia.*interact/, palavraChave: 'assembleia interact' },
     { teste: /interact.*assembleia/, palavraChave: 'assembleia interact' },
-    // FIX-3: "quando eh a adirc?" — redireciona para entrada ADIRC
+    // ADIRC especifico
     { teste: /quando.*(adirc|assembleia rotaract)/, palavraChave: 'adirc' },
     { teste: /(adirc|assembleia rotaract).*quando/, palavraChave: 'adirc' },
-    // FIX-4: "quando eh a conferencia?" — redireciona para entrada especifica, nao lista
-    // 'conferencia' existe tanto na LISTA-EVENTOS quanto na entrada especifica.
-    // Usar 'conferencia distrital' que so existe na entrada especifica.
+    // CONFERENCIA especifica (nao lista de eventos)
     { teste: /quando.*conferencia/, palavraChave: 'conferencia distrital' },
     { teste: /conferencia.*quando/, palavraChave: 'conferencia distrital' },
-    // 'pels' existe na LISTA-EVENTOS e na entrada PELS. Usar 'seminario lideres' (unico).
+    // "preciso ir na conferencia?" → conferencia especifica
+    { teste: /\b(preciso|devo|tenho que|vou).*(conferencia)\b/, palavraChave: 'conferencia distrital' },
+    { teste: /\b(conferencia).*(obrigatorio|preciso|devo|tenho que)\b/, palavraChave: 'conferencia distrital' },
+    // PELS especifico (nao lista de eventos)
+    // 'pels' existe na LISTA-EVENTOS e na entrada PELS — usar 'seminario lideres' (unico na entrada PELS)
     { teste: /quando.*pels/, palavraChave: 'seminario lideres' },
+    // "o pels eh obrigatorio?" → entrada PELS (nao lista)
+    { teste: /\bpels\b.*(obrigatorio|preciso|devo|tenho que|obrig)/, palavraChave: 'seminario lideres' },
+    { teste: /\b(obrigatorio|preciso|devo|tenho que)\b.*\bpels\b/, palavraChave: 'seminario lideres' },
     { teste: /quando.*transmissao/, palavraChave: 'transmissao' },
     { teste: /quando.*posse/, palavraChave: 'posse distrital' },
-    // FIX-2: "calendario de eventos", "agenda de eventos", "quando vai ter eventos"
+    // METAS / CLUB CENTRAL
+    { teste: /\b(meta|metas)\b.*(clube|club central|rotary club central)/, palavraChave: 'rotary club central' },
+    { teste: /\b(club central|rotary club central)\b/, palavraChave: 'rotary club central' },
+    // FREQUENCIA / VISITAR
+    { teste: /\b(ir|visitar|comparecer)\b.*(outro clube|clube diferente|outro rotary|outro club)/, palavraChave: 'visitar clube' },
+    { teste: /\b(posso ir)\b.*\bclube\b/, palavraChave: 'visitar clube' },
+    // PRESENCA no my rotary → frequencia (nao my rotary generico)
+    { teste: /\b(reportar|lancar|registrar)\b.*\bpresenca\b/, palavraChave: 'frequencia' },
+    { teste: /\bpresenca\b.*\b(my rotary|unyclub)\b/, palavraChave: 'frequencia' },
+    // O QUE O ROTARY FAZ → sobre o rotary
+    { teste: /o que.*(o rotary|rotary).*(faz|fez|fara)/, palavraChave: 'o que faz o rotary' },
+    // "rotary funciona" so eh sobre a missao se NAO for sobre app/sistema
+    { teste: /rotary.*(ajuda|serve|faz|significa)/, palavraChave: 'o que faz o rotary' },
+    { teste: /como.*(rotary).*(ajuda)/, palavraChave: 'o que faz o rotary' },
+    // APP com problema → UnyClub
+    { teste: /\b(app|aplicativo)\b.*(nao funciona|problema|nao abre|nao carrega|nao consigo|erro)/, palavraChave: 'unyclub' },
+    { teste: /\b(app|aplicativo)\b.*(rotary|unyclub)/, palavraChave: 'unyclub' },
+    // MARCA / COR / LOGO
+    { teste: /\b(cor|cores)\b.*(rotary|oficial)/, palavraChave: 'marca' },
+    { teste: /\b(logo|logotipo|logomarca)\b.*(rotary|pegar|baixar|usar)/, palavraChave: 'marca' },
+    { teste: /\b(pegar|baixar|onde pego)\b.*(logo|logotipo)/, palavraChave: 'marca' },
+    // JOVEM / PROGRAMA por IDADE
+    { teste: /\b(25|26|27|28|29|30|31|32|33|35|40)\b.*(anos?).*(qual|programa|rotary|entrar)/, palavraChave: 'rotaract' },
+    { teste: /\b(adulto|jovem adulto)\b.*(rotary|programa|entrar)/, palavraChave: 'rotaract' },
+    // CALENDARIO DE EVENTOS
     { teste: /calendario.*(evento|eventos)/, palavraChave: 'eventos' },
     { teste: /agenda.*(evento|eventos)/, palavraChave: 'eventos' },
     { teste: /quando.*(vai ter|tem|tera|havera).*(evento|eventos)/, palavraChave: 'eventos' },
