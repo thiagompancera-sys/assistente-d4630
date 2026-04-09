@@ -371,7 +371,7 @@ app.get('/', (req, res) => {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Assistente Digital D4630 — Rotary</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23005DAA'/><text x='50' y='68' font-size='60' font-weight='bold' fill='white' text-anchor='middle' font-family='serif'>R</text></svg>">
 <style>
   :root {
     --azul: #005DAA;
@@ -381,7 +381,7 @@ app.get('/', (req, res) => {
     --bg: #f5f6fa;
     --card: #ffffff;
     --texto: #1a1a2e;
-    --texto-soft: #555770;
+    --texto-soft: #4a4b5e;
     --bot-bg: #ffffff;
     --user-bg: #005DAA;
     --sombra: 0 2px 12px rgba(0,0,0,0.08);
@@ -409,7 +409,8 @@ app.get('/', (req, res) => {
 
   /* Category grid */
   .categories { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 8px 16px 12px; }
-  .cat-card { background: var(--card); border-radius: 14px; padding: 14px; cursor: pointer; transition: all 0.2s ease; box-shadow: var(--sombra); border: 1.5px solid transparent; display: flex; flex-direction: column; gap: 6px; }
+  .cat-card { background: var(--card); border-radius: 14px; padding: 14px; cursor: pointer; transition: all 0.2s ease; box-shadow: var(--sombra); border: 1.5px solid transparent; display: flex; flex-direction: column; gap: 6px; outline: none; }
+  .cat-card:focus-visible { border-color: var(--azul); box-shadow: 0 0 0 3px rgba(0,93,170,0.3); }
   .cat-card:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.12); border-color: var(--azul); }
   .cat-card:active { transform: scale(0.97); }
   .cat-card .icon { font-size: 24px; }
@@ -420,7 +421,8 @@ app.get('/', (req, res) => {
   .sub-section { padding: 4px 16px 8px; }
   .sub-section .label { font-size: 11px; font-weight: 600; color: var(--texto-soft); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
   .sub-pills { display: flex; flex-wrap: wrap; gap: 6px; }
-  .sub-pill { background: var(--card); border: 1px solid #e2e4ea; border-radius: 20px; padding: 6px 14px; font-size: 12px; color: var(--azul); cursor: pointer; transition: all 0.2s; font-weight: 500; }
+  .sub-pill { background: var(--card); border: 1px solid #e2e4ea; border-radius: 20px; padding: 6px 14px; font-size: 12px; color: var(--azul); cursor: pointer; transition: all 0.2s; font-weight: 500; outline: none; }
+  .sub-pill:focus-visible { border-color: var(--azul); box-shadow: 0 0 0 3px rgba(0,93,170,0.3); }
   .sub-pill:hover { background: var(--azul); color: #fff; border-color: var(--azul); }
 
   /* Messages */
@@ -441,7 +443,7 @@ app.get('/', (req, res) => {
   @keyframes bounce { 0%,60%,100% { transform: translateY(0); } 30% { transform: translateY(-8px); } }
 
   /* Back button */
-  .back-btn { align-self: flex-start; background: none; border: 1.5px solid #e2e4ea; border-radius: 20px; padding: 6px 16px; font-size: 12px; color: var(--azul); cursor: pointer; margin-bottom: 4px; font-weight: 500; transition: all 0.2s; }
+  .back-btn { align-self: flex-start; background: none; border: 1.5px solid #e2e4ea; border-radius: 20px; padding: 10px 16px; font-size: 13px; color: var(--azul); cursor: pointer; margin-bottom: 4px; font-weight: 500; transition: all 0.2s; min-height: 44px; }
   .back-btn:hover { background: var(--azul); color: #fff; border-color: var(--azul); }
 
   /* Input */
@@ -499,7 +501,7 @@ app.get('/', (req, res) => {
 <body>
 
 <div class="header">
-  <div class="logo-wrap">⚙️</div>
+  <div class="logo-wrap" style="font-weight:900;font-size:24px;color:#fff">R</div>
   <div class="info">
     <h1>Assistente D4630</h1>
     <p>Distrito 4630 — Rotary International</p>
@@ -513,48 +515,48 @@ app.get('/', (req, res) => {
 <div class="chat-area" id="chatArea">
 
   <div class="welcome" id="welcome">
-    <div class="rotary-icon">⚙️</div>
+    <div class="rotary-icon" style="font-weight:900;color:#fff;font-family:serif">R</div>
     <h2>Como posso ajudar?</h2>
     <p>Escolha um tema abaixo ou digite sua d&uacute;vida sobre o Distrito 4630</p>
   </div>
 
   <div class="categories" id="categories">
-    <div class="cat-card" onclick="enviarRapido('Pr&oacute;ximos eventos do distrito')">
+    <div class="cat-card" role="button" tabindex="0" onclick="enviarRapido('Pr&oacute;ximos eventos do distrito')">
       <span class="icon">📅</span>
       <span class="title">Calend&aacute;rio</span>
       <span class="desc">Eventos, PELS, ADIRC, Confer&ecirc;ncia</span>
     </div>
-    <div class="cat-card" onclick="enviarRapido('Como usar o My Rotary?')">
+    <div class="cat-card" role="button" tabindex="0" onclick="enviarRapido('Como usar o My Rotary?')">
       <span class="icon">🌐</span>
       <span class="title">My Rotary</span>
       <span class="desc">Portal, conta, cursos online</span>
     </div>
-    <div class="cat-card" onclick="enviarRapido('Quais as metas 2026-2027?')">
+    <div class="cat-card" role="button" tabindex="0" onclick="enviarRapido('Quais as metas 2026-2027?')">
       <span class="icon">🏆</span>
       <span class="title">Metas 26-27</span>
       <span class="desc">Rotary Club Central, premia&ccedil;&atilde;o</span>
     </div>
-    <div class="cat-card" onclick="abrirUploadArte()">
+    <div class="cat-card" role="button" tabindex="0" onclick="abrirUploadArte()">
       <span class="icon">🎨</span>
       <span class="title">Verificar Arte</span>
       <span class="desc">Envie a imagem e a IA analisa</span>
     </div>
-    <div class="cat-card" onclick="enviarRapido('Buscar informa&ccedil;&otilde;es de clubes')">
+    <div class="cat-card" role="button" tabindex="0" onclick="enviarRapido('Buscar informa&ccedil;&otilde;es de clubes')">
       <span class="icon">🔍</span>
       <span class="title">Buscar Clubes</span>
       <span class="desc">Reuni&otilde;es, contatos, presidentes</span>
     </div>
-    <div class="cat-card" onclick="enviarRapido('Contatos &uacute;teis do distrito')">
+    <div class="cat-card" role="button" tabindex="0" onclick="enviarRapido('Contatos &uacute;teis do distrito')">
       <span class="icon">📞</span>
       <span class="title">Contatos</span>
       <span class="desc">Governador, Secretaria, GAs</span>
     </div>
-    <div class="cat-card" onclick="enviarRapido('Como me tornar rotariano?')">
+    <div class="cat-card" role="button" tabindex="0" onclick="enviarRapido('Como me tornar rotariano?')">
       <span class="icon">🤝</span>
       <span class="title">Ser Rotariano</span>
       <span class="desc">Rotary, Rotaract, Interact</span>
     </div>
-    <div class="cat-card" onclick="enviarRapido('O que &eacute; a Funda&ccedil;&atilde;o Rot&aacute;ria?')">
+    <div class="cat-card" role="button" tabindex="0" onclick="enviarRapido('O que &eacute; a Funda&ccedil;&atilde;o Rot&aacute;ria?')">
       <span class="icon">💰</span>
       <span class="title">Funda&ccedil;&atilde;o</span>
       <span class="desc">Contribui&ccedil;&otilde;es, subs&iacute;dios, EREY</span>
@@ -564,12 +566,12 @@ app.get('/', (req, res) => {
   <div class="sub-section" id="subSection">
     <div class="label">Perguntas populares</div>
     <div class="sub-pills">
-      <div class="sub-pill" onclick="enviarRapido('O que &eacute; a Prova Qu&aacute;drupla?')">Prova Qu&aacute;drupla</div>
-      <div class="sub-pill" onclick="enviarRapido('&Aacute;reas de enfoque do Rotary')">7 &Aacute;reas de Enfoque</div>
-      <div class="sub-pill" onclick="enviarRapido('O que &eacute; o UnyClub?')">UnyClub</div>
-      <div class="sub-pill" onclick="enviarRapido('Quando &eacute; a ADIRC?')">ADIRC</div>
-      <div class="sub-pill" onclick="enviarRapido('Lideran&ccedil;a do distrito')">Lideran&ccedil;a</div>
-      <div class="sub-pill" onclick="enviarRapido('O que &eacute; Empresa Cidad&atilde;?')">Empresa Cidad&atilde;</div>
+      <div class="sub-pill" role="button" tabindex="0" onclick="enviarRapido('O que &eacute; a Prova Qu&aacute;drupla?')">Prova Qu&aacute;drupla</div>
+      <div class="sub-pill" role="button" tabindex="0" onclick="enviarRapido('&Aacute;reas de enfoque do Rotary')">7 &Aacute;reas de Enfoque</div>
+      <div class="sub-pill" role="button" tabindex="0" onclick="enviarRapido('O que &eacute; o UnyClub?')">UnyClub</div>
+      <div class="sub-pill" role="button" tabindex="0" onclick="enviarRapido('Quando &eacute; a ADIRC?')">ADIRC</div>
+      <div class="sub-pill" role="button" tabindex="0" onclick="enviarRapido('Lideran&ccedil;a do distrito')">Lideran&ccedil;a</div>
+      <div class="sub-pill" role="button" tabindex="0" onclick="enviarRapido('O que &eacute; Empresa Cidad&atilde;?')">Empresa Cidad&atilde;</div>
     </div>
   </div>
 
@@ -578,8 +580,8 @@ app.get('/', (req, res) => {
 
 <div class="input-area">
   <input type="text" id="input" placeholder="Pergunte sobre o Distrito 4630..." enterkeyhint="send" autocomplete="off">
-  <button id="sendBtn" onclick="enviar()">
-    <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+  <button id="sendBtn" onclick="enviar()" aria-label="Enviar mensagem">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
   </button>
 </div>
 
@@ -633,6 +635,8 @@ function addMsg(tipo, texto) {
 }
 
 function addBackBtn() {
+  const old = messages.querySelector('.back-btn');
+  if (old) old.remove();
   const btn = document.createElement('button');
   btn.className = 'back-btn';
   btn.textContent = '← Voltar ao menu';
@@ -683,7 +687,7 @@ async function enviar() {
     }
   } catch (e) {
     hideTyping();
-    addMsg('bot', 'Erro de conexao. Tente novamente em alguns segundos.');
+    addMsg('bot', 'Erro de conex\u00e3o. Tente novamente em alguns segundos.');
   }
   addBackBtn();
   sendBtn.disabled = false;
@@ -709,6 +713,13 @@ async function checkStatus() {
 }
 checkStatus();
 setInterval(checkStatus, 30000);
+
+// Keyboard support for cards and pills
+document.querySelectorAll('[role="button"]').forEach(el => {
+  el.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); el.click(); }
+  });
+});
 
 // ===== UPLOAD DE ARTE =====
 let arteBase64 = null;
