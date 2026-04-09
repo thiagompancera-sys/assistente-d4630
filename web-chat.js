@@ -58,52 +58,64 @@ const FAQ_CACHE = [
   {
     palavras: ['ola', 'oi', 'bom dia', 'boa tarde', 'boa noite', 'hey', 'eae', 'eai', 'fala', 'salve'],
     tipo: 'saudacao',
-    resposta: `Olá, companheiro(a)! 👋\n\nSou o *Assistente Digital do Distrito 4630*.\n\nPosso te ajudar com:\n📅 *Calendário* — próximos eventos e prazos\n📋 *Protocolos* — regras, marca, procedimentos\n🌐 *My Rotary* — como usar o portal\n🏆 *Metas* — Rotary Club Central\n❓ *Dúvidas gerais* — sobre o Rotary e o distrito\n\nComo posso te ajudar hoje?`
+    resposta: `Olá, companheiro(a)! 👋\n\nSou o *Assistente Digital do Distrito 4630*.\n\nPosso te ajudar com:\n📅 *Calendário* — próximos eventos e prazos\n📋 *Protocolos* — regras, marca, procedimentos\n🌐 *My Rotary* — como usar o portal\n🏆 *Metas* — Rotary Club Central\n❓ *Dúvidas gerais* — sobre o Rotary e o distrito\n\nComo posso te ajudar hoje?\n\n🔗 Site do distrito: https://rotary4630.org.br`
   },
   {
     palavras: ['proximo evento', 'proximos eventos', 'calendario', 'quando', 'data', 'pels', 'assembleia', 'conferencia', 'transmissao', 'posse'],
-    resposta: `📅 *Próximos eventos do D4630:*\n\n• *11/04/2026* — Seminário PELS 2026-27 (OBRIGATÓRIO)\n• *25/04/2026* — Assembleia Distrital Interact (OBRIGATÓRIO)\n• *26/04/2026* — ADIRC - Assembleia Distrital Rotaract (OBRIGATÓRIO)\n• *22/05/2026* — Conferência Distrital Sol Nascente (OBRIGATÓRIO)\n• *27/06/2026* — Transmissão de Cargo / Posse Distrital (OBRIGATÓRIO)\n• *01/07/2026* — Início do Ano Rotário 2026-2027\n• *27/08/2026* — Instituto Rotary do Brasil\n\nPara inscrições: rotary4630.org.br > Calendário`
+    resposta: `📅 *Próximos eventos do D4630:*\n\n• *11/04/2026* — Seminário PELS 2026-27 (OBRIGATÓRIO)\n• *25/04/2026* — Assembleia Distrital Interact (OBRIGATÓRIO)\n• *26/04/2026* — ADIRC - Assembleia Distrital Rotaract (OBRIGATÓRIO)\n• *22/05/2026* — Conferência Distrital Sol Nascente (OBRIGATÓRIO)\n• *27/06/2026* — Transmissão de Cargo / Posse Distrital (OBRIGATÓRIO)\n• *01/07/2026* — Início do Ano Rotário 2026-2027\n• *27/08/2026* — Instituto Rotary do Brasil\n\n🔗 Inscrições e detalhes: https://rotary4630.org.br\n📲 Calendário completo no UnyClub: https://www.unyclub.com.br`
   },
   {
     palavras: ['prova quadrupla', 'teste etico', '4 perguntas'],
-    resposta: `A *Prova Quádrupla* é um teste ético que rotarianos aplicam:\n\n1️⃣ É a *VERDADE*?\n2️⃣ É *JUSTO* para todos os interessados?\n3️⃣ Criará *BOA VONTADE* e *MELHORES AMIZADES*?\n4️⃣ Será *BENÉFICO* para todos os interessados?\n\nCriada pelo rotariano Herbert J. Taylor em 1932.`
+    resposta: `A *Prova Quádrupla* é um teste ético que rotarianos aplicam:\n\n1️⃣ É a *VERDADE*?\n2️⃣ É *JUSTO* para todos os interessados?\n3️⃣ Criará *BOA VONTADE* e *MELHORES AMIZADES*?\n4️⃣ Será *BENÉFICO* para todos os interessados?\n\nCriada pelo rotariano Herbert J. Taylor em 1932.\n\n🔗 Saiba mais: https://www.rotary.org/pt/guiding-principles`
   },
   {
     palavras: ['area de enfoque', 'areas de enfoque', '7 areas', 'enfoque'],
-    resposta: `As *7 Áreas de Enfoque do Rotary*:\n\n1. Consolidação da Paz e Prevenção de Conflitos\n2. Prevenção e Tratamento de Doenças\n3. Água, Saneamento e Higiene\n4. Saúde Materno-Infantil\n5. Educação Básica e Alfabetização\n6. Desenvolvimento Econômico Comunitário\n7. Meio Ambiente 🌿\n\nTodo projeto Rotary deve estar alinhado a pelo menos uma dessas áreas.`
+    resposta: `As *7 Áreas de Enfoque do Rotary*:\n\n1. Consolidação da Paz e Prevenção de Conflitos\n2. Prevenção e Tratamento de Doenças\n3. Água, Saneamento e Higiene\n4. Saúde Materno-Infantil\n5. Educação Básica e Alfabetização\n6. Desenvolvimento Econômico Comunitário\n7. Meio Ambiente 🌿\n\nTodo projeto Rotary deve estar alinhado a pelo menos uma dessas áreas.\n\n🔗 Detalhes: https://www.rotary.org/pt/our-causes`
   },
   {
     palavras: ['my rotary', 'myrotary', 'criar conta', 'registrar', 'portal'],
-    resposta: `🌐 *My Rotary* — my.rotary.org/pt\n\nComo criar conta:\n1. Acesse my.rotary.org\n2. Clique em "Registrar"\n3. Informe seu email e número de sócio\n4. Crie senha e pergunta de segurança\n5. Ative a conta pelo email\n\nFuncionalidades:\n• *Rotary Club Central* — metas do clube\n• *Central de Aprendizagem* — cursos online gratuitos\n• *Pesquisa de Clubes* — encontrar clubes por cidade`
+    resposta: `🌐 *My Rotary* — Portal do Rotariano\n\nComo criar conta:\n1. Acesse o link abaixo\n2. Clique em "Registrar"\n3. Informe seu email e número de sócio\n4. Crie senha e pergunta de segurança\n5. Ative a conta pelo email\n\nFuncionalidades:\n• *Rotary Club Central* — metas do clube\n• *Central de Aprendizagem* — cursos online gratuitos\n• *Pesquisa de Clubes* — encontrar clubes por cidade\n\n🔗 Acessar: https://my.rotary.org/pt\n📚 Cursos: https://my.rotary.org/pt/learning-reference`
   },
   {
-    palavras: ['governador', 'ricardo', 'celso'],
-    resposta: `👔 *Liderança do Distrito 4630:*\n\n• *Governador 2025-2026:* Celso Yoshiaki Miyamoto\n• *Governador Eleito 2026-2027:* Ricardo de Oliveira\n\nLema 2026-2027: *"Crie Impacto Duradouro"*\nA ideia central: cada clube busca ser melhor do que ele mesmo já foi.`
+    palavras: ['governador', 'ricardo', 'celso', 'lideranca'],
+    resposta: `👔 *Liderança do Distrito 4630:*\n\n• *Governador 2025-2026:* Celso Yoshiaki Miyamoto\n• *Governador Eleito 2026-2027:* Ricardo de Oliveira\n\nLema 2026-2027: *"Crie Impacto Duradouro"*\nA ideia central: cada clube busca ser melhor do que ele mesmo já foi.\n\n🔗 Equipe do distrito: https://rotary4630.org.br`
   },
   {
     palavras: ['anuidade', 'pagamento', 'valor', 'quanto custa', 'pagar', 'financeiro'],
     tipo: 'financeiro',
-    resposta: `💳 Questões financeiras (anuidade, pagamentos, valores) precisam ser tratadas diretamente com a *Tesouraria do Distrito*.\n\nEntre em contato pelo site: rotary4630.org.br > Contato`
+    resposta: `💳 Questões financeiras (anuidade, pagamentos, valores) precisam ser tratadas diretamente com a *Tesouraria do Distrito*.\n\n🔗 Formulário de contato: https://rotary4630.org.br\n(Selecione "Tesouraria" no formulário)`
   },
   {
     palavras: ['como ser', 'tornar rotariano', 'entrar', 'participar', 'interact', 'rotaract'],
-    resposta: `🤝 *Como se tornar Rotariano:*\n\n1. Encontre um clube: rotary4630.org.br/clubes\n2. Visite uma reunião (qualquer pessoa pode!)\n3. Conheça os membros e manifeste interesse\n4. O clube avalia e aprova\n5. Cerimônia de posse\n\n*Para jovens:*\n• *Interact* — 12 a 18 anos\n• *Rotaract* — a partir de 18 anos (SEM limite de idade!)`
+    resposta: `🤝 *Como se tornar Rotariano:*\n\n1. Encontre um clube pelo link abaixo\n2. Visite uma reunião (qualquer pessoa pode!)\n3. Conheça os membros e manifeste interesse\n4. O clube avalia e aprova\n5. Cerimônia de posse\n\n*Para jovens:*\n• *Interact* — 12 a 18 anos\n• *Rotaract* — a partir de 18 anos (SEM limite de idade!)\n\n🔗 Encontrar clubes: https://rotary4630.org.br\n🔗 Pesquisa global: https://my.rotary.org/pt/search/club-finder`
   },
   {
     palavras: ['adirc', 'assembleia rotaract'],
-    resposta: `📋 *ADIRC — Assembleia Distrital do Rotaract*\n\n📌 *26/04/2026* — ADIRC\nOBRIGATÓRIO para todos os Rotaract\n\nO Rotaract agora é a partir de *18 anos*, sem limite de idade superior!\n\n🔗 Inscrições: rotary4630.org.br > Calendário`
+    resposta: `📋 *ADIRC — Assembleia Distrital do Rotaract*\n\n📌 *26/04/2026* — ADIRC\nOBRIGATÓRIO para todos os Rotaract\n\nO Rotaract agora é a partir de *18 anos*, sem limite de idade superior!\n\n🔗 Inscrições: https://rotary4630.org.br\n📲 Pelo app: https://www.unyclub.com.br`
   },
   {
     palavras: ['dia reuniao', 'reuniao clube', 'contato clube', 'presidente clube', 'buscar clube'],
-    resposta: `🔍 *Buscar Informações de Clubes*\n\nPara encontrar dia de reunião, contato do presidente e endereço:\n\n1. *Site:* rotary4630.org.br/clubes\n2. *UnyClub:* www.unyclub.com.br (app iOS/Android)\n3. *My Rotary:* my.rotary.org > Pesquisa de Clubes\n\nO D4630 possui *112 clubes* no norte/noroeste do Paraná.`
+    resposta: `🔍 *Buscar Informações de Clubes*\n\nPara encontrar dia de reunião, contato do presidente e endereço:\n\nO D4630 possui *112 clubes* no norte/noroeste do Paraná.\n\n🔗 Buscar no site: https://rotary4630.org.br\n📲 App UnyClub: https://www.unyclub.com.br\n🌐 Pesquisa global: https://my.rotary.org/pt/search/club-finder`
   },
   {
-    palavras: ['arte', 'banner', 'camiseta', 'logo clube', 'verificar marca', 'imagem publica'],
-    resposta: `🎨 *Verificação de Artes e Marca*\n\nAntes de publicar ou imprimir, verifique:\n✅ Logo oficial (roda dentada + "Rotary")\n✅ Cores: Azul *#005DAA* e Dourado *#F7A81B*\n✅ Área de proteção ao redor do logo\n❌ NÃO esticar, distorcer ou alterar cores\n\n🔗 Templates: *brandcenter.rotary.org*\n📩 Dúvida? Envie a arte para a Comissão de Imagem Pública.`
+    palavras: ['arte', 'banner', 'camiseta', 'logo clube', 'verificar marca', 'imagem publica', 'marca'],
+    resposta: `🎨 *Verificação de Artes e Marca*\n\nAntes de publicar ou imprimir, verifique:\n✅ Logo oficial (roda dentada + "Rotary")\n✅ Cores: Azul *#005DAA* e Dourado *#F7A81B*\n✅ Área de proteção ao redor do logo\n❌ NÃO esticar, distorcer ou alterar cores\n\n🔗 Templates oficiais: https://brandcenter.rotary.org\n🔗 Guia de marca: https://my.rotary.org/pt/manage/club-district-administration/visual-identity\n📩 Dúvida? Envie a arte para a Comissão de Imagem Pública do distrito.`
   },
   {
-    palavras: ['contato governador', 'secretaria governadoria', 'governador assistente', 'ga distrito'],
-    resposta: `📞 *Contatos Úteis do Distrito*\n\n👔 *Governador 2025-26:* Celso Yoshiaki Miyamoto\n👔 *Governador Eleito 26-27:* Ricardo de Oliveira\n📋 *Secretaria:* rotary4630.org.br > Contato\n👥 *GAs (Gov. Assistentes):* rotary4630.org.br > Equipe`
+    palavras: ['contato governador', 'secretaria governadoria', 'governador assistente', 'ga distrito', 'contato distrito', 'contato'],
+    resposta: `📞 *Contatos Úteis do Distrito*\n\n👔 *Governador 2025-26:* Celso Yoshiaki Miyamoto\n👔 *Governador Eleito 26-27:* Ricardo de Oliveira\n📋 *Secretaria:* pelo site abaixo\n👥 *GAs (Gov. Assistentes):* consulte no site\n\n🔗 Contato: https://rotary4630.org.br\n🔗 Equipe distrital: https://rotary4630.org.br`
+  },
+  {
+    palavras: ['unyclub', 'uny club', 'aplicativo', 'app'],
+    resposta: `📱 *UnyClub — Plataforma de Gestão*\n\nApp para clubes e distritos Rotary:\n• Gestão de eventos e inscrições\n• Frequência de associados\n• Sistema financeiro\n• Calendário de atividades\n• Notícias do distrito\n\nDisponível para iOS e Android.\n\n🔗 Acessar: https://www.unyclub.com.br\n📧 Contato: contato@unyclub.com.br`
+  },
+  {
+    palavras: ['metas', 'rotary club central', 'meta do clube'],
+    resposta: `🏆 *Metas 2026-2027 — Rotary Club Central*\n\nAcesse pelo My Rotary > Rotary Club Central\n\n*4 áreas de metas:*\n👥 *Quadro Social* — novos sócios, retenção\n🤲 *Serviço* — projetos por área de enfoque\n💰 *Fundação Rotária* — contribuições\n📢 *Imagem Pública* — eventos, campanhas\n\n✨ Cada clube busca superar *seu próprio melhor*!\n\n🔗 Definir metas: https://my.rotary.org/pt\n(My Rotary > Rotary Club Central)`
+  },
+  {
+    palavras: ['fundacao', 'contribuicao', 'erey', 'polioplus', 'subsidio'],
+    resposta: `💰 *Fundação Rotária*\n\nBraço filantrópico do Rotary International.\n\n*Tipos de contribuição:*\n📗 *Fundo Anual* — subsídios distritais e globais\n💉 *PolioPlus* — erradicação da pólio\n🏦 *Doação Permanente* — sustentabilidade\n\n🎯 Meta: *US$100/ano* por rotariano (EREY)\n\n🔗 Contribuir: https://my.rotary.org/pt/donate\n🔗 Sobre a Fundação: https://www.rotary.org/pt/about-rotary/rotary-foundation`
   }
 ];
 
@@ -213,7 +225,7 @@ async function responderIA(mensagem, nome) {
   }
 
   metricas.erros++;
-  return 'Desculpe, não consegui processar sua pergunta. Tente novamente ou acesse rotary4630.org.br';
+  return 'Desculpe, não consegui processar sua pergunta no momento.\n\nTente uma das opções do menu ou acesse diretamente:\n\n🔗 Site do distrito: https://rotary4630.org.br\n🌐 My Rotary: https://my.rotary.org/pt\n📲 UnyClub: https://www.unyclub.com.br';
 }
 
 async function responder(mensagem, nome) {
@@ -357,7 +369,8 @@ app.post('/api/verificar-arte', async (req, res) => {
 });
 
 app.get('/api/status', (req, res) => {
-  res.json({ status: 'online', ...metricas, provedor: geminiModel ? 'Gemini (gratis)' : claude ? 'Claude' : 'nenhum' });
+  const provedor = openrouter ? 'OpenRouter (gratis)' : geminiModel ? 'Gemini (gratis)' : claude ? 'Claude' : 'nenhum';
+  res.json({ status: 'online', ...metricas, provedor });
 });
 
 // ============================================================
@@ -433,6 +446,8 @@ app.get('/', (req, res) => {
   .msg.bot b, .msg.bot strong { color: var(--azul); }
   .msg .time { font-size: 10px; color: #999; text-align: right; margin-top: 4px; }
   .msg.user .time { color: rgba(255,255,255,0.6); }
+  .msg.bot a { color: var(--azul); }
+  .msg.user a { color: #fff; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
   /* Typing */
@@ -627,6 +642,8 @@ function addMsg(tipo, texto) {
   div.className = 'msg ' + tipo;
   let html = texto.replace(/\\*([^*]+)\\*/g, '<b>\$1</b>');
   html = html.replace(/\\n/g, '<br>');
+  // Converter URLs em links clicaveis
+  html = html.replace(/(https?:\\/\\/[^\\s<]+)/g, '<a href="\$1" target="_blank" style="color:var(--azul);text-decoration:underline;word-break:break-all">\$1</a>');
   const hora = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
   div.innerHTML = html + '<div class="time">' + hora + '</div>';
   messages.appendChild(div);
