@@ -62,7 +62,7 @@ const FAQ_CACHE = [
   },
   {
     palavras: ['proximo evento', 'proximos eventos', 'eventos', 'calendario', 'quando', 'data', 'pels', 'assembleia', 'conferencia', 'transmissao', 'posse'],
-    resposta: `Os proximos eventos do distrito sao:\n\n*11/04* — PELS 2026-27 (obrigatorio para lideres eleitos)\n*25/04* — Assembleia Distrital Interact\n*26/04* — ADIRC em Marialva-PR (Rotaract)\n*22/05* — Conferencia Distrital Sol Nascente\n*27/06* — Transmissao de Cargo / Posse\n*01/07* — Inicio do Ano Rotario 2026-2027\n*27/08* — Instituto Rotary do Brasil\n\nInscricoes em rotary4630.org.br/agenda-distrital`
+    resposta: `Os próximos eventos do distrito são:\n\n*11/04* — PELS 2026-27\n*25/04* — Assembleia Distrital Interact\n*26/04* — ADIRC em Marialva-PR (Rotaract)\n*22/05* — Conferência Distrital Sol Nascente\n*27/06* — Transmissão de Cargo / Posse\n*01/07* — Início do Ano Rotário 2026-2027\n*27/08* — Instituto Rotary do Brasil\n\nInscrições pelo site: https://rotary4630.org.br`
   },
   {
     palavras: ['prova quadrupla', 'teste etico', '4 perguntas'],
@@ -157,7 +157,7 @@ const FAQ_CACHE = [
   // === PERGUNTAS SOBRE LOCAL/HORARIO DE EVENTOS ===
   {
     palavras: ['onde vai ser', 'onde sera', 'local do evento', 'onde acontece', 'endereco evento', 'local pels', 'local adirc', 'local conferencia', 'local assembleia'],
-    resposta: `Depende de qual evento! O que tenho aqui:\n\n*ADIRC* (26/04) — *Marialva-PR*\n*PELS, Conferencia e Posse* — o local especifico voce confirma em rotary4630.org.br/agenda-distrital\n\nQual evento voce quer saber?`
+    resposta: `Depende de qual evento! O que tenho aqui:\n\n*ADIRC* (26/04) — *Marialva-PR*\n*PELS, Conferência e Posse* — o local específico você confirma no site https://rotary4630.org.br\n\nQual evento você quer saber?`
   },
   // === HORARIOS E REUNIOES ===
   {
@@ -378,6 +378,13 @@ function buscarNoCache(mensagem) {
   const palavrasDeEvento = /\b(evento|eventos|calendario|agenda|pels|adirc|conferencia|assembleia|transmissao|posse|inscricao|proximo|proxima)\b/;
   const mencionaCidade = CIDADES_D4630.some(c => msg.includes(c.normalize('NFD').replace(/[\u0300-\u036f]/g, '')));
   const querEvento = palavrasDeEvento.test(msg);
+
+  // Se pergunta "onde vai ser" um evento especifico → deixar a IA responder
+  // (a IA tem o contexto completo e responde melhor que o cache generico)
+  const perguntaOnde = /\b(onde|local|endereco|localizacao)\b/.test(msg);
+  const eventoEspecifico = /\b(transmissao|posse|conferencia|sols? nascente|pels|adirc|interact|instituto)\b/.test(msg);
+  const perguntaData = /\b(dia \d|\/\d{2})\b/.test(msg);
+  if (perguntaOnde && (eventoEspecifico || perguntaData)) return null; // IA responde
 
   const intencoes = [
     { teste: /esqueci.*(senha|login|acesso)/, palavraChave: 'esqueci senha' },
