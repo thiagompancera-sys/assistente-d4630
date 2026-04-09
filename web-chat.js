@@ -62,7 +62,7 @@ const FAQ_CACHE = [
   },
   {
     palavras: ['proximo evento', 'proximos eventos', 'calendario', 'quando', 'data', 'pels', 'assembleia', 'conferencia', 'transmissao', 'posse'],
-    resposta: `📅 *Próximos eventos do D4630:*\n\n• *11/04/2026* — Seminário PELS 2026-27 (OBRIGATÓRIO)\n• *25/04/2026* — Assembleia Distrital Interact (OBRIGATÓRIO)\n• *26/04/2026* — ADIRC - Assembleia Distrital Rotaract (OBRIGATÓRIO)\n• *22/05/2026* — Conferência Distrital Sol Nascente (OBRIGATÓRIO)\n• *27/06/2026* — Transmissão de Cargo / Posse Distrital (OBRIGATÓRIO)\n• *01/07/2026* — Início do Ano Rotário 2026-2027\n• *27/08/2026* — Instituto Rotary do Brasil\n\n🔗 Inscrições e detalhes: https://rotary4630.org.br\n📲 Calendário completo no UnyClub: https://www.unyclub.com.br`
+    resposta: `📅 *Próximos eventos do D4630:*\n\n• *11/04/2026* — Seminário PELS 2026-27 (OBRIGATÓRIO)\n• *25/04/2026* — Assembleia Distrital Interact (OBRIGATÓRIO)\n• *26/04/2026* — ADIRC - Assembleia Distrital Rotaract (OBRIGATÓRIO)\n• *22/05/2026* — Conferência Distrital Sol Nascente (OBRIGATÓRIO)\n• *27/06/2026* — Transmissão de Cargo / Posse Distrital (OBRIGATÓRIO)\n• *01/07/2026* — Início do Ano Rotário 2026-2027\n• *27/08/2026* — Instituto Rotary do Brasil\n\n🔗 Agenda e inscrições: https://rotary4630.org.br/agenda-distrital\n📲 Calendário no Rotary: https://my.rotary.org/pt/news-media/calendar`
   },
   {
     palavras: ['prova quadrupla', 'teste etico', '4 perguntas'],
@@ -78,24 +78,24 @@ const FAQ_CACHE = [
   },
   {
     palavras: ['governador', 'ricardo', 'celso', 'lideranca'],
-    resposta: `👔 *Liderança do Distrito 4630:*\n\n• *Governador 2025-2026:* Celso Yoshiaki Miyamoto\n• *Governador Eleito 2026-2027:* Ricardo de Oliveira\n\nLema 2026-2027: *"Crie Impacto Duradouro"*\nA ideia central: cada clube busca ser melhor do que ele mesmo já foi.\n\n🔗 Equipe do distrito: https://rotary4630.org.br`
+    resposta: `👔 *Liderança do Distrito 4630:*\n\n• *Governador 2025-2026:* Celso Yoshiaki Miyamoto\n• *Governador Eleito 2026-2027:* Ricardo de Oliveira\n\nLema 2026-2027: *"Crie Impacto Duradouro"*\nA ideia central: cada clube busca ser melhor do que ele mesmo já foi.\n\n🔗 Equipe do distrito: https://rotary4630.org.br/equipe-distrital`
   },
   {
     palavras: ['anuidade', 'pagamento', 'valor', 'quanto custa', 'pagar', 'financeiro'],
     tipo: 'financeiro',
-    resposta: `💳 Questões financeiras (anuidade, pagamentos, valores) precisam ser tratadas diretamente com a *Tesouraria do Distrito*.\n\n🔗 Formulário de contato: https://rotary4630.org.br\n(Selecione "Tesouraria" no formulário)`
+    resposta: `💳 Questões financeiras (anuidade, pagamentos, valores) precisam ser tratadas diretamente com a *Tesouraria do Distrito*.\n\n🔗 Fale conosco: https://rotary4630.org.br/fale-conosco\n(Selecione "Tesouraria" no formulário)`
   },
   {
     palavras: ['como ser', 'tornar rotariano', 'entrar', 'participar', 'interact', 'rotaract'],
-    resposta: `🤝 *Como se tornar Rotariano:*\n\n1. Encontre um clube pelo link abaixo\n2. Visite uma reunião (qualquer pessoa pode!)\n3. Conheça os membros e manifeste interesse\n4. O clube avalia e aprova\n5. Cerimônia de posse\n\n*Para jovens:*\n• *Interact* — 12 a 18 anos\n• *Rotaract* — a partir de 18 anos (SEM limite de idade!)\n\n🔗 Encontrar clubes: https://rotary4630.org.br\n🔗 Pesquisa global: https://my.rotary.org/pt/search/club-finder`
+    resposta: `🤝 *Como se tornar Rotariano:*\n\n1. Encontre um clube pelo link abaixo\n2. Visite uma reunião (qualquer pessoa pode!)\n3. Conheça os membros e manifeste interesse\n4. O clube avalia e aprova\n5. Cerimônia de posse\n\n*Para jovens:*\n• *Interact* — 12 a 18 anos\n• *Rotaract* — a partir de 18 anos (SEM limite de idade!)\n\n🔗 Encontrar clubes: https://rotary4630.org.br/clubes\n🔗 Pesquisa global: https://my.rotary.org/pt/search/club-finder`
   },
   {
     palavras: ['adirc', 'assembleia rotaract'],
-    resposta: `📋 *ADIRC — Assembleia Distrital do Rotaract*\n\n📌 *26/04/2026* — ADIRC\nOBRIGATÓRIO para todos os Rotaract\n\nO Rotaract agora é a partir de *18 anos*, sem limite de idade superior!\n\n🔗 Inscrições: https://rotary4630.org.br\n📲 Pelo app: https://www.unyclub.com.br`
+    resposta: `📋 *ADIRC — Assembleia Distrital do Rotaract*\n\n📌 *26/04/2026* — ADIRC\nOBRIGATÓRIO para todos os Rotaract\n\nO Rotaract agora é a partir de *18 anos*, sem limite de idade superior!\n\n🔗 Inscrições e local: https://rotary4630.org.br/agenda-distrital\n📲 Pelo app: https://www.unyclub.com.br`
   },
   {
     palavras: ['dia reuniao', 'reuniao clube', 'contato clube', 'presidente clube', 'buscar clube'],
-    resposta: `🔍 *Buscar Informações de Clubes*\n\nPara encontrar dia de reunião, contato do presidente e endereço:\n\nO D4630 possui *112 clubes* no norte/noroeste do Paraná.\n\n🔗 Buscar no site: https://rotary4630.org.br\n📲 App UnyClub: https://www.unyclub.com.br\n🌐 Pesquisa global: https://my.rotary.org/pt/search/club-finder`
+    resposta: `🔍 *Buscar Informações de Clubes*\n\nPara encontrar dia de reunião, contato do presidente e endereço:\n\nO D4630 possui *112 clubes* no norte/noroeste do Paraná.\n\n🔗 Buscar no site: https://rotary4630.org.br/clubes\n📲 App UnyClub: https://www.unyclub.com.br\n🌐 Pesquisa global: https://my.rotary.org/pt/search/club-finder`
   },
   {
     palavras: ['arte', 'banner', 'camiseta', 'logo clube', 'verificar marca', 'imagem publica', 'marca'],
@@ -103,7 +103,7 @@ const FAQ_CACHE = [
   },
   {
     palavras: ['contato governador', 'secretaria governadoria', 'governador assistente', 'ga distrito', 'contato distrito', 'contato'],
-    resposta: `📞 *Contatos Úteis do Distrito*\n\n👔 *Governador 2025-26:* Celso Yoshiaki Miyamoto\n👔 *Governador Eleito 26-27:* Ricardo de Oliveira\n📋 *Secretaria:* pelo site abaixo\n👥 *GAs (Gov. Assistentes):* consulte no site\n\n🔗 Contato: https://rotary4630.org.br\n🔗 Equipe distrital: https://rotary4630.org.br`
+    resposta: `📞 *Contatos Úteis do Distrito*\n\n👔 *Governador 2025-26:* Celso Yoshiaki Miyamoto\n👔 *Governador Eleito 26-27:* Ricardo de Oliveira\n📋 *Secretaria:* pelo site abaixo\n👥 *GAs (Gov. Assistentes):* consulte no site\n\n🔗 Fale conosco: https://rotary4630.org.br/fale-conosco\n🔗 Equipe distrital: https://rotary4630.org.br/equipe-distrital`
   },
   {
     palavras: ['unyclub', 'uny club', 'aplicativo', 'app'],
@@ -111,7 +111,7 @@ const FAQ_CACHE = [
   },
   {
     palavras: ['metas', 'rotary club central', 'meta do clube'],
-    resposta: `🏆 *Metas 2026-2027 — Rotary Club Central*\n\nAcesse pelo My Rotary > Rotary Club Central\n\n*4 áreas de metas:*\n👥 *Quadro Social* — novos sócios, retenção\n🤲 *Serviço* — projetos por área de enfoque\n💰 *Fundação Rotária* — contribuições\n📢 *Imagem Pública* — eventos, campanhas\n\n✨ Cada clube busca superar *seu próprio melhor*!\n\n🔗 Definir metas: https://my.rotary.org/pt\n(My Rotary > Rotary Club Central)`
+    resposta: `🏆 *Metas 2026-2027 — Rotary Club Central*\n\nAcesse pelo My Rotary > Rotary Club Central\n\n*4 áreas de metas:*\n👥 *Quadro Social* — novos sócios, retenção\n🤲 *Serviço* — projetos por área de enfoque\n💰 *Fundação Rotária* — contribuições\n📢 *Imagem Pública* — eventos, campanhas\n\n✨ Cada clube busca superar *seu próprio melhor*!\n\n🔗 Definir metas: https://my.rotary.org/pt/secure/13011\n(My Rotary > Rotary Club Central)`
   },
   {
     palavras: ['fundacao', 'contribuicao', 'erey', 'polioplus', 'subsidio'],
@@ -139,13 +139,23 @@ function buscarNoCache(mensagem) {
 const SYSTEM_PROMPT = `Voce eh o Assistente Digital do Distrito 4630 do Rotary International.
 
 REGRAS:
-1. Responda APENAS com base no CONTEXTO abaixo. Se nao encontrar, diga: "Nao encontrei essa informacao. Vou encaminhar para a equipe do distrito."
-2. NUNCA invente datas, valores, nomes ou regras.
+1. Responda APENAS com base no CONTEXTO abaixo.
+2. NUNCA invente datas, valores, nomes, locais ou regras.
 3. Seja cordial e objetivo. Maximo 200 palavras.
 4. Use negrito com * para destaques, quebras de linha, max 2-3 emojis.
 5. Trate todos por "companheiro(a)" ou pelo nome.
-6. Se for pergunta FINANCEIRA: "Questoes financeiras precisam ser tratadas com a tesouraria."
+6. Se for pergunta FINANCEIRA: "Questoes financeiras precisam ser tratadas com a tesouraria. Contato: https://rotary4630.org.br/fale-conosco"
 7. NUNCA responda sobre assuntos fora do Rotary/Distrito 4630.
+8. Se a informacao PARCIAL estiver no contexto (ex: data de evento existe mas local nao), responda o que sabe e diga claramente o que NAO tem. Exemplo: "A ADIRC sera dia 26/04/2026. O local ainda nao esta na minha base. Consulte: https://rotary4630.org.br/agenda-distrital"
+9. Se NAO encontrar NADA sobre o assunto, diga: "Nao encontrei essa informacao na minha base. Consulte o site: https://rotary4630.org.br/fale-conosco ou pergunte ao seu Governador Assistente."
+10. SEMPRE inclua links diretos relevantes ao assunto:
+   - Eventos/calendario: https://rotary4630.org.br/agenda-distrital
+   - Buscar clubes: https://rotary4630.org.br/clubes
+   - Contato distrito: https://rotary4630.org.br/fale-conosco
+   - Equipe/GAs: https://rotary4630.org.br/equipe-distrital
+   - My Rotary: https://my.rotary.org/pt
+   - Marca/templates: https://brandcenter.rotary.org
+   - UnyClub: https://www.unyclub.com.br
 
 CONTEXTO:
 ${CONHECIMENTO}`;
@@ -225,7 +235,7 @@ async function responderIA(mensagem, nome) {
   }
 
   metricas.erros++;
-  return 'Desculpe, não consegui processar sua pergunta no momento.\n\nTente uma das opções do menu ou acesse diretamente:\n\n🔗 Site do distrito: https://rotary4630.org.br\n🌐 My Rotary: https://my.rotary.org/pt\n📲 UnyClub: https://www.unyclub.com.br';
+  return 'Desculpe, não consegui processar sua pergunta no momento.\n\nTente uma das opções do menu ou acesse diretamente:\n\n📅 Agenda: https://rotary4630.org.br/agenda-distrital\n🔍 Clubes: https://rotary4630.org.br/clubes\n📞 Contato: https://rotary4630.org.br/fale-conosco\n🌐 My Rotary: https://my.rotary.org/pt';
 }
 
 async function responder(mensagem, nome) {
