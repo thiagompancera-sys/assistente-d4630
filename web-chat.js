@@ -575,17 +575,19 @@ if (OPENROUTER_API_KEY) {
 
 async function responderIA(mensagem, nome) {
   const userMsg = `[Nome: ${nome}] ${mensagem}`;
+  const inicio = Date.now();
 
-  // Gemini direto (gratis)
+  // 1. Gemini direto (gratis, mais rapido)
   if (geminiModel) {
     try {
       const r = await geminiModel.generateContent(userMsg);
       metricas.gemini++;
+      console.log(`✅ [GEMINI] ${Date.now() - inicio}ms`);
       return r.response.text();
-    } catch (e) { console.error('[GEMINI]', e.message.substring(0, 100)); }
+    } catch (e) { console.error(`❌ [GEMINI] ${e.message?.substring(0, 100)}`); }
   }
 
-  // OpenRouter (gratis — tenta modelos em ordem de qualidade)
+  // 2. OpenRouter (gratis — tenta modelos em ordem, timeout 10s cada)
   if (openrouter) {
     const modelos = [
       'google/gemma-4-31b-it:free',
@@ -597,7 +599,7 @@ async function responderIA(mensagem, nome) {
     for (const modelo of modelos) {
       try {
         const controller = new AbortController();
-        const timeout = setTimeout(() => controller.abort(), 15000); // 15s timeout
+        const timeout = setTimeout(() => controller.abort(), 10000); // 10s timeout
         const r = await openrouter.chat.completions.create({
           model: modelo,
           max_tokens: 800,
@@ -610,14 +612,17 @@ async function responderIA(mensagem, nome) {
         const texto = r.choices?.[0]?.message?.content;
         if (texto && texto.trim().length > 10) {
           metricas.gemini++;
-          console.log(`✅ [OPENROUTER/${modelo.split('/')[1]}]`);
+          console.log(`✅ [OPENROUTER/${modelo.split('/')[1]}] ${Date.now() - inicio}ms`);
           return texto;
         }
-      } catch (e) { console.log(`[${modelo.split('/')[1]}] falhou: ${e.message?.substring(0, 60)}`); }
+      } catch (e) {
+        const motivo = e.message?.includes('429') ? 'RATE LIMIT' : e.message?.includes('abort') ? 'TIMEOUT' : e.message?.substring(0, 50);
+        console.log(`❌ [${modelo.split('/')[1]}] ${motivo}`);
+      }
     }
   }
 
-  // Claude (fallback pago)
+  // 3. Claude (fallback pago)
   if (claude) {
     try {
       const r = await claude.messages.create({
@@ -625,12 +630,14 @@ async function responderIA(mensagem, nome) {
         messages: [{ role: 'user', content: userMsg }]
       });
       metricas.claude++;
+      console.log(`✅ [CLAUDE] ${Date.now() - inicio}ms`);
       return r.content[0].text;
-    } catch (e) { console.error('[CLAUDE]', e.message?.substring(0, 100)); }
+    } catch (e) { console.error(`❌ [CLAUDE] ${e.message?.substring(0, 100)}`); }
   }
 
+  console.error(`⚠️ TODOS OS PROVEDORES FALHARAM (${Date.now() - inicio}ms) — pergunta: "${mensagem.substring(0, 80)}"`);
   metricas.erros++;
-  return 'Desculpe, estou com dificuldade para processar agora. Tenta de novo em alguns segundos, ou acessa direto rotary4630.org.br que la tem bastante coisa!';
+  return 'Não consegui processar essa pergunta agora, mas posso te ajudar com muita coisa! Tenta perguntar de outro jeito, ou acessa direto https://rotary4630.org.br';
 }
 
 async function responder(mensagem, nome) {
@@ -774,8 +781,18 @@ app.post('/api/verificar-arte', async (req, res) => {
 });
 
 app.get('/api/status', (req, res) => {
-  const provedor = openrouter ? 'OpenRouter (gratis)' : geminiModel ? 'Gemini (gratis)' : claude ? 'Claude' : 'nenhum';
-  res.json({ status: 'online', ...metricas, provedor });
+  const provedores = [];
+  if (geminiModel) provedores.push('Gemini');
+  if (openrouter) provedores.push('OpenRouter');
+  if (claude) provedores.push('Claude');
+  res.json({
+    status: 'online',
+    uptime: Math.round(process.uptime()),
+    provedores: provedores.length ? provedores : ['nenhum'],
+    faq_cache: FAQ_CACHE.length,
+    ...metricas,
+    taxa_cache: metricas.total > 0 ? Math.round((metricas.cache / metricas.total) * 100) + '%' : '0%',
+  });
 });
 
 // ============================================================
