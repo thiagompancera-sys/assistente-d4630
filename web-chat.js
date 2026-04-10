@@ -297,7 +297,8 @@ const FAQ_CACHE = [
   },
   // === AGRADECIMENTO / DESPEDIDA ===
   {
-    palavras: ['obrigado', 'obrigada', 'valeu', 'vlw', 'brigado', 'muito obrigado', 'agradeco', 'thanks', 'tchau', 'ate mais', 'ate logo'],
+    palavras: ['valeu', 'vlw', 'brigado', 'muito obrigado', 'agradeco', 'thanks', 'tchau', 'ate mais', 'ate logo'],
+    tipo: 'agradecimento',
     resposta: `De nada, companheiro(a)! Qualquer outra duvida eh so chamar.`
   },
   // === ROTARY KIDS ===
@@ -335,6 +336,16 @@ const FAQ_CACHE = [
   {
     palavras: ['brasilandia do sul', 'brasilandia'],
     resposta: `Em *Brasilândia do Sul* tem o Rotaract Club de Brasilândia do Sul. Dia de reunião e contato em rotary4630.org.br/clubes`
+  },
+  // === PIN / DISTINTIVO ===
+  {
+    palavras: ['pin', 'distintivo', 'broche', 'botton', 'boton', 'insignia', 'lapela'],
+    resposta: `O *pin* (distintivo de lapela) do Rotary é um símbolo de identificação do rotariano. Normalmente é entregue na cerimônia de posse do novo membro.\n\nSe você precisa de um pin ou quer saber sobre distintivos especiais (Paul Harris, PHF, etc.), fale com o secretário do seu clube ou acesse https://rotary4630.org.br/fale-conosco`
+  },
+  // === OBRIGATORIEDADE DE EVENTOS ===
+  {
+    palavras: ['obrigado a ir', 'preciso ir', 'sou obrigado', 'tenho que ir', 'eh obrigatorio ir', 'e obrigatorio'],
+    resposta: `Os principais eventos *obrigatórios* do distrito são:\n\n*PELS* (11/04) — obrigatório para líderes eleitos\n*Assembleia Interact* (25/04) — obrigatório para Interact\n*ADIRC* (26/04) — obrigatório para Rotaract, em Marialva-PR\n*Conferência Sol Nascente* (22/05) — obrigatório para todos\n*Transmissão de Cargo* (27/06) — obrigatório\n\nQual evento você quer saber?`
   }
 ];
 
@@ -393,6 +404,22 @@ function buscarNoCache(mensagem) {
     }
   }
 
+  // Agradecimento/despedida: so match se a mensagem eh APENAS agradecimento
+  // "obrigado"/"brigado" podem aparecer em perguntas reais ("sou obrigado a ir no pels")
+  // Entao TODOS os termos com "obrig" so fazem match se nao tem palavras de conteudo junto
+  const palavrasConteudo = /\b(pels|adirc|conferencia|evento|clube|reuniao|ir|como|onde|quando|qual|quem|rotary|distrito|fazer|inscrever|obrigatorio)\b/;
+  const temConteudo = palavrasConteudo.test(msg);
+  const despedidas = ['tchau', 'ate mais', 'ate logo'];
+  const agradecimentosSeguros = ['valeu', 'vlw', 'thanks']; // nao sao substring de outras palavras
+  const ehDespedida = despedidas.some(a => msg.includes(a));
+  const ehAgradecimentoSeguro = agradecimentosSeguros.some(a => msg.includes(a)) && !temConteudo;
+  const ehObrigadoSemConteudo = (msg.includes('obrigado') || msg.includes('obrigada') || msg.includes('brigado') || msg.includes('agradeco')) && !temConteudo;
+  if (ehDespedida || ehAgradecimentoSeguro || ehObrigadoSemConteudo) {
+    for (const faq of FAQ_CACHE) {
+      if (faq.tipo === 'agradecimento') return faq;
+    }
+  }
+
   // Segundo: detectar intencao especifica (prioridade sobre cidade e match generico)
   // Se a pessoa pergunta sobre EVENTO perto de uma cidade, a intencao eh evento, nao cidade
   const palavrasDeEvento = /\b(evento|eventos|calendario|agenda|pels|adirc|conferencia|assembleia|transmissao|posse|inscricao|proximo|proxima)\b/;
@@ -435,15 +462,15 @@ function buscarNoCache(mensagem) {
     // CONFERENCIA especifica (nao lista de eventos)
     { teste: /quando.*conferencia/, palavraChave: 'conferencia distrital' },
     { teste: /conferencia.*quando/, palavraChave: 'conferencia distrital' },
-    // "preciso ir na conferencia?" → conferencia especifica
-    { teste: /\b(preciso|devo|tenho que|vou).*(conferencia)\b/, palavraChave: 'conferencia distrital' },
-    { teste: /\b(conferencia).*(obrigatorio|preciso|devo|tenho que)\b/, palavraChave: 'conferencia distrital' },
+    // "preciso ir na conferencia?" / "sou obrigado a ir na conferencia?" → conferencia
+    { teste: /(preciso|devo|tenho que|obrigat).*conferencia/, palavraChave: 'conferencia distrital' },
+    { teste: /conferencia.*(obrigat|preciso|devo|tenho que)/, palavraChave: 'conferencia distrital' },
     // PELS especifico (nao lista de eventos)
     // 'pels' existe na LISTA-EVENTOS e na entrada PELS — usar 'seminario lideres' (unico na entrada PELS)
     { teste: /quando.*pels/, palavraChave: 'seminario lideres' },
-    // "o pels eh obrigatorio?" → entrada PELS (nao lista)
-    { teste: /\bpels\b.*(obrigatorio|preciso|devo|tenho que|obrig)/, palavraChave: 'seminario lideres' },
-    { teste: /\b(obrigatorio|preciso|devo|tenho que)\b.*\bpels\b/, palavraChave: 'seminario lideres' },
+    // "o pels eh obrigatorio?" / "sou obrigado a ir no pels" → entrada PELS (nao lista)
+    { teste: /\bpels\b.*(obrigat|preciso|devo|tenho que)/, palavraChave: 'seminario lideres' },
+    { teste: /(obrigat|preciso|devo|tenho que).*\bpels\b/, palavraChave: 'seminario lideres' },
     { teste: /quando.*transmissao/, palavraChave: 'transmissao' },
     { teste: /quando.*posse/, palavraChave: 'posse distrital' },
     // METAS / CLUB CENTRAL
@@ -480,6 +507,8 @@ function buscarNoCache(mensagem) {
     { teste: /agenda.*distrito/, palavraChave: 'eventos' },
     { teste: /evento.*(proximo|perto|proxima)/, palavraChave: 'eventos' },
     { teste: /(proximo|proxima|perto).*evento/, palavraChave: 'eventos' },
+    // OBRIGATORIEDADE generica ("sou obrigado a ir?", "eh obrigatorio?")
+    { teste: /(sou obrigad|eh obrigat|e obrigat|obrigad.*ir|preciso ir|tenho que ir)/, palavraChave: 'obrigado a ir' },
   ];
   for (const { teste, palavraChave } of intencoes) {
     if (teste.test(msg)) {
@@ -510,8 +539,10 @@ function buscarNoCache(mensagem) {
   if (mencionaCidade && querEvento) return null;
 
   // Quinto: busca por score normal
+  // Pular saudacao e agradecimento no score (ja tratados acima com logica especifica)
   let melhor = null, melhorScore = 0;
   for (const faq of FAQ_CACHE) {
+    if (faq.tipo === 'saudacao' || faq.tipo === 'agradecimento') continue;
     let score = 0;
     for (const p of faq.palavras) {
       const pNorm = p.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
