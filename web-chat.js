@@ -61,33 +61,33 @@ const FAQ_CACHE = [
     resposta: `Ola, companheiro(a)! Sou o assistente digital do *Distrito 4630*.\n\nPode me perguntar sobre eventos, clubes, My Rotary, metas, marca, como se associar... o que precisar sobre o distrito, eh so mandar!`
   },
   {
-    palavras: ['proximo evento', 'proximos eventos', 'eventos', 'calendario', 'quando', 'data', 'pels', 'assembleia', 'conferencia', 'transmissao', 'posse'],
+    palavras: ['proximo evento', 'proximo eventos', 'proximos eventos', 'eventos', 'calendario', 'quando', 'data', 'pels', 'assembleia', 'conferencia', 'transmissao', 'posse'],
     resposta: `Os próximos eventos do distrito são:\n\n*11/04* — PELS 2026-27\n*25/04* — Assembleia Distrital Interact\n*26/04* — ADIRC em Marialva-PR (Rotaract)\n*22/05* — Conferência Distrital Sol Nascente\n*27/06* — Transmissão de Cargo / Posse\n*01/07* — Início do Ano Rotário 2026-2027\n*27/08* — Instituto Rotary do Brasil\n\nInscrições pelo site: https://rotary4630.org.br`
   },
   {
     palavras: ['prova quadrupla', 'teste etico', '4 perguntas'],
-    resposta: `A *Prova Quádrupla* é um teste ético que rotarianos aplicam:\n\n1️⃣ É a *VERDADE*?\n2️⃣ É *JUSTO* para todos os interessados?\n3️⃣ Criará *BOA VONTADE* e *MELHORES AMIZADES*?\n4️⃣ Será *BENÉFICO* para todos os interessados?\n\nCriada pelo rotariano Herbert J. Taylor em 1932.\n\n🔗 Saiba mais: https://www.rotary.org/pt/guiding-principles`
+    resposta: `A *Prova Quádrupla* é um teste ético que todo rotariano aplica antes de agir ou falar:\n\n1. É a *verdade*?\n2. É *justo* para todos os interessados?\n3. Criará *boa vontade* e melhores amizades?\n4. Será *benéfico* para todos os interessados?\n\nFoi criada pelo rotariano Herbert J. Taylor em 1932. Mais em rotary.org/pt/guiding-principles`
   },
   {
     palavras: ['area de enfoque', 'areas de enfoque', '7 areas', 'enfoque'],
-    resposta: `As *7 Áreas de Enfoque do Rotary*:\n\n1. Consolidação da Paz e Prevenção de Conflitos\n2. Prevenção e Tratamento de Doenças\n3. Água, Saneamento e Higiene\n4. Saúde Materno-Infantil\n5. Educação Básica e Alfabetização\n6. Desenvolvimento Econômico Comunitário\n7. Meio Ambiente 🌿\n\nTodo projeto Rotary deve estar alinhado a pelo menos uma dessas áreas.\n\n🔗 Detalhes: https://www.rotary.org/pt/our-causes`
+    resposta: `O Rotary tem *7 áreas de enfoque*: Paz e Prevenção de Conflitos, Doenças, Água e Saneamento, Saúde Materno-Infantil, Educação e Alfabetização, Desenvolvimento Econômico e Meio Ambiente.\n\nTodo projeto do Rotary precisa estar alinhado a pelo menos uma delas. Mais detalhes em rotary.org/pt/our-causes`
   },
   {
     palavras: ['my rotary', 'myrotary', 'criar conta', 'registrar', 'portal'],
-    resposta: `🌐 *My Rotary* — Portal do Rotariano\n\nComo criar conta:\n1. Acesse o link abaixo\n2. Clique em "Registrar"\n3. Informe seu email e número de sócio\n4. Crie senha e pergunta de segurança\n5. Ative a conta pelo email\n\nFuncionalidades:\n• *Rotary Club Central* — metas do clube\n• *Central de Aprendizagem* — cursos online gratuitos\n• *Pesquisa de Clubes* — encontrar clubes por cidade\n\n🔗 Acessar: https://my.rotary.org/pt\n📚 Cursos: https://my.rotary.org/pt/learning-reference`
+    resposta: `O *My Rotary* é o portal oficial para rotarianos. Para criar conta, acesse my.rotary.org/pt, clique em "Registrar" e siga com seu email e número de sócio.\n\nLá você acessa o *Rotary Club Central* (metas do clube), cursos gratuitos pela Central de Aprendizagem e a busca de clubes por cidade.\n\nmy.rotary.org/pt`
   },
   {
     palavras: ['governador', 'ricardo', 'celso', 'lideranca'],
-    resposta: `👔 *Liderança do Distrito 4630:*\n\n• *Governador 2025-2026:* Celso Yoshiaki Miyamoto\n• *Governador Eleito 2026-2027:* Ricardo de Oliveira\n\nLema 2026-2027: *"Crie Impacto Duradouro"*\nA ideia central: cada clube busca ser melhor do que ele mesmo já foi.\n\n🔗 Equipe do distrito: https://rotary4630.org.br/equipe-distrital`
+    resposta: `O *Governador 2025-2026* é Celso Yoshiaki Miyamoto. O *Governador Eleito 2026-2027* é Ricardo de Oliveira, com o lema "Crie Impacto Duradouro".\n\nA ideia central: cada clube busca superar seu próprio histórico.\n\nEquipe completa em rotary4630.org.br/equipe-distrital`
   },
   {
     palavras: ['anuidade', 'pagamento', 'valor', 'quanto custa', 'pagar', 'financeiro'],
     tipo: 'financeiro',
-    resposta: `💳 Questões financeiras (anuidade, pagamentos, valores) precisam ser tratadas diretamente com a *Tesouraria do Distrito*.\n\n🔗 Fale conosco: https://rotary4630.org.br/fale-conosco\n(Selecione "Tesouraria" no formulário)`
+    resposta: `Questões financeiras como anuidade, pagamentos e valores precisam ser tratadas com a *Tesouraria do Distrito*. Acesse rotary4630.org.br/fale-conosco e selecione "Tesouraria" no formulário.`
   },
   {
-    palavras: ['como ser', 'tornar rotariano', 'entrar', 'participar', 'quero ser', 'quero entrar', 'quero participar', 'como faco para entrar', 'me associar', 'virar socio'],
-    resposta: `🤝 *Como se tornar Rotariano:*\n\n1. Encontre um clube pelo link abaixo\n2. Visite uma reunião (qualquer pessoa pode!)\n3. Conheça os membros e manifeste interesse\n4. O clube avalia e aprova\n5. Cerimônia de posse\n\n*Para jovens:*\n• *Interact* — 12 a 18 anos\n• *Rotaract* — a partir de 18 anos (SEM limite de idade!)\n\n🔗 Encontrar clubes: https://rotary4630.org.br/clubes\n🔗 Pesquisa global: https://my.rotary.org/pt/search/club-finder`
+    palavras: ['como ser', 'tornar rotariano', 'tornar rotary', 'como me tornar', 'entrar no rotary', 'entrar', 'participar', 'quero ser', 'quero entrar', 'quero participar', 'como faco para entrar', 'me associar', 'virar socio', 'ser rotariano', 'ser rotary'],
+    resposta: `Para se tornar rotariano, o caminho eh simples:\n\n1. Encontre um clube perto de voce em https://rotary4630.org.br/clubes\n2. Visite uma reuniao — qualquer pessoa pode!\n3. Conheca os membros e manifeste interesse\n4. O clube avalia e aprova\n5. Cerimonia de posse\n\nPara jovens: *Interact* (12 a 18 anos) e *Rotaract* (a partir de 18, sem limite de idade).`
   },
   {
     palavras: ['adirc', 'assembleia rotaract'],
@@ -95,199 +95,199 @@ const FAQ_CACHE = [
   },
   {
     palavras: ['dia reuniao', 'reuniao clube', 'contato clube', 'presidente clube', 'buscar clube'],
-    resposta: `🔍 *Buscar Informações de Clubes*\n\nPara encontrar dia de reunião, contato do presidente e endereço:\n\nO D4630 possui *112 clubes* no norte/noroeste do Paraná.\n\n🔗 Buscar no site: https://rotary4630.org.br/clubes\n📲 App UnyClub: https://www.unyclub.com.br\n🌐 Pesquisa global: https://my.rotary.org/pt/search/club-finder`
+    resposta: `Para encontrar o dia de reunião, contato do presidente e endereço de qualquer clube, o melhor caminho é o site ou o app UnyClub.\n\nSite: rotary4630.org.br/clubes\nApp: unyclub.com.br`
   },
   {
     palavras: ['arte', 'banner', 'camiseta', 'logo clube', 'verificar marca', 'imagem publica', 'marca'],
-    resposta: `🎨 *Verificação de Artes e Marca*\n\nAntes de publicar ou imprimir, verifique:\n✅ Logo oficial (roda dentada + "Rotary")\n✅ Cores: Azul *#005DAA* e Dourado *#F7A81B*\n✅ Área de proteção ao redor do logo\n❌ NÃO esticar, distorcer ou alterar cores\n\n🔗 Templates oficiais: https://brandcenter.rotary.org\n🔗 Guia de marca: https://my.rotary.org/pt/manage/club-district-administration/visual-identity\n📩 Dúvida? Envie a arte para a Comissão de Imagem Pública do distrito.`
+    resposta: `Antes de publicar ou imprimir qualquer arte do Rotary, confirme: logo oficial (roda dentada + "Rotary"), azul *#005DAA* e dourado *#F7A81B*, área de proteção ao redor do logo — e nunca esticar ou distorcer.\n\nTemplates em brandcenter.rotary.org. Dúvidas, manda pro pessoal de Imagem Pública do distrito.`
   },
   {
     palavras: ['contato governador', 'secretaria governadoria', 'governador assistente', 'governadores assistentes', 'ga distrito', 'meu ga', 'contato distrito', 'contato'],
-    resposta: `📞 *Contatos Úteis do Distrito*\n\n👔 *Governador 2025-26:* Celso Yoshiaki Miyamoto\n👔 *Governador Eleito 26-27:* Ricardo de Oliveira\n📋 *Secretaria:* pelo site abaixo\n👥 *GAs (Gov. Assistentes):* consulte no site\n\n🔗 Fale conosco: https://rotary4630.org.br/fale-conosco\n🔗 Equipe distrital: https://rotary4630.org.br/equipe-distrital`
+    resposta: `Para falar com o distrito, o melhor caminho é o formulário em rotary4630.org.br/fale-conosco.\n\nA equipe completa, incluindo os Governadores Assistentes, está em rotary4630.org.br/equipe-distrital`
   },
   {
     palavras: ['unyclub', 'uny club', 'aplicativo', 'app'],
-    resposta: `📱 *UnyClub — Plataforma de Gestão*\n\nApp para clubes e distritos Rotary:\n• Gestão de eventos e inscrições\n• Frequência de associados\n• Sistema financeiro\n• Calendário de atividades\n• Notícias do distrito\n\nDisponível para iOS e Android.\n\n🔗 Acessar: https://www.unyclub.com.br\n📧 Contato: contato@unyclub.com.br`
+    resposta: `O *UnyClub* é o app de gestão para clubes e distritos Rotary. Nele você acompanha eventos, frequência, financeiro e calendário. Disponível para iOS e Android.\n\nunyclub.com.br`
   },
   {
     palavras: ['metas', 'rotary club central', 'meta do clube'],
-    resposta: `🏆 *Metas 2026-2027 — Rotary Club Central*\n\nAcesse pelo My Rotary > Rotary Club Central\n\n*4 áreas de metas:*\n👥 *Quadro Social* — novos sócios, retenção\n🤲 *Serviço* — projetos por área de enfoque\n💰 *Fundação Rotária* — contribuições\n📢 *Imagem Pública* — eventos, campanhas\n\n✨ Cada clube busca superar *seu próprio melhor*!\n\n🔗 Definir metas: https://my.rotary.org/pt/secure/13011\n(My Rotary > Rotary Club Central)`
+    resposta: `As metas do clube ficam no *Rotary Club Central*, dentro do My Rotary. São 4 áreas: Quadro Social, Serviço, Fundação Rotária e Imagem Pública.\n\nA ideia é que cada clube supere *seu próprio histórico*. Para definir as metas: my.rotary.org/pt/secure/13011`
   },
   {
     palavras: ['fundacao', 'contribuicao', 'erey', 'polioplus', 'subsidio', 'fundo anual'],
-    resposta: `💰 *Fundação Rotária*\n\nBraço filantrópico do Rotary International.\n\n*Tipos de contribuição:*\n📗 *Fundo Anual* — subsídios distritais e globais\n💉 *PolioPlus* — erradicação da pólio\n🏦 *Doação Permanente* — sustentabilidade\n\n🎯 Meta: *US$100/ano* por rotariano (EREY)\n\n🔗 Contribuir: https://my.rotary.org/pt/donate\n🔗 Sobre a Fundação: https://www.rotary.org/pt/about-rotary/rotary-foundation`
+    resposta: `A *Fundação Rotária* é o braço filantrópico do Rotary. Você pode contribuir com o Fundo Anual (subsídios), o PolioPlus (erradicação da pólio) ou a Doação Permanente.\n\nA meta é *US$100/ano* por rotariano (EREY). Para contribuir: my.rotary.org/pt/donate`
   },
   // === CLUBES POR CIDADE ===
   {
     palavras: ['campo mourao', 'campo mourão'],
-    resposta: `🏛️ *Clubes Rotary em Campo Mourão:*\n\n• Rotary Club de Campo Mourão (76 associados)\n• RC Campo Mourão - Fomento (21 associados)\n• RC Campo Mourão - Gralha Azul (52 associados)\n• RC Campo Mourão - Lago Azul (21 associados)\n• RC Campo Mourão - Raio de Luz (47 associados)\n\n*Rotaract:*\n• Rotaract Club de Campo Mourão\n\n*Interact:*\n• Interact Club de Campo Mourão\n\nPara dia de reunião, contato e endereço de cada clube:\n🔗 https://rotary4630.org.br/clubes\n📲 App UnyClub: https://www.unyclub.com.br`
+    resposta: `Em *Campo Mourão* temos 5 clubes Rotary: Campo Mourão (76 sócios), Fomento (21), Gralha Azul (52), Lago Azul (21) e Raio de Luz (47). Tem também Rotaract e Interact!\n\nDia de reunião, contato e endereço de cada um em rotary4630.org.br/clubes`
   },
   {
     palavras: ['maringa', 'maringá'],
-    resposta: `🏛️ *Clubes Rotary em Maringá:*\n\n• Rotary Club de Maringá\n• RC Maringá-Leste\n• RC Maringá-Horto\n• RC Maringá-ACIM\n• RC Maringá-Norte\n\nPara dia de reunião, contato e endereço:\n🔗 https://rotary4630.org.br/clubes\n📲 App UnyClub: https://www.unyclub.com.br`
+    resposta: `Em *Maringá* há 5 clubes Rotary: Maringá, Maringá-Leste, Maringá-Horto, Maringá-ACIM e Maringá-Norte.\n\nDia de reunião, contato e endereço em rotary4630.org.br/clubes`
   },
   {
     palavras: ['umuarama'],
-    resposta: `🏛️ *Rotary em Umuarama:*\n\n• Rotary Club de Umuarama\n\nPara dia de reunião, contato e endereço:\n🔗 https://rotary4630.org.br/clubes\n📲 App UnyClub: https://www.unyclub.com.br`
+    resposta: `Em *Umuarama* tem o Rotary Club de Umuarama. Dia de reunião e contato em rotary4630.org.br/clubes`
   },
   {
     palavras: ['cianorte'],
-    resposta: `🏛️ *Rotary em Cianorte:*\n\n• Rotary Club de Cianorte - Cinturão Verde\n\nPara dia de reunião, contato e endereço:\n🔗 https://rotary4630.org.br/clubes\n📲 App UnyClub: https://www.unyclub.com.br`
+    resposta: `Em *Cianorte* tem o Rotary Club de Cianorte - Cinturão Verde. Dia de reunião e contato em rotary4630.org.br/clubes`
   },
   {
     palavras: ['loanda'],
-    resposta: `🏛️ *Rotary em Loanda:*\n\n• Rotary Club de Loanda\n\nPara dia de reunião, contato e endereço:\n🔗 https://rotary4630.org.br/clubes\n📲 App UnyClub: https://www.unyclub.com.br`
+    resposta: `Em *Loanda* tem o Rotary Club de Loanda. Dia de reunião e contato em rotary4630.org.br/clubes`
   },
   {
     palavras: ['goioere', 'goioerê'],
-    resposta: `🏛️ *Rotary em Goioerê:*\n\n• Rotary Club de Goioerê\n\nPara dia de reunião, contato e endereço:\n🔗 https://rotary4630.org.br/clubes\n📲 App UnyClub: https://www.unyclub.com.br`
+    resposta: `Em *Goioerê* tem o Rotary Club de Goioerê. Dia de reunião e contato em rotary4630.org.br/clubes`
   },
   {
     palavras: ['paranacity'],
-    resposta: `🏛️ *Rotary em Paranacity:*\n\n• Rotary Club de Paranacity\n\nPara dia de reunião, contato e endereço:\n🔗 https://rotary4630.org.br/clubes\n📲 App UnyClub: https://www.unyclub.com.br`
+    resposta: `Em *Paranacity* tem o Rotary Club de Paranacity. Dia de reunião e contato em rotary4630.org.br/clubes`
   },
   {
     palavras: ['araruna'],
-    resposta: `🏛️ *Rotary em Araruna:*\n\n• Rotary Club de Araruna (15 associados)\n\nPara dia de reunião, contato e endereço:\n🔗 https://rotary4630.org.br/clubes\n📲 App UnyClub: https://www.unyclub.com.br`
+    resposta: `Em *Araruna* tem o Rotary Club de Araruna (15 sócios). Dia de reunião e contato em rotary4630.org.br/clubes`
   },
   {
     palavras: ['boa esperanca', 'boa esperança'],
-    resposta: `🏛️ *Rotary em Boa Esperança:*\n\n• Rotary Club de Boa Esperança (35 associados)\n\nPara dia de reunião, contato e endereço:\n🔗 https://rotary4630.org.br/clubes\n📲 App UnyClub: https://www.unyclub.com.br`
+    resposta: `Em *Boa Esperança* tem o Rotary Club de Boa Esperança (35 sócios). Dia de reunião e contato em rotary4630.org.br/clubes`
   },
   // === PERGUNTAS SOBRE LOCAL/HORARIO DE EVENTOS ===
   {
-    palavras: ['onde vai ser', 'onde sera', 'local do evento', 'onde acontece', 'endereco evento', 'local pels', 'local adirc', 'local conferencia', 'local assembleia'],
+    palavras: ['onde vai ser', 'onde sera', 'local do evento', 'local do eventos', 'onde acontece', 'endereco evento', 'endereco eventos', 'local pels', 'local adirc', 'local conferencia', 'local assembleia'],
     resposta: `Depende de qual evento! O que tenho aqui:\n\n*ADIRC* (26/04) — *Marialva-PR*\n*PELS, Conferência e Posse* — o local específico você confirma no site https://rotary4630.org.br\n\nQual evento você quer saber?`
   },
   // === HORARIOS E REUNIOES ===
   {
     palavras: ['que horas', 'horario', 'hora da reuniao', 'que dia', 'dia da reuniao'],
-    resposta: `🕐 *Horários de Reunião*\n\nCada clube tem seu próprio dia e horário.\n\nPara consultar o horário do seu clube:\n🔗 https://rotary4630.org.br/clubes\n📲 App UnyClub: https://www.unyclub.com.br\n\nOu pergunte ao seu Governador Assistente:\n🔗 https://rotary4630.org.br/equipe-distrital`
+    resposta: `Cada clube tem seu próprio dia e horário de reunião. Para consultar o do seu clube, acesse rotary4630.org.br/clubes ou o app UnyClub (unyclub.com.br).`
   },
   // === INSCRICOES ===
   {
     palavras: ['inscricao', 'inscrever', 'como me inscrevo', 'como inscrever', 'inscricoes'],
-    resposta: `📝 *Inscrições em Eventos*\n\nPara se inscrever em eventos distritais:\n\n1. Acesse a agenda no site\n2. Selecione o evento\n3. Clique em "Inscrever-se"\n\n🔗 Agenda e inscrições: https://rotary4630.org.br/agenda-distrital\n📲 Também pelo app: https://www.unyclub.com.br`
+    resposta: `As inscrições em eventos distritais são pelo site: rotary4630.org.br/agenda-distrital\n\nSó acessar, escolher o evento e clicar em "Inscrever-se". Também dá pelo app UnyClub.`
   },
   // === PELS ===
   {
     palavras: ['pels', 'seminario lideres', 'treinamento presidente'],
-    resposta: `📚 *PELS 2026-27 — Seminário de Líderes Eleitos*\n\n📌 *11/04/2026* — OBRIGATÓRIO para presidentes eleitos\n\nTodos os 112 clubes do distrito já confirmaram inscrição!\n\nPELS = Seminário de Treinamento para Líderes Eleitos\n(inclui presidentes, secretários e demais cargos)\n\n🔗 Detalhes e local: https://rotary4630.org.br/agenda-distrital\n📲 App: https://www.unyclub.com.br`
+    resposta: `O *PELS 2026-27* (Seminário de Líderes Eleitos) é dia *11/04/2026*, obrigatório para presidentes eleitos — e todos os 112 clubes já confirmaram!\n\nInclui presidentes, secretários e demais cargos. Detalhes em rotary4630.org.br/agenda-distrital`
   },
   // === CONFERENCIA ===
   {
     palavras: ['conferencia', 'sol nascente', 'conferencia distrital'],
-    resposta: `🌅 *Conferência Distrital Sol Nascente*\n\n📌 *22/05/2026* — OBRIGATÓRIO\n\nPrincipal evento do ano rotário!\n\n🔗 Detalhes e inscrição: https://rotary4630.org.br/agenda-distrital\n📲 App: https://www.unyclub.com.br`
+    resposta: `A *Conferência Distrital Sol Nascente* é dia *22/05/2026*, obrigatória — é o principal evento do ano rotário!\n\nInscrições em rotary4630.org.br/agenda-distrital`
   },
   // === TRANSMISSAO DE CARGO ===
   {
     palavras: ['transmissao', 'posse distrital', 'posse 2026'],
-    resposta: `🎖️ *Transmissão de Cargo / Posse Distrital*\n\n📌 *27/06/2026* — OBRIGATÓRIO\n\nPosse do Governador Ricardo de Oliveira (gestão 2026-2027)\nLema: *"Crie Impacto Duradouro"*\n\n🔗 Detalhes: https://rotary4630.org.br/agenda-distrital\n📲 App: https://www.unyclub.com.br`
+    resposta: `A *Transmissão de Cargo e Posse Distrital* é dia *27/06/2026*, obrigatória. É a posse do Governador Ricardo de Oliveira para a gestão 2026-2027, com o lema "Crie Impacto Duradouro".\n\nDetalhes em rotary4630.org.br/agenda-distrital`
   },
   // === DOLAR ROTARIO ===
   {
     palavras: ['dolar', 'dolar rotario', 'cotacao', 'cambio'],
-    resposta: `💵 *Dólar Rotário (abril 2026):* R$ 5,25\n\nEsse é o valor de referência para contribuições e transações em dólar no Rotary.\n\n🔗 Mais informações: https://rotary4630.org.br/fale-conosco`
+    resposta: `O *dólar rotário* em abril de 2026 está em R$ 5,25. Esse é o valor de referência para contribuições e transações em dólar no Rotary.\n\nDúvidas em rotary4630.org.br/fale-conosco`
   },
   // === LEMA ===
   {
     palavras: ['lema', 'tema', 'crie impacto', 'impacto duradouro'],
-    resposta: `🌟 *Lema 2026-2027:* "Crie Impacto Duradouro" (Create Lasting Impact)\n\nA ideia central: cada clube busca ser *melhor do que ele mesmo já foi*.\n\nNão é competição entre clubes — é superar seu próprio histórico!\n\n🔗 Saiba mais: https://rotary4630.org.br`
+    resposta: `O lema 2026-2027 é *"Crie Impacto Duradouro"* (Create Lasting Impact). A ideia é que cada clube busque ser melhor do que ele mesmo já foi — não é competição entre clubes, é superar o próprio histórico.`
   },
   // === EMPRESA CIDADA ===
   {
     palavras: ['empresa cidada', 'empresa cidadã', 'apoiar empresa', 'patrocinio', 'patrocinador', 'parceiro', 'apoiar rotary', 'apoiar o rotary'],
-    resposta: `🏢 *Programa Empresa Cidadã*\n\nEmpresas podem apoiar projetos do Rotary!\n\n*Benefícios:*\n• Selo "Empresa Cidadã Rotary"\n• Networking com líderes\n• Visibilidade em eventos\n\n*Como participar:*\nContate o clube Rotary mais próximo.\n\n🔗 Clubes: https://rotary4630.org.br/clubes\n📞 Contato: https://rotary4630.org.br/fale-conosco`
+    resposta: `Pelo *Programa Empresa Cidadã*, empresas podem apoiar projetos do Rotary e receber o selo "Empresa Cidadã Rotary", além de networking e visibilidade em eventos.\n\nO primeiro passo é contatar o clube Rotary mais próximo: rotary4630.org.br/clubes`
   },
   // === DQA ===
   {
     palavras: ['dqa', 'quadro associativo', 'novos socios', 'retencao'],
-    resposta: `👥 *DQA — Desenvolvimento do Quadro Associativo*\n\nÁrea responsável por atrair e reter sócios nos clubes.\n\nDicas:\n• Convidar profissionais da comunidade\n• Oferecer experiência de visitação\n• Programas de mentoria para novos sócios\n\n🔗 Ferramentas: https://my.rotary.org/pt\n🔗 Clubes do D4630: https://rotary4630.org.br/clubes`
+    resposta: `O *DQA* (Desenvolvimento do Quadro Associativo) é a área focada em atrair e reter sócios nos clubes. As principais estratégias são convidar profissionais da comunidade, oferecer visitas e ter mentoria para novos sócios.\n\nFerramentas de apoio em my.rotary.org/pt`
   },
   // === SUBSIDIOS ===
   {
     palavras: ['subsidio distrital', 'subsidio global', 'financiar projeto'],
-    resposta: `💰 *Subsídios Rotary*\n\n*Subsídio Distrital:* aprovado pelo próprio distrito, para projetos locais.\n*Subsídio Global:* maior valor, requer parceria internacional.\n\nAmbos financiados pela Fundação Rotária.\n\n🔗 Solicitar: https://my.rotary.org/pt/take-action/apply-grants\n📞 Comissão de Fundação: https://rotary4630.org.br/fale-conosco`
+    resposta: `O Rotary tem dois tipos de subsídio para projetos:\n\n• *Subsídio Distrital* — aprovado pelo próprio distrito, para projetos locais\n• *Subsídio Global* — maior valor, requer parceria internacional\n\nAmbos financiados pela Fundação Rotária. Para solicitar: my.rotary.org/pt/take-action/apply-grants`
   },
   // === FREQUENCIA ===
   {
     palavras: ['frequencia', 'presenca', 'reposicao', 'visitar clube', 'visitar outro clube', 'intercambio', 'posso visitar', 'repor frequencia'],
-    resposta: `📋 *Frequência e Reposição*\n\n• O secretário do clube lança presenças pelo UnyClub ou My Rotary\n• Rotarianos podem *visitar qualquer clube do mundo* para repor frequência\n• Isso é incentivado como "intercâmbio entre clubes"\n\n📲 UnyClub: https://www.unyclub.com.br\n🌐 My Rotary: https://my.rotary.org/pt`
+    resposta: `O secretário do clube lança as presenças pelo UnyClub ou My Rotary. E uma coisa legal: rotarianos podem *visitar qualquer clube do mundo* para repor frequência — isso é incentivado como intercâmbio entre clubes.\n\nUnyClub: unyclub.com.br`
   },
   // === CLUBES DO DISTRITO (lista geral) ===
   {
     palavras: ['clubes do distrito', 'clubs do distrito', 'todos os clubes', 'lista de clubes', 'quantos clubes', 'clubes d4630', 'clubes 4630', 'quais os clubes', 'quais clubes', 'quais sao os clubes'],
-    resposta: `🏛️ *Clubes do Distrito 4630*\n\nSão *112 clubes* no norte/noroeste do Paraná!\n\nAlgumas cidades com clubes:\n• *Campo Mourão* — 5 clubes Rotary + Rotaract + Interact\n• *Maringá* — 5 clubes Rotary\n• *Umuarama, Cianorte, Goioerê, Loanda, Paranacity*\n• *Araruna, Boa Esperança, Barbosa Ferraz, Borrazópolis*\n• *Lunardelli, Santo Antônio da Platina* e mais!\n\n💡 Me diga sua *cidade* e eu listo os clubes dela!\n\n🔗 Lista completa: https://rotary4630.org.br/clubes\n🌐 Busca global: https://my.rotary.org/pt/search/club-finder\n📲 App: https://www.unyclub.com.br`
+    resposta: `O Distrito 4630 tem *112 clubes* no norte/noroeste do Paraná — Campo Mourão, Maringá, Umuarama, Cianorte, Goioerê, Loanda, Paranacity, Araruna, Boa Esperança e várias outras cidades.\n\nMe diga sua cidade que eu listo os clubes! Ou veja a lista completa em rotary4630.org.br/clubes`
   },
   // === CLUB GENERICO (fallback para "clube", "rotary perto", etc) ===
   {
     palavras: ['clube perto', 'rotary perto', 'mais perto', 'qual clube', 'qual rotary', 'encontrar clube', 'clube mais proximo'],
-    resposta: `🔍 *Encontrar um Clube Rotary*\n\nO D4630 possui *112 clubes* no norte/noroeste do Paraná!\n\nPara encontrar o clube mais próximo de você:\n🔗 Buscar por cidade: https://rotary4630.org.br/clubes\n🌐 Pesquisa global: https://my.rotary.org/pt/search/club-finder\n📲 App UnyClub: https://www.unyclub.com.br\n\nOu me diga sua cidade que eu informo os clubes disponíveis!`
+    resposta: `Para encontrar o clube mais próximo, me diga sua cidade que eu listo! Ou você mesmo busca em rotary4630.org.br/clubes\n\nO D4630 tem *112 clubes* no norte/noroeste do Paraná.`
   },
   // === INTERACT ===
   {
     palavras: ['interact', 'jovens 12', 'adolescente'],
-    resposta: `🌱 *Interact — Jovens de 12 a 18 anos*\n\nO Interact é o programa do Rotary para adolescentes.\n\n• Desenvolve liderança e cidadania\n• Projetos de serviço comunitário\n• Patrocinado por um clube Rotary local\n\n🔗 Clubes Interact: https://rotary4630.org.br/clubes\n📞 Contato: https://rotary4630.org.br/fale-conosco`
+    resposta: `O *Interact* é o programa do Rotary para jovens de *12 a 18 anos*. Desenvolve liderança e cidadania por meio de projetos comunitários, e cada clube Interact é patrocinado por um clube Rotary local.\n\nPara encontrar um Interact: rotary4630.org.br/clubes`
   },
   // === ROTARACT ESPECIFICO ===
   {
     palavras: ['rotaract', 'jovem adulto', 'idade rotaract'],
-    resposta: `🚀 *Rotaract — A partir de 18 anos (SEM limite de idade!)*\n\nImportante: o Rotaract NÃO tem mais limite de idade superior. Antes era 18-30, agora é *a partir de 18 anos*.\n\nClubes Rotaract no D4630:\n• Rotaract Club de Brasilândia do Sul\n• Rotaract Club de Campo Mourão\n• Rotaract Club de Maringá (vários)\n\n🔗 Encontrar Rotaract: https://rotary4630.org.br/clubes\n📞 Contato: https://rotary4630.org.br/fale-conosco`
+    resposta: `O *Rotaract* é a partir de *18 anos*, sem limite de idade superior — isso mudou! Antes era 18-30, agora não tem teto.\n\nNo D4630 temos Rotaract em Brasilândia do Sul, Campo Mourão, Maringá e outras cidades. Para encontrar: rotary4630.org.br/clubes`
   },
   // === DADOS CADASTRAIS ===
   {
     palavras: ['atualizar dados', 'atualizar meus dados', 'cadastro', 'dados cadastrais', 'alterar email', 'meu perfil', 'meus dados'],
-    resposta: `📝 *Atualizar Dados Cadastrais*\n\n1. Acesse My Rotary > Meu Perfil\n2. Ou solicite ao secretário do seu clube\n3. No UnyClub também é possível atualizar\n\n🌐 My Rotary: https://my.rotary.org/pt\n📲 UnyClub: https://www.unyclub.com.br`
+    resposta: `Para atualizar seus dados cadastrais, acesse My Rotary > Meu Perfil (my.rotary.org/pt). Também é possível pelo UnyClub ou pedindo ao secretário do seu clube.`
   },
   // === O QUE E O ROTARY (pergunta mais basica) ===
   {
     palavras: ['o que e o rotary', 'o que e rotary', 'o que faz o rotary', 'missao do rotary', 'visao do rotary', 'valores do rotary', 'sobre o rotary', 'o que significa rotary'],
-    resposta: `🌍 *O que é o Rotary?*\n\n*Missão:* Prestar serviços, promover integridade e fomentar compreensão, boa vontade e paz entre os povos.\n\n*Visão:* Juntos, vemos um mundo em que as pessoas se unem para promover mudanças duradouras.\n\nO Rotary tem *7 áreas de enfoque* e está presente em mais de 200 países!\n\nO *Distrito 4630* abrange o norte/noroeste do Paraná, com *112 clubes*.\n\n🔗 Saiba mais: https://www.rotary.org/pt\n🔗 Distrito 4630: https://rotary4630.org.br`
+    resposta: `O Rotary é uma organização de serviço presente em mais de 200 países. A missão é prestar serviços, promover integridade e fomentar boa vontade e paz entre os povos.\n\nO *Distrito 4630* abrange o norte/noroeste do Paraná, com *112 clubes*. Saiba mais em rotary.org/pt`
   },
   // === O QUE E O DISTRITO 4630 ===
   {
     palavras: ['o que e o distrito', 'distrito 4630', 'que cidades', 'quais cidades', 'abrangencia', 'norte do parana', 'noroeste do parana', 'onde fica o distrito'],
-    resposta: `📍 *Distrito 4630*\n\nAbrange municípios do *norte e noroeste do Paraná*, Brasil.\n\n• *112 clubes* (Rotary, Rotaract, Interact e Rotary Kids)\n• Governador 2025-26: Celso Yoshiaki Miyamoto\n• Governador Eleito 26-27: Ricardo de Oliveira\n\nCidades: Campo Mourão, Maringá, Umuarama, Cianorte, Goioerê, Loanda, Paranacity, Araruna e muitas mais!\n\n🔗 Site: https://rotary4630.org.br\n🔗 Clubes: https://rotary4630.org.br/clubes`
+    resposta: `O *Distrito 4630* abrange o norte e noroeste do Paraná, com *112 clubes* entre Rotary, Rotaract, Interact e Rotary Kids.\n\nCidades: Campo Mourão, Maringá, Umuarama, Cianorte, Goioerê, Loanda e muitas mais. Governador 2025-26: Celso Yoshiaki Miyamoto. Governador eleito 26-27: Ricardo de Oliveira.\n\nrotary4630.org.br`
   },
   // === ANO ROTARIO ===
   {
     palavras: ['ano rotario', 'quando comeca o ano', 'quando termina o ano', 'inicio do ano rotario', 'julho rotary', 'comeca o ano'],
-    resposta: `📆 *Ano Rotário*\n\nO ano rotário vai de *1º de julho* a *30 de junho* do ano seguinte.\n\nAno 2026-2027: *01/07/2026* a *30/06/2027*\nLema: *"Crie Impacto Duradouro"*\nGovernador: Ricardo de Oliveira`
+    resposta: `O ano rotário vai de *1º de julho* a *30 de junho* do ano seguinte. O próximo (2026-2027) começa em 01/07/2026, com o lema "Crie Impacto Duradouro" e o Governador Ricardo de Oliveira.`
   },
   // === PETS / SETS ===
   {
     palavras: ['pets', 'sets', 'diferenca pets sets pels', 'treinamento secretario', 'o que e pets', 'o que e sets', 'seminario presidente', 'seminario secretario'],
-    resposta: `📚 *PETS, SETS e PELS*\n\n• *PETS* = Seminário para Presidentes Eleitos\n• *SETS* = Seminário para Secretários Eleitos\n• *PELS* = Seminário para Líderes Eleitos (inclui todos os cargos)\n\n📌 *PELS 2026-27:* 11/04/2026 (OBRIGATÓRIO)\nTodos os 112 clubes já confirmaram inscrição!\n\n🔗 Detalhes: https://rotary4630.org.br/agenda-distrital`
+    resposta: `São treinamentos de início de gestão:\n• *PETS* — para presidentes eleitos\n• *SETS* — para secretários eleitos\n• *PELS* — para líderes eleitos em geral (inclui todos os cargos)\n\nO *PELS 2026-27* é dia *11/04/2026*, obrigatório, e todos os 112 clubes já confirmaram. Detalhes em rotary4630.org.br/agenda-distrital`
   },
   // === ASSEMBLEIA INTERACT ===
   {
-    palavras: ['assembleia interact', 'assembleia distrital interact', 'evento interact'],
-    resposta: `🌱 *Assembleia Distrital Interact*\n\n📌 *25/04/2026* — OBRIGATÓRIO para Interact\n\nO Interact é para jovens de *12 a 18 anos*.\n\n🔗 Detalhes e inscrição: https://rotary4630.org.br/agenda-distrital\n📲 App: https://www.unyclub.com.br`
+    palavras: ['assembleia interact', 'assembleia distrital interact', 'evento interact', 'eventos interact'],
+    resposta: `A *Assembleia Distrital Interact* é dia *25/04/2026*, obrigatória para os clubes Interact (jovens de 12 a 18 anos).\n\nInscrições em rotary4630.org.br/agenda-distrital`
   },
   // === INSTITUTO ROTARY ===
   {
     palavras: ['instituto rotary', 'instituto rotary brasil', 'instituto agosto'],
-    resposta: `🎓 *Instituto Rotary do Brasil*\n\n📌 *27/08/2026*\n\nEvento nacional de capacitação e networking para rotarianos.\n\n🔗 Mais informações: https://rotary4630.org.br/agenda-distrital`
+    resposta: `O *Instituto Rotary do Brasil* é dia *27/08/2026* — evento nacional de capacitação e networking para rotarianos. Mais em rotary4630.org.br/agenda-distrital`
   },
   // === SENHA / PROBLEMAS DE ACESSO ===
   {
     palavras: ['esqueci senha', 'esqueci minha senha', 'recuperar senha', 'nao consigo acessar', 'senha my rotary', 'resetar senha', 'problema login', 'nao consigo entrar', 'esqueci a senha'],
-    resposta: `🔑 *Problemas de Acesso ao My Rotary?*\n\n1. Acesse my.rotary.org\n2. Clique em "Esqueceu a senha?"\n3. Informe seu email cadastrado\n4. Siga as instruções no email\n\nSe não funcionar, contate o secretário do seu clube.\n\n🔗 My Rotary: https://my.rotary.org/pt\n📞 Ajuda: https://rotary4630.org.br/fale-conosco`
+    resposta: `Para recuperar a senha do My Rotary: acesse my.rotary.org/pt, clique em "Esqueceu a senha?", informe seu email e siga as instruções.\n\nSe não funcionar, o secretário do seu clube pode ajudar.`
   },
   // === CURSOS ONLINE ===
   {
     palavras: ['cursos', 'curso online', 'central de aprendizagem', 'aprender', 'treinamento online', 'capacitacao'],
-    resposta: `📚 *Cursos Online Gratuitos*\n\nO Rotary oferece cursos pela Central de Aprendizagem:\n\n• Liderança\n• Fundação Rotária\n• Quadro Social\n• Projetos de serviço\n\nTodos gratuitos e com certificado!\n\n🔗 Acessar: https://my.rotary.org/pt/learning-reference`
+    resposta: `O Rotary oferece cursos online gratuitos com certificado pela Central de Aprendizagem — liderança, Fundação Rotária, quadro social, projetos de serviço e mais.\n\nAcesse pelo My Rotary: my.rotary.org/pt/learning-reference`
   },
   // === COMO CONTRIBUIR / DOAR ===
   {
     palavras: ['contribuo', 'como contribuir', 'doar', 'doacao', 'quero doar', 'como doar'],
-    resposta: `💰 *Como Contribuir*\n\nAcesse My Rotary > Doação e escolha:\n📗 *Fundo Anual* — subsídios\n💉 *PolioPlus* — erradicação da pólio\n🏦 *Doação Permanente* — sustentabilidade\n\n🎯 Meta: US$100/ano por rotariano (EREY)\n💵 Dólar Rotário (abril 2026): R$ 5,25\n\n🔗 Doar: https://my.rotary.org/pt/donate`
+    resposta: `Para contribuir com a Fundação Rotária, acesse My Rotary > Doação e escolha entre Fundo Anual, PolioPlus ou Doação Permanente.\n\nA meta é *US$100/ano* por rotariano (EREY). Dólar Rotário em abril 2026: R$ 5,25\n\nmy.rotary.org/pt/donate`
   },
   // === CONTATO POR TELEFONE/EMAIL/WHATSAPP ===
   {
     palavras: ['telefone', 'email', 'whatsapp', 'numero', 'fone', 'celular do distrito'],
-    resposta: `📞 *Canais de Contato do Distrito*\n\nPara falar com a equipe do distrito:\n🔗 Formulário: https://rotary4630.org.br/fale-conosco\n👥 Equipe: https://rotary4630.org.br/equipe-distrital\n\nCada clube tem seus próprios contatos:\n🔗 https://rotary4630.org.br/clubes\n📲 App: https://www.unyclub.com.br`
+    resposta: `Para falar com a equipe do distrito, use o formulário em rotary4630.org.br/fale-conosco ou consulte a equipe em rotary4630.org.br/equipe-distrital.\n\nContato direto de cada clube está em rotary4630.org.br/clubes`
   },
   // === MENU / AJUDA / IDENTIDADE DO BOT ===
   {
@@ -303,12 +303,12 @@ const FAQ_CACHE = [
   // === ROTARY KIDS ===
   {
     palavras: ['rotary kids', 'rotary kid', 'criancas rotary', 'programa infantil'],
-    resposta: `🧒 *Rotary Kids*\n\nPrograma do Rotary voltado para crianças, complementando:\n• *Interact* — 12 a 18 anos\n• *Rotaract* — a partir de 18 anos\n\nPara mais informações sobre o Rotary Kids no D4630:\n🔗 https://rotary4630.org.br/clubes\n📞 https://rotary4630.org.br/fale-conosco`
+    resposta: `O *Rotary Kids* é o programa do Rotary voltado para crianças, complementando o Interact (12-18 anos) e o Rotaract (18+).\n\nPara mais informações no D4630: rotary4630.org.br/fale-conosco`
   },
   // === SITE OFICIAL ===
   {
     palavras: ['site oficial', 'site do distrito', 'rotary4630', 'site rotary', 'pagina do distrito', 'site do rotary'],
-    resposta: `🌐 *Site Oficial do Distrito 4630*\n\n🔗 https://rotary4630.org.br\n\nNo site você encontra:\n📅 Agenda e eventos\n🏛️ Lista de clubes\n👥 Equipe distrital\n📞 Formulário de contato\n\n📲 App de gestão: https://www.unyclub.com.br\n🌐 My Rotary: https://my.rotary.org/pt`
+    resposta: `O site oficial do Distrito 4630 é rotary4630.org.br — lá você encontra agenda, lista de clubes, equipe distrital e formulário de contato.\n\nPara gestão do clube: unyclub.com.br. Portal do rotariano: my.rotary.org/pt`
   },
   // === NAO ENTENDI / CONVERSACIONAL ===
   {
@@ -318,23 +318,23 @@ const FAQ_CACHE = [
   // === CIDADES COM CLUBE MAS SEM FAQ ESPECIFICO ===
   {
     palavras: ['barbosa ferraz'],
-    resposta: `🏛️ *Rotary em Barbosa Ferraz:*\n\n• Rotary Club de Barbosa Ferraz - Celeiro do Paraná (27 associados)\n\n🔗 Detalhes: https://rotary4630.org.br/clubes\n📲 App: https://www.unyclub.com.br`
+    resposta: `Em *Barbosa Ferraz* tem o Rotary Club de Barbosa Ferraz - Celeiro do Paraná (27 sócios). Dia de reunião e contato em rotary4630.org.br/clubes`
   },
   {
     palavras: ['borrazopolis'],
-    resposta: `🏛️ *Rotary em Borrazópolis:*\n\n• Rotary Club de Borrazópolis (24 associados)\n\n🔗 Detalhes: https://rotary4630.org.br/clubes\n📲 App: https://www.unyclub.com.br`
+    resposta: `Em *Borrazópolis* tem o Rotary Club de Borrazópolis (24 sócios). Dia de reunião e contato em rotary4630.org.br/clubes`
   },
   {
     palavras: ['lunardelli'],
-    resposta: `🏛️ *Rotary em Lunardelli:*\n\n• Rotary Club de Lunardelli\n\n🔗 Detalhes: https://rotary4630.org.br/clubes\n📲 App: https://www.unyclub.com.br`
+    resposta: `Em *Lunardelli* tem o Rotary Club de Lunardelli. Dia de reunião e contato em rotary4630.org.br/clubes`
   },
   {
     palavras: ['santo antonio da platina', 'santo antonio'],
-    resposta: `🏛️ *Rotary em Santo Antônio da Platina:*\n\n• Rotary Club de Santo Antônio da Platina\n\n🔗 Detalhes: https://rotary4630.org.br/clubes\n📲 App: https://www.unyclub.com.br`
+    resposta: `Em *Santo Antônio da Platina* tem o Rotary Club de Santo Antônio da Platina. Dia de reunião e contato em rotary4630.org.br/clubes`
   },
   {
     palavras: ['brasilandia do sul', 'brasilandia'],
-    resposta: `🏛️ *Rotary/Rotaract em Brasilândia do Sul:*\n\n• Rotaract Club de Brasilândia do Sul\n\n🔗 Detalhes: https://rotary4630.org.br/clubes\n📲 App: https://www.unyclub.com.br`
+    resposta: `Em *Brasilândia do Sul* tem o Rotaract Club de Brasilândia do Sul. Dia de reunião e contato em rotary4630.org.br/clubes`
   }
 ];
 
